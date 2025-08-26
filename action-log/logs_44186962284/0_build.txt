@@ -1,0 +1,907 @@
+﻿2025-08-26T03:57:14.5978217Z Current runner version: '2.328.0'
+2025-08-26T03:57:14.6001132Z ##[group]Runner Image Provisioner
+2025-08-26T03:57:14.6001871Z Hosted Compute Agent
+2025-08-26T03:57:14.6002545Z Version: 20250818.377
+2025-08-26T03:57:14.6003123Z Commit: 3c593e9f75fe0b87e893bca80d6e12ba089c61fc
+2025-08-26T03:57:14.6004089Z Build Date: 2025-08-18T14:52:18Z
+2025-08-26T03:57:14.6004745Z ##[endgroup]
+2025-08-26T03:57:14.6005322Z ##[group]Operating System
+2025-08-26T03:57:14.6005875Z Ubuntu
+2025-08-26T03:57:14.6006401Z 24.04.2
+2025-08-26T03:57:14.6006888Z LTS
+2025-08-26T03:57:14.6007319Z ##[endgroup]
+2025-08-26T03:57:14.6007877Z ##[group]Runner Image
+2025-08-26T03:57:14.6008439Z Image: ubuntu-24.04
+2025-08-26T03:57:14.6008960Z Version: 20250818.1.0
+2025-08-26T03:57:14.6009962Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250818.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-08-26T03:57:14.6011499Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250818.1
+2025-08-26T03:57:14.6012504Z ##[endgroup]
+2025-08-26T03:57:14.6015265Z ##[group]GITHUB_TOKEN Permissions
+2025-08-26T03:57:14.6017272Z Actions: write
+2025-08-26T03:57:14.6017875Z Attestations: write
+2025-08-26T03:57:14.6018370Z Checks: write
+2025-08-26T03:57:14.6018934Z Contents: write
+2025-08-26T03:57:14.6019843Z Deployments: write
+2025-08-26T03:57:14.6020911Z Discussions: write
+2025-08-26T03:57:14.6021863Z Issues: write
+2025-08-26T03:57:14.6022736Z Metadata: read
+2025-08-26T03:57:14.6023827Z Models: read
+2025-08-26T03:57:14.6024665Z Packages: write
+2025-08-26T03:57:14.6025817Z Pages: write
+2025-08-26T03:57:14.6026705Z PullRequests: write
+2025-08-26T03:57:14.6027680Z RepositoryProjects: write
+2025-08-26T03:57:14.6028841Z SecurityEvents: write
+2025-08-26T03:57:14.6029912Z Statuses: write
+2025-08-26T03:57:14.6030806Z ##[endgroup]
+2025-08-26T03:57:14.6034202Z Secret source: Actions
+2025-08-26T03:57:14.6035649Z Prepare workflow directory
+2025-08-26T03:57:14.6478325Z Prepare all required actions
+2025-08-26T03:57:14.6534232Z Getting action download info
+2025-08-26T03:57:15.0170195Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-08-26T03:57:15.0942352Z Download action repository 'actions/setup-java@v4' (SHA:c5195efecf7bdfc987ee8bae7a71cb8b11521c00)
+2025-08-26T03:57:15.5488733Z Download action repository 'actions/cache@v4' (SHA:0400d5f644dc74513175e3cd8d07132dd4860809)
+2025-08-26T03:57:15.6905223Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-08-26T03:57:15.8075706Z Download action repository 'softprops/action-gh-release@v1' (SHA:de2c0eb89ae2a093876385947365aca7b0e5f844)
+2025-08-26T03:57:16.2015338Z Complete job name: build
+2025-08-26T03:57:16.2857074Z ##[group]Run actions/checkout@v4
+2025-08-26T03:57:16.2858339Z with:
+2025-08-26T03:57:16.2859073Z   repository: yCENzh/Botania
+2025-08-26T03:57:16.2860235Z   token: ***
+2025-08-26T03:57:16.2860955Z   ssh-strict: true
+2025-08-26T03:57:16.2861710Z   ssh-user: git
+2025-08-26T03:57:16.2862520Z   persist-credentials: true
+2025-08-26T03:57:16.2863536Z   clean: true
+2025-08-26T03:57:16.2864324Z   sparse-checkout-cone-mode: true
+2025-08-26T03:57:16.2865278Z   fetch-depth: 1
+2025-08-26T03:57:16.2866027Z   fetch-tags: false
+2025-08-26T03:57:16.2866799Z   show-progress: true
+2025-08-26T03:57:16.2867581Z   lfs: false
+2025-08-26T03:57:16.2868285Z   submodules: false
+2025-08-26T03:57:16.2869074Z   set-safe-directory: true
+2025-08-26T03:57:16.2870178Z ##[endgroup]
+2025-08-26T03:57:16.3952965Z Syncing repository: yCENzh/Botania
+2025-08-26T03:57:16.3955681Z ##[group]Getting Git version info
+2025-08-26T03:57:16.3956951Z Working directory is '/home/runner/work/Botania/Botania'
+2025-08-26T03:57:16.3958854Z [command]/usr/bin/git version
+2025-08-26T03:57:16.3999010Z git version 2.51.0
+2025-08-26T03:57:16.4024711Z ##[endgroup]
+2025-08-26T03:57:16.4038675Z Temporarily overriding HOME='/home/runner/work/_temp/24cc4775-59c1-40ea-882e-4678d231acdf' before making global git config changes
+2025-08-26T03:57:16.4041705Z Adding repository directory to the temporary git global config as a safe directory
+2025-08-26T03:57:16.4050744Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Botania/Botania
+2025-08-26T03:57:16.4083002Z Deleting the contents of '/home/runner/work/Botania/Botania'
+2025-08-26T03:57:16.4086653Z ##[group]Initializing the repository
+2025-08-26T03:57:16.4090520Z [command]/usr/bin/git init /home/runner/work/Botania/Botania
+2025-08-26T03:57:16.4148434Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-26T03:57:16.4151541Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-26T03:57:16.4154042Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-26T03:57:16.4155368Z hint:
+2025-08-26T03:57:16.4156269Z hint: 	git config --global init.defaultBranch <name>
+2025-08-26T03:57:16.4157846Z hint:
+2025-08-26T03:57:16.4158897Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-26T03:57:16.4160708Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-26T03:57:16.4162426Z hint:
+2025-08-26T03:57:16.4163584Z hint: 	git branch -m <name>
+2025-08-26T03:57:16.4164464Z hint:
+2025-08-26T03:57:16.4165597Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-08-26T03:57:16.4167476Z Initialized empty Git repository in /home/runner/work/Botania/Botania/.git/
+2025-08-26T03:57:16.4170327Z [command]/usr/bin/git remote add origin https://github.com/yCENzh/Botania
+2025-08-26T03:57:16.4197266Z ##[endgroup]
+2025-08-26T03:57:16.4198615Z ##[group]Disabling automatic garbage collection
+2025-08-26T03:57:16.4200481Z [command]/usr/bin/git config --local gc.auto 0
+2025-08-26T03:57:16.4228840Z ##[endgroup]
+2025-08-26T03:57:16.4230098Z ##[group]Setting up auth
+2025-08-26T03:57:16.4234814Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-08-26T03:57:16.4264435Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-08-26T03:57:16.4525960Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-08-26T03:57:16.4557344Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-08-26T03:57:16.4776017Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-08-26T03:57:16.4809968Z ##[endgroup]
+2025-08-26T03:57:16.4812668Z ##[group]Fetching the repository
+2025-08-26T03:57:16.4829180Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +360da2855f2480d34e4c62ce4c3f772b9dbd30e2:refs/remotes/origin/1.7.10-final
+2025-08-26T03:57:17.4976293Z From https://github.com/yCENzh/Botania
+2025-08-26T03:57:17.4977320Z  * [new ref]         360da2855f2480d34e4c62ce4c3f772b9dbd30e2 -> origin/1.7.10-final
+2025-08-26T03:57:17.5045281Z ##[endgroup]
+2025-08-26T03:57:17.5046316Z ##[group]Determining the checkout info
+2025-08-26T03:57:17.5048568Z ##[endgroup]
+2025-08-26T03:57:17.5054096Z [command]/usr/bin/git sparse-checkout disable
+2025-08-26T03:57:17.5092339Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-08-26T03:57:17.5119936Z ##[group]Checking out the ref
+2025-08-26T03:57:17.5124424Z [command]/usr/bin/git checkout --progress --force -B 1.7.10-final refs/remotes/origin/1.7.10-final
+2025-08-26T03:57:17.7137671Z Switched to a new branch '1.7.10-final'
+2025-08-26T03:57:17.7139132Z branch '1.7.10-final' set up to track 'origin/1.7.10-final'.
+2025-08-26T03:57:17.7159747Z ##[endgroup]
+2025-08-26T03:57:17.7205008Z [command]/usr/bin/git log -1 --format=%H
+2025-08-26T03:57:17.7230502Z 360da2855f2480d34e4c62ce4c3f772b9dbd30e2
+2025-08-26T03:57:17.7545809Z ##[group]Run actions/setup-java@v4
+2025-08-26T03:57:17.7546331Z with:
+2025-08-26T03:57:17.7546544Z   java-version: 8
+2025-08-26T03:57:17.7546781Z   distribution: temurin
+2025-08-26T03:57:17.7547020Z   java-package: jdk
+2025-08-26T03:57:17.7547257Z   check-latest: false
+2025-08-26T03:57:17.7547483Z   server-id: github
+2025-08-26T03:57:17.7547724Z   server-username: GITHUB_ACTOR
+2025-08-26T03:57:17.7547994Z   server-password: GITHUB_TOKEN
+2025-08-26T03:57:17.7548282Z   overwrite-settings: true
+2025-08-26T03:57:17.7548534Z   job-status: success
+2025-08-26T03:57:17.7548895Z   token: ***
+2025-08-26T03:57:17.7549119Z ##[endgroup]
+2025-08-26T03:57:17.9474470Z ##[group]Installed distributions
+2025-08-26T03:57:17.9606939Z Resolved Java 8.0.462+8 from tool-cache
+2025-08-26T03:57:17.9607520Z Setting Java 8.0.462+8 as the default
+2025-08-26T03:57:17.9619874Z Creating toolchains.xml for JDK version 8 from temurin
+2025-08-26T03:57:17.9694271Z Writing to /home/runner/.m2/toolchains.xml
+2025-08-26T03:57:17.9695020Z 
+2025-08-26T03:57:17.9695295Z Java configuration:
+2025-08-26T03:57:17.9695868Z   Distribution: temurin
+2025-08-26T03:57:17.9696400Z   Version: 8.0.462+8
+2025-08-26T03:57:17.9697163Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:17.9697825Z 
+2025-08-26T03:57:17.9699079Z ##[endgroup]
+2025-08-26T03:57:17.9715264Z Creating settings.xml with server-id: github
+2025-08-26T03:57:17.9719577Z Writing to /home/runner/.m2/settings.xml
+2025-08-26T03:57:18.3010052Z ##[group]Run actions/cache@v4
+2025-08-26T03:57:18.3010331Z with:
+2025-08-26T03:57:18.3010544Z   path: ~/.gradle/caches
+~/.gradle/wrapper
+
+2025-08-26T03:57:18.3010981Z   key: Linux-gradle-e10d949bbd1c903c70fa8023549cd21c9476e8e5e41eb846fa9d2b341f7ea543
+2025-08-26T03:57:18.3011417Z   restore-keys: Linux-gradle-
+
+2025-08-26T03:57:18.3011657Z   enableCrossOsArchive: false
+2025-08-26T03:57:18.3011886Z   fail-on-cache-miss: false
+2025-08-26T03:57:18.3012093Z   lookup-only: false
+2025-08-26T03:57:18.3012287Z   save-always: false
+2025-08-26T03:57:18.3012481Z env:
+2025-08-26T03:57:18.3012757Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.3013212Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.3013839Z ##[endgroup]
+2025-08-26T03:57:18.5565030Z Cache not found for input keys: Linux-gradle-e10d949bbd1c903c70fa8023549cd21c9476e8e5e41eb846fa9d2b341f7ea543, Linux-gradle-
+2025-08-26T03:57:18.5659090Z ##[group]Run chmod +x gradlew
+2025-08-26T03:57:18.5659425Z [36;1mchmod +x gradlew[0m
+2025-08-26T03:57:18.5736404Z shell: /usr/bin/bash -e {0}
+2025-08-26T03:57:18.5736662Z env:
+2025-08-26T03:57:18.5736961Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.5737420Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.5737753Z ##[endgroup]
+2025-08-26T03:57:18.5855239Z ##[group]Run echo "=== Project Structure ==="
+2025-08-26T03:57:18.5855596Z [36;1mecho "=== Project Structure ==="[0m
+2025-08-26T03:57:18.5855875Z [36;1mls -la[0m
+2025-08-26T03:57:18.5856078Z [36;1mecho "=== Source directory ==="[0m
+2025-08-26T03:57:18.5856370Z [36;1mfind src -type f -name "*.java" | head -10[0m
+2025-08-26T03:57:18.5856651Z [36;1mecho "=== Gradle files ==="[0m
+2025-08-26T03:57:18.5856891Z [36;1mls -la *.gradle* || true[0m
+2025-08-26T03:57:18.5892289Z shell: /usr/bin/bash -e {0}
+2025-08-26T03:57:18.5892525Z env:
+2025-08-26T03:57:18.5892808Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.5893310Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.5893922Z ##[endgroup]
+2025-08-26T03:57:18.5947856Z === Project Structure ===
+2025-08-26T03:57:18.5961502Z total 88
+2025-08-26T03:57:18.5961902Z drwxr-xr-x 8 runner docker 4096 Aug 26 03:57 .
+2025-08-26T03:57:18.5962455Z drwxr-xr-x 3 runner docker 4096 Aug 26 03:57 ..
+2025-08-26T03:57:18.5962920Z drwxr-xr-x 7 runner docker 4096 Aug 26 03:57 .git
+2025-08-26T03:57:18.5963807Z drwxr-xr-x 3 runner docker 4096 Aug 26 03:57 .github
+2025-08-26T03:57:18.5964355Z -rw-r--r-- 1 runner docker  322 Aug 26 03:57 .gitignore
+2025-08-26T03:57:18.5964886Z -rw-r--r-- 1 runner docker 4236 Aug 26 03:57 BUILD_FIX_SOLUTION.md
+2025-08-26T03:57:18.5965247Z -rw-r--r-- 1 runner docker  879 Aug 26 03:57 CHANGELOG.md
+2025-08-26T03:57:18.5965590Z -rw-r--r-- 1 runner docker 2272 Aug 26 03:57 GITHUB_DEPLOY.md
+2025-08-26T03:57:18.5965915Z -rw-r--r-- 1 runner docker 3948 Aug 26 03:57 README.md
+2025-08-26T03:57:18.5966371Z drwxr-xr-x 3 runner docker 4096 Aug 26 03:57 action-log
+2025-08-26T03:57:18.5966913Z drwxr-xr-x 7 runner docker 4096 Aug 26 03:57 botania
+2025-08-26T03:57:18.5967455Z -rw-r--r-- 1 runner docker 9105 Aug 26 03:57 build.gradle
+2025-08-26T03:57:18.5968035Z drwxr-xr-x 3 runner docker 4096 Aug 26 03:57 gradle
+2025-08-26T03:57:18.5968623Z -rw-r--r-- 1 runner docker  533 Aug 26 03:57 gradle.properties
+2025-08-26T03:57:18.5969188Z -rwxr-xr-x 1 runner docker 5077 Aug 26 03:57 gradlew
+2025-08-26T03:57:18.5969574Z -rw-r--r-- 1 runner docker 2305 Aug 26 03:57 gradlew.bat
+2025-08-26T03:57:18.5969875Z drwxr-xr-x 3 runner docker 4096 Aug 26 03:57 src
+2025-08-26T03:57:18.5970191Z -rw-r--r-- 1 runner docker  964 Aug 26 03:57 test-build.bat
+2025-08-26T03:57:18.5970470Z === Source directory ===
+2025-08-26T03:57:18.5983703Z src/main/java/gogsky/core/GogSkybox.java
+2025-08-26T03:57:18.5984274Z src/main/java/gogsky/proxy/ClientProxy.java
+2025-08-26T03:57:18.5984759Z src/main/java/gogsky/proxy/CommonProxy.java
+2025-08-26T03:57:18.5985296Z src/main/java/gogsky/config/ConfigHandler.java
+2025-08-26T03:57:18.5985819Z src/main/java/gogsky/render/GogSkyRenderer.java
+2025-08-26T03:57:18.5986322Z src/main/java/gogsky/handler/SkyboxRenderHandler.java
+2025-08-26T03:57:18.5986670Z src/main/java/gogsky/handler/ClientTickHandler.java
+2025-08-26T03:57:18.5986986Z === Gradle files ===
+2025-08-26T03:57:18.5997252Z -rw-r--r-- 1 runner docker 9105 Aug 26 03:57 build.gradle
+2025-08-26T03:57:18.6022665Z ##[group]Run ./gradlew downloadMcAssets --info
+2025-08-26T03:57:18.6023025Z [36;1m./gradlew downloadMcAssets --info[0m
+2025-08-26T03:57:18.6058269Z shell: /usr/bin/bash -e {0}
+2025-08-26T03:57:18.6058507Z env:
+2025-08-26T03:57:18.6058786Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.6059251Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:18.6059591Z ##[endgroup]
+2025-08-26T03:57:20.1088742Z Downloading https://services.gradle.org/distributions/gradle-2.1-bin.zip
+2025-08-26T03:57:22.4142637Z .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2025-08-26T03:57:22.4147503Z Unzipping /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1-bin.zip to /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a
+2025-08-26T03:57:22.6664680Z Set executable permissions for: /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/bin/gradle
+2025-08-26T03:57:23.0895484Z To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: http://gradle.org/docs/2.1/userguide/gradle_daemon.html.
+2025-08-26T03:57:23.0899454Z Starting Gradle daemon
+2025-08-26T03:57:23.1021941Z Starting daemon process: workingDir = /home/runner/.gradle/daemon/2.1, daemonArgs: [/usr/lib/jvm/temurin-8-jdk-amd64/bin/java, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant, -cp, /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar, org.gradle.launcher.daemon.bootstrap.GradleDaemon, 2.1, /home/runner/.gradle/daemon, 120000, 67d16ba0-4f0e-4e5d-8d70-61aabfdf0fee, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant]
+2025-08-26T03:57:23.1136518Z Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/2.1 Command: /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 2.1 /home/runner/.gradle/daemon 120000 67d16ba0-4f0e-4e5d-8d70-61aabfdf0fee -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant
+2025-08-26T03:57:23.1160598Z Successfully started process 'Gradle build daemon'
+2025-08-26T03:57:23.5526252Z An attempt to start the daemon took 0.449 secs.
+2025-08-26T03:57:23.5952136Z Connected to the daemon. Dispatching BuildAndStop{id=cb84cddf-06eb-49a3-8d86-f16ac7360839.1, currentDir=/home/runner/work/Botania/Botania} request.
+2025-08-26T03:57:23.7000582Z The client will now receive all logging from the daemon (pid: 2132). The daemon log file: /home/runner/.gradle/daemon/2.1/daemon-2132.out.log
+2025-08-26T03:57:23.7352555Z Closing daemon's stdin at end of input.
+2025-08-26T03:57:23.7359953Z The daemon will no longer process any standard input.
+2025-08-26T03:57:23.7362210Z Executing build with daemon context: DefaultDaemonContext[uid=67d16ba0-4f0e-4e5d-8d70-61aabfdf0fee,javaHome=/usr/lib/jvm/temurin-8-jdk-amd64,daemonRegistryDir=/home/runner/.gradle/daemon,pid=2132,idleTimeout=120000,daemonOpts=-XX:MaxPermSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]
+2025-08-26T03:57:25.2441352Z Starting Build
+2025-08-26T03:57:25.4640508Z Settings evaluated using empty settings script.
+2025-08-26T03:57:25.5522540Z Projects loaded. Root project using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:57:25.5527989Z Included projects: [root project 'Botania']
+2025-08-26T03:57:25.6826831Z Evaluating root project 'Botania' using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:57:25.6992742Z Compiling build file '/home/runner/work/Botania/Botania/build.gradle' using StatementExtractingScriptTransformer.
+2025-08-26T03:57:26.7673797Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/maven-metadata.xml]
+2025-08-26T03:57:26.8183005Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-SNAPSHOT.pom]
+2025-08-26T03:57:26.8627352Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-SNAPSHOT.jar]
+2025-08-26T03:57:27.5673520Z Download https://maven.minecraftforge.net/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-20211118.175523-305.pom
+2025-08-26T03:57:27.7792732Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.pom]
+2025-08-26T03:57:28.0541473Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.jar]
+2025-08-26T03:57:28.0853913Z Download https://maven.minecraftforge.net/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.pom
+2025-08-26T03:57:28.1059791Z Download https://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.pom
+2025-08-26T03:57:28.1261047Z Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2025-08-26T03:57:28.1671426Z Download https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.7.3/SpecialSource-1.7.3.pom
+2025-08-26T03:57:28.1868822Z Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2025-08-26T03:57:28.2503802Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.pom
+2025-08-26T03:57:28.2529654Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3.3/httpcomponents-client-4.3.3.pom
+2025-08-26T03:57:28.2543090Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/project/7/project-7.pom
+2025-08-26T03:57:28.2998455Z Download https://repo1.maven.org/maven2/org/apache/apache/13/apache-13.pom
+2025-08-26T03:57:28.3284393Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.pom
+2025-08-26T03:57:28.3580835Z Download https://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.pom
+2025-08-26T03:57:28.3701909Z Download https://repo1.maven.org/maven2/net/sf/trove4j/trove4j/2.1.0/trove4j-2.1.0.pom
+2025-08-26T03:57:28.3855309Z Download https://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.pom
+2025-08-26T03:57:28.4034970Z Download https://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom
+2025-08-26T03:57:28.4203252Z Download https://repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.pom
+2025-08-26T03:57:28.4323117Z Download https://repo1.maven.org/maven2/com/google/guava/guava-parent/18.0/guava-parent-18.0.pom
+2025-08-26T03:57:28.4535928Z Download https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.pom
+2025-08-26T03:57:28.4677126Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.pom
+2025-08-26T03:57:28.5184265Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-parent/5.0.3/asm-parent-5.0.3.pom
+2025-08-26T03:57:28.5185259Z Download https://repo1.maven.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+2025-08-26T03:57:28.5440716Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/maven-metadata.xml]
+2025-08-26T03:57:28.5981997Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-SNAPSHOT.pom]
+2025-08-26T03:57:28.6516948Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-SNAPSHOT.jar]
+2025-08-26T03:57:28.7368399Z Download https://maven.minecraftforge.net/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-20150605.000822-18.pom
+2025-08-26T03:57:28.7511027Z Download https://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.pom
+2025-08-26T03:57:28.7630127Z Download https://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.pom
+2025-08-26T03:57:28.7757679Z Download https://repo1.maven.org/maven2/com/cloudbees/cloudbees-oss-parent/1/cloudbees-oss-parent-1.pom
+2025-08-26T03:57:28.8321266Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.pom
+2025-08-26T03:57:28.8334616Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.pom
+2025-08-26T03:57:28.8344287Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.3.2/httpcomponents-core-4.3.2.pom
+2025-08-26T03:57:28.8896510Z Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.pom
+2025-08-26T03:57:28.8897836Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/28/commons-parent-28.pom
+2025-08-26T03:57:28.9062896Z Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.pom
+2025-08-26T03:57:28.9576117Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/22/commons-parent-22.pom
+2025-08-26T03:57:28.9603295Z Download https://repo1.maven.org/maven2/org/apache/apache/9/apache-9.pom
+2025-08-26T03:57:28.9604311Z Download https://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.pom
+2025-08-26T03:57:28.9668206Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.pom
+2025-08-26T03:57:28.9804164Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer-parent/1.12/localizer-parent-1.12.pom
+2025-08-26T03:57:29.0754179Z Download https://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.pom
+2025-08-26T03:57:29.0852801Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/7/commons-parent-7.pom
+2025-08-26T03:57:29.0942172Z Download https://repo1.maven.org/maven2/org/apache/apache/4/apache-4.pom
+2025-08-26T03:57:29.1204011Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.7/jopt-simple-4.7.pom
+2025-08-26T03:57:30.1052035Z Download https://maven.minecraftforge.net/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-20211118.175523-305.jar
+2025-08-26T03:57:30.3485429Z Download https://maven.minecraftforge.net/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.jar
+2025-08-26T03:57:30.3838116Z Download https://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.jar
+2025-08-26T03:57:30.3841314Z Download https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.7.3/SpecialSource-1.7.3.jar
+2025-08-26T03:57:30.4209492Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar
+2025-08-26T03:57:30.4211231Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.jar
+2025-08-26T03:57:30.4215157Z Download https://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.jar
+2025-08-26T03:57:30.4388793Z Download https://repo1.maven.org/maven2/net/sf/trove4j/trove4j/2.1.0/trove4j-2.1.0.jar
+2025-08-26T03:57:30.4784235Z Download https://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.jar
+2025-08-26T03:57:30.4801840Z Download https://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+2025-08-26T03:57:30.5824083Z Download https://repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar
+2025-08-26T03:57:30.5825310Z Download https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar
+2025-08-26T03:57:30.6247985Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.jar
+2025-08-26T03:57:30.6250704Z Download https://maven.minecraftforge.net/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-20150605.000822-18.jar
+2025-08-26T03:57:30.6254249Z Download https://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.jar
+2025-08-26T03:57:30.6255882Z Download https://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.jar
+2025-08-26T03:57:30.6267119Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar
+2025-08-26T03:57:30.6461688Z Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar
+2025-08-26T03:57:30.6474686Z Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+2025-08-26T03:57:30.6490001Z Download https://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.jar
+2025-08-26T03:57:30.7009209Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.jar
+2025-08-26T03:57:30.7013271Z Download https://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.jar
+2025-08-26T03:57:30.7017690Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.7/jopt-simple-4.7.jar
+2025-08-26T03:57:30.7022835Z Compiling build file '/home/runner/work/Botania/Botania/build.gradle' using BuildScriptTransformer.
+2025-08-26T03:57:32.5166724Z WARNING: You are using an unsupported version of ForgeGradle.
+2025-08-26T03:57:32.5168718Z Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+2025-08-26T03:57:32.5170008Z See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+2025-08-26T03:57:32.5171326Z #################################################
+2025-08-26T03:57:32.5172490Z          ForgeGradle 1.2.2-g2ea0336        
+2025-08-26T03:57:32.5180238Z   https://github.com/MinecraftForge/ForgeGradle  
+2025-08-26T03:57:32.5181369Z #################################################
+2025-08-26T03:57:32.5181633Z                Powered by MCP unknown               
+2025-08-26T03:57:32.5181920Z              http://modcoderpack.com             
+2025-08-26T03:57:32.5183937Z          by: Searge, ProfMobius, Fesh0r,         
+2025-08-26T03:57:32.5185671Z          R4wk, ZeuX, IngisKahn, bspkrs           
+2025-08-26T03:57:32.5188216Z #################################################
+2025-08-26T03:57:32.5603198Z All projects evaluated.
+2025-08-26T03:57:32.5942006Z Selected primary task 'downloadMcAssets' from project :
+2025-08-26T03:57:32.5985312Z Tasks to be executed: [task ':downloadMcAssets']
+2025-08-26T03:57:32.6085259Z :downloadMcAssets (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:32.6241886Z :downloadMcAssets
+2025-08-26T03:57:32.6244605Z Executing task ':downloadMcAssets' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:57:32.6245266Z   Task has not declared any outputs.
+2025-08-26T03:57:32.6418848Z Creating minimal 1.7.10 asset index...
+2025-08-26T03:57:32.6454450Z Created minimal 1.7.10.json
+2025-08-26T03:57:32.6523120Z :downloadMcAssets (Thread[Daemon,5,main]) completed. Took 0.042 secs.
+2025-08-26T03:57:32.6530069Z 
+2025-08-26T03:57:32.6537339Z BUILD SUCCESSFUL
+2025-08-26T03:57:32.6598674Z 
+2025-08-26T03:57:32.6606794Z Total time: 13.145 secs
+2025-08-26T03:57:32.6607481Z Stopped 0 compiler daemon(s).
+2025-08-26T03:57:33.0035924Z ##[group]Run ./gradlew fixMinecraftJars --info
+2025-08-26T03:57:33.0036281Z [36;1m./gradlew fixMinecraftJars --info[0m
+2025-08-26T03:57:33.0076588Z shell: /usr/bin/bash -e {0}
+2025-08-26T03:57:33.0076818Z env:
+2025-08-26T03:57:33.0077096Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:33.0077568Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:33.0077912Z ##[endgroup]
+2025-08-26T03:57:33.3634547Z To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: http://gradle.org/docs/2.1/userguide/gradle_daemon.html.
+2025-08-26T03:57:33.3640345Z Starting Gradle daemon
+2025-08-26T03:57:33.3772083Z Starting daemon process: workingDir = /home/runner/.gradle/daemon/2.1, daemonArgs: [/usr/lib/jvm/temurin-8-jdk-amd64/bin/java, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant, -cp, /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar, org.gradle.launcher.daemon.bootstrap.GradleDaemon, 2.1, /home/runner/.gradle/daemon, 120000, 43fd7f41-9784-478e-994e-967ff9c57248, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant]
+2025-08-26T03:57:33.3891278Z Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/2.1 Command: /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 2.1 /home/runner/.gradle/daemon 120000 43fd7f41-9784-478e-994e-967ff9c57248 -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant
+2025-08-26T03:57:33.4400445Z Successfully started process 'Gradle build daemon'
+2025-08-26T03:57:33.8906143Z An attempt to start the daemon took 0.513 secs.
+2025-08-26T03:57:33.9217919Z Connected to the daemon. Dispatching BuildAndStop{id=e7b560d7-8b4f-4f1e-9ca5-65471f01cb90.1, currentDir=/home/runner/work/Botania/Botania} request.
+2025-08-26T03:57:33.9961063Z The client will now receive all logging from the daemon (pid: 2192). The daemon log file: /home/runner/.gradle/daemon/2.1/daemon-2192.out.log
+2025-08-26T03:57:34.0334097Z Closing daemon's stdin at end of input.
+2025-08-26T03:57:34.0337258Z Executing build with daemon context: DefaultDaemonContext[uid=43fd7f41-9784-478e-994e-967ff9c57248,javaHome=/usr/lib/jvm/temurin-8-jdk-amd64,daemonRegistryDir=/home/runner/.gradle/daemon,pid=2192,idleTimeout=120000,daemonOpts=-XX:MaxPermSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]
+2025-08-26T03:57:34.0339892Z The daemon will no longer process any standard input.
+2025-08-26T03:57:34.3180864Z Starting Build
+2025-08-26T03:57:34.5889283Z Settings evaluated using empty settings script.
+2025-08-26T03:57:34.6659631Z Projects loaded. Root project using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:57:34.6666805Z Included projects: [root project 'Botania']
+2025-08-26T03:57:34.8156312Z Evaluating root project 'Botania' using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:57:36.2374264Z WARNING: You are using an unsupported version of ForgeGradle.
+2025-08-26T03:57:36.2375660Z Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+2025-08-26T03:57:36.2377279Z See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+2025-08-26T03:57:36.2380116Z #################################################
+2025-08-26T03:57:36.2394995Z          ForgeGradle 1.2.2-g2ea0336        
+2025-08-26T03:57:36.2413193Z   https://github.com/MinecraftForge/ForgeGradle  
+2025-08-26T03:57:36.2415709Z #################################################
+2025-08-26T03:57:36.2421155Z                Powered by MCP unknown               
+2025-08-26T03:57:36.2437349Z              http://modcoderpack.com             
+2025-08-26T03:57:36.2439916Z          by: Searge, ProfMobius, Fesh0r,         
+2025-08-26T03:57:36.2440439Z          R4wk, ZeuX, IngisKahn, bspkrs           
+2025-08-26T03:57:36.2440907Z #################################################
+2025-08-26T03:57:36.2909463Z All projects evaluated.
+2025-08-26T03:57:36.3244711Z Selected primary task 'fixMinecraftJars' from project :
+2025-08-26T03:57:36.3254238Z Tasks to be executed: [task ':fixMinecraftJars']
+2025-08-26T03:57:36.3510667Z :fixMinecraftJars (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:36.3627586Z :fixMinecraftJars
+2025-08-26T03:57:36.3629288Z Executing task ':fixMinecraftJars' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:57:36.3631126Z   Task has not declared any outputs.
+2025-08-26T03:57:36.3842720Z Downloading Minecraft 1.7.10 client from Mojang...
+2025-08-26T03:57:37.3480738Z Successfully downloaded minecraft-1.7.10.jar (16089640 bytes)
+2025-08-26T03:57:37.3710306Z Copied client JAR to Forge cache directory
+2025-08-26T03:57:37.3717955Z Downloading Minecraft 1.7.10 server from Mojang...
+2025-08-26T03:57:37.5716250Z Failed to download server jar: https://launcher.mojang.com/v1/objects/c7022d1eb71ba8707c8fb5b84e7da93d66033bac/server.jar
+2025-08-26T03:57:37.5727327Z :fixMinecraftJars (Thread[Daemon,5,main]) completed. Took 1.223 secs.
+2025-08-26T03:57:37.5736119Z 
+2025-08-26T03:57:37.5759288Z BUILD SUCCESSFUL
+2025-08-26T03:57:37.5759766Z 
+2025-08-26T03:57:37.5760192Z Total time: 4.531 secs
+2025-08-26T03:57:37.5834264Z Stopped 0 compiler daemon(s).
+2025-08-26T03:57:37.9177989Z ##[group]Run ./gradlew setupDecompWorkspace --info --continue
+2025-08-26T03:57:37.9178490Z [36;1m./gradlew setupDecompWorkspace --info --continue[0m
+2025-08-26T03:57:37.9219087Z shell: /usr/bin/bash -e {0}
+2025-08-26T03:57:37.9219328Z env:
+2025-08-26T03:57:37.9239791Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:37.9240350Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:57:37.9240718Z ##[endgroup]
+2025-08-26T03:57:38.2640286Z To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: http://gradle.org/docs/2.1/userguide/gradle_daemon.html.
+2025-08-26T03:57:38.2646142Z Starting Gradle daemon
+2025-08-26T03:57:38.2778824Z Starting daemon process: workingDir = /home/runner/.gradle/daemon/2.1, daemonArgs: [/usr/lib/jvm/temurin-8-jdk-amd64/bin/java, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant, -cp, /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar, org.gradle.launcher.daemon.bootstrap.GradleDaemon, 2.1, /home/runner/.gradle/daemon, 120000, adf0b435-278a-48d3-a685-160bfcbfad27, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant]
+2025-08-26T03:57:38.2893319Z Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/2.1 Command: /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 2.1 /home/runner/.gradle/daemon 120000 adf0b435-278a-48d3-a685-160bfcbfad27 -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant
+2025-08-26T03:57:38.3311071Z Successfully started process 'Gradle build daemon'
+2025-08-26T03:57:38.7770818Z An attempt to start the daemon took 0.499 secs.
+2025-08-26T03:57:38.8110222Z Connected to the daemon. Dispatching BuildAndStop{id=f2ee6c2d-ad87-4687-a3d0-ede406e4d277.1, currentDir=/home/runner/work/Botania/Botania} request.
+2025-08-26T03:57:38.8836674Z The client will now receive all logging from the daemon (pid: 2248). The daemon log file: /home/runner/.gradle/daemon/2.1/daemon-2248.out.log
+2025-08-26T03:57:38.9215613Z Closing daemon's stdin at end of input.
+2025-08-26T03:57:38.9216993Z The daemon will no longer process any standard input.
+2025-08-26T03:57:38.9221200Z Executing build with daemon context: DefaultDaemonContext[uid=adf0b435-278a-48d3-a685-160bfcbfad27,javaHome=/usr/lib/jvm/temurin-8-jdk-amd64,daemonRegistryDir=/home/runner/.gradle/daemon,pid=2248,idleTimeout=120000,daemonOpts=-XX:MaxPermSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]
+2025-08-26T03:57:39.2034639Z Starting Build
+2025-08-26T03:57:39.4450329Z Settings evaluated using empty settings script.
+2025-08-26T03:57:39.5256791Z Projects loaded. Root project using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:57:39.5261476Z Included projects: [root project 'Botania']
+2025-08-26T03:57:39.6653334Z Evaluating root project 'Botania' using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:57:40.8995918Z WARNING: You are using an unsupported version of ForgeGradle.
+2025-08-26T03:57:40.9001229Z Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+2025-08-26T03:57:40.9002665Z See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+2025-08-26T03:57:40.9003849Z #################################################
+2025-08-26T03:57:40.9006568Z          ForgeGradle 1.2.2-g2ea0336        
+2025-08-26T03:57:40.9007198Z   https://github.com/MinecraftForge/ForgeGradle  
+2025-08-26T03:57:40.9007689Z #################################################
+2025-08-26T03:57:40.9034844Z                Powered by MCP unknown               
+2025-08-26T03:57:40.9050953Z              http://modcoderpack.com             
+2025-08-26T03:57:40.9059406Z          by: Searge, ProfMobius, Fesh0r,         
+2025-08-26T03:57:40.9094121Z          R4wk, ZeuX, IngisKahn, bspkrs           
+2025-08-26T03:57:40.9095107Z #################################################
+2025-08-26T03:57:40.9407011Z All projects evaluated.
+2025-08-26T03:57:40.9865100Z Selected primary task 'setupDecompWorkspace' from project :
+2025-08-26T03:57:41.0047148Z Tasks to be executed: [task ':downloadMcAssets', task ':extractMcpData', task ':getVersionJson', task ':extractUserDev', task ':genSrgs', task ':extractNatives', task ':getAssetsIndex', task ':getAssets', task ':makeStart', task ':downloadMcpTools', task ':downloadClient', task ':downloadServer', task ':mergeJars', task ':deobfuscateJar', task ':decompile', task ':processSources', task ':remapJar', task ':extractMinecraftSrc', task ':recompMinecraft', task ':repackMinecraft', task ':setupDecompWorkspace']
+2025-08-26T03:57:41.0157850Z :downloadMcAssets (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:41.0299372Z :downloadMcAssets
+2025-08-26T03:57:41.0300402Z Executing task ':downloadMcAssets' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:57:41.0301286Z   Task has not declared any outputs.
+2025-08-26T03:57:41.0404251Z :downloadMcAssets (Thread[Daemon,5,main]) completed. Took 0.024 secs.
+2025-08-26T03:57:41.0406538Z :extractMcpData (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:41.0454755Z :extractMcpData
+2025-08-26T03:57:41.0456060Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/outputFileStates.bin
+2025-08-26T03:57:41.0477707Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/taskArtifacts.bin
+2025-08-26T03:57:41.0493008Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/fileHashes.bin
+2025-08-26T03:57:41.0496233Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/fileSnapshots.bin
+2025-08-26T03:57:41.0577465Z Executing task ':extractMcpData' (up-to-date check took 0.015 secs) due to:
+2025-08-26T03:57:41.0602479Z   No history is available.
+2025-08-26T03:57:41.0704478Z :extractMcpData (Thread[Daemon,5,main]) completed. Took 0.024 secs.
+2025-08-26T03:57:41.0729717Z :getVersionJson (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:41.0730373Z :getVersionJson
+2025-08-26T03:57:41.0730881Z Executing task ':getVersionJson' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:57:41.0731492Z   Task has not declared any outputs.
+2025-08-26T03:57:41.1512869Z http://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/1.7.10.json  404'ed!
+2025-08-26T03:57:41.1576837Z :getVersionJson (Thread[Daemon,5,main]) completed. Took 0.088 secs.
+2025-08-26T03:57:41.1585431Z :extractUserDev (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:41.6604777Z :extractUserDev
+2025-08-26T03:57:41.6606507Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10.pom]
+2025-08-26T03:57:41.7626430Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10.pom]
+2025-08-26T03:57:41.8113698Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-userdev.jar]
+2025-08-26T03:57:42.0734260Z Resource missing. [HTTP GET: https://libraries.minecraft.net/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10.pom]
+2025-08-26T03:57:42.1270977Z Resource missing. [HTTP HEAD: https://libraries.minecraft.net/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-userdev.jar]
+2025-08-26T03:57:42.5839284Z Resource missing. [HTTP GET: http://chickenbones.net/maven/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10.pom]
+2025-08-26T03:57:42.7813805Z Resource missing. [HTTP HEAD: http://chickenbones.net/maven/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-userdev.jar]
+2025-08-26T03:57:43.4356975Z Resource missing. [HTTP GET: http://maven.ic2.player.to/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10.pom]
+2025-08-26T03:57:43.5506043Z Resource missing. [HTTP HEAD: http://maven.ic2.player.to/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-userdev.jar]
+2025-08-26T03:57:43.8858539Z Download https://maven.minecraftforge.net/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/forge-1.7.10-10.13.4.1614-1.7.10-userdev.jar
+2025-08-26T03:57:43.9655018Z Executing task ':extractUserDev' (up-to-date check took 2.805 secs) due to:
+2025-08-26T03:57:43.9656167Z   No history is available.
+2025-08-26T03:57:44.2676239Z :extractUserDev (Thread[Daemon,5,main]) completed. Took 3.112 secs.
+2025-08-26T03:57:44.2678201Z :genSrgs (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:44.2701823Z :genSrgs
+2025-08-26T03:57:44.2704632Z Executing task ':genSrgs' (up-to-date check took 0.001 secs) due to:
+2025-08-26T03:57:44.2707111Z   No history is available.
+2025-08-26T03:57:44.7559587Z :genSrgs (Thread[Daemon,5,main]) completed. Took 0.488 secs.
+2025-08-26T03:57:44.7560452Z :extractNatives (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:44.8858455Z :extractNatives
+2025-08-26T03:57:44.8864553Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1.pom
+2025-08-26T03:57:44.9420500Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/parent/2.9.1/parent-2.9.1.pom
+2025-08-26T03:57:44.9943907Z Download https://maven.minecraftforge.net/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5.pom
+2025-08-26T03:57:45.0876839Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1-natives-linux.jar
+2025-08-26T03:57:45.1423046Z Download https://maven.minecraftforge.net/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-linux.jar
+2025-08-26T03:57:45.1425116Z Executing task ':extractNatives' (up-to-date check took 0.348 secs) due to:
+2025-08-26T03:57:45.1425691Z   No history is available.
+2025-08-26T03:57:45.1426102Z :extractNatives (Thread[Daemon,5,main]) completed. Took 0.368 secs.
+2025-08-26T03:57:45.1426569Z :getAssetsIndex (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:45.1429684Z :getAssetsIndex
+2025-08-26T03:57:45.1430280Z Executing task ':getAssetsIndex' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:57:45.1430887Z   Task has not declared any outputs.
+2025-08-26T03:57:45.2101653Z https://s3.amazonaws.com/Minecraft.Download/indexes/1.7.10.json  404'ed!
+2025-08-26T03:57:45.2113871Z :getAssetsIndex (Thread[Daemon,5,main]) completed. Took 0.086 secs.
+2025-08-26T03:57:45.2114913Z :getAssets (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:45.2120571Z :getAssets
+2025-08-26T03:57:45.2121332Z Executing task ':getAssets' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:57:45.2121939Z   Task has not declared any outputs.
+2025-08-26T03:57:45.2141255Z :getAssets (Thread[Daemon,5,main]) completed. Took 0.002 secs.
+2025-08-26T03:57:45.2141859Z :makeStart (Thread[Daemon,5,main]) started.
+2025-08-26T03:57:45.2173333Z :makeStart
+2025-08-26T03:57:45.2177474Z Executing task ':makeStart' (up-to-date check took 0.001 secs) due to:
+2025-08-26T03:57:45.2178991Z   No history is available.
+2025-08-26T03:57:45.3909047Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.pom]
+2025-08-26T03:57:45.4593145Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar]
+2025-08-26T03:57:45.4975589Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.pom]
+2025-08-26T03:57:45.5276297Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar]
+2025-08-26T03:57:45.5437264Z Download https://libraries.minecraft.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.pom
+2025-08-26T03:57:45.6771129Z Download https://maven.minecraftforge.net/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.pom
+2025-08-26T03:57:45.8369028Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-debug-all/5.0.3/db1255f68b642cf4dc455d11e4bd29ad7d6548d9/asm-debug-all-5.0.3.pom]
+2025-08-26T03:57:45.9205228Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/ow2/asm/asm-parent/5.0.3/asm-parent-5.0.3.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-parent/5.0.3/f2b915adcf47fab0e17bccf47390aa206eba7937/asm-parent-5.0.3.pom]
+2025-08-26T03:57:45.9934127Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/ow2/ow2/1.3/ow2-1.3.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2/ow2/1.3/f679d6639bfb209b0836a5e7cf09bfbcc1a41f06/ow2-1.3.pom]
+2025-08-26T03:57:46.0447247Z Download https://maven.minecraftforge.net/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.pom
+2025-08-26T03:57:46.0784111Z Download https://maven.minecraftforge.net/com/typesafe/config/1.2.1/config-1.2.1.pom
+2025-08-26T03:57:46.1528277Z Download https://maven.minecraftforge.net/org/scala-lang/scala-actors-migration_2.11/1.1.0/scala-actors-migration_2.11-1.1.0.pom
+2025-08-26T03:57:46.1534160Z Download https://maven.minecraftforge.net/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.pom
+2025-08-26T03:57:46.2180930Z Download https://maven.minecraftforge.net/org/scala-lang/plugins/scala-continuations-library_2.11/1.0.2/scala-continuations-library_2.11-1.0.2.pom
+2025-08-26T03:57:46.2183621Z Download https://maven.minecraftforge.net/org/scala-lang/plugins/scala-continuations-plugin_2.11.1/1.0.2/scala-continuations-plugin_2.11.1-1.0.2.pom
+2025-08-26T03:57:46.2436124Z Download https://maven.minecraftforge.net/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.pom
+2025-08-26T03:57:46.2788746Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom]
+2025-08-26T03:57:46.3170915Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom]
+2025-08-26T03:57:46.3398504Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar]
+2025-08-26T03:57:46.3897170Z Resource missing. [HTTP GET: https://libraries.minecraft.net/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom]
+2025-08-26T03:57:46.4595191Z Resource missing. [HTTP HEAD: https://libraries.minecraft.net/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar]
+2025-08-26T03:57:46.8496391Z Resource missing. [HTTP GET: http://chickenbones.net/maven/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom]
+2025-08-26T03:57:47.0477515Z Resource missing. [HTTP HEAD: http://chickenbones.net/maven/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar]
+2025-08-26T03:57:47.2792930Z Resource missing. [HTTP GET: http://maven.ic2.player.to/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom]
+2025-08-26T03:57:47.3958407Z Resource missing. [HTTP HEAD: http://maven.ic2.player.to/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar]
+2025-08-26T03:57:47.4242359Z Download https://maven.minecraftforge.net/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.pom
+2025-08-26T03:57:47.4596501Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.pom]
+2025-08-26T03:57:47.4974618Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.pom]
+2025-08-26T03:57:47.5227857Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar]
+2025-08-26T03:57:48.2831698Z Resource missing. [HTTP GET: https://libraries.minecraft.net/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.pom]
+2025-08-26T03:57:48.4946299Z Resource missing. [HTTP HEAD: https://libraries.minecraft.net/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar]
+2025-08-26T03:57:48.6951276Z Resource missing. [HTTP GET: http://chickenbones.net/maven/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.pom]
+2025-08-26T03:57:48.8929845Z Resource missing. [HTTP HEAD: http://chickenbones.net/maven/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar]
+2025-08-26T03:57:49.1129655Z Resource missing. [HTTP GET: http://maven.ic2.player.to/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.pom]
+2025-08-26T03:57:49.2242226Z Resource missing. [HTTP HEAD: http://maven.ic2.player.to/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar]
+2025-08-26T03:57:49.2569684Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom]
+2025-08-26T03:57:49.2928204Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom]
+2025-08-26T03:57:49.3207179Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar]
+2025-08-26T03:57:49.6499719Z Resource missing. [HTTP GET: https://libraries.minecraft.net/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom]
+2025-08-26T03:57:49.8184071Z Resource missing. [HTTP HEAD: https://libraries.minecraft.net/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar]
+2025-08-26T03:57:50.0766571Z Resource missing. [HTTP GET: http://chickenbones.net/maven/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom]
+2025-08-26T03:57:50.2748603Z Resource missing. [HTTP HEAD: http://chickenbones.net/maven/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar]
+2025-08-26T03:57:50.5003074Z Resource missing. [HTTP GET: http://maven.ic2.player.to/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom]
+2025-08-26T03:57:50.6145234Z Resource missing. [HTTP HEAD: http://maven.ic2.player.to/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar]
+2025-08-26T03:57:50.7661553Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.pom, /home/runner/.gradle/caches/modules-2/files-2.1/net.sf.jopt-simple/jopt-simple/4.5/661463fdebe6f8dfe882c2363bcf03452f65d7ea/jopt-simple-4.5.pom]
+2025-08-26T03:57:50.8360335Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/sonatype/oss/oss-parent/7/oss-parent-7.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.sonatype.oss/oss-parent/7/46b8a785b60a2767095b8611613b58577e96d4c9/oss-parent-7.pom]
+2025-08-26T03:57:50.9370624Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/lzma/lzma/0.0.1/lzma-0.0.1.pom]
+2025-08-26T03:57:51.1044194Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/lzma/lzma/0.0.1/lzma-0.0.1.jar]
+2025-08-26T03:57:51.1299850Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/lzma/lzma/0.0.1/lzma-0.0.1.pom]
+2025-08-26T03:57:51.1548406Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/lzma/lzma/0.0.1/lzma-0.0.1.jar]
+2025-08-26T03:57:51.1665199Z Download https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.pom
+2025-08-26T03:57:51.2456595Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/mojang/realms/1.3.5/realms-1.3.5.pom]
+2025-08-26T03:57:51.4079561Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/mojang/realms/1.3.5/realms-1.3.5.jar]
+2025-08-26T03:57:51.4369321Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/mojang/realms/1.3.5/realms-1.3.5.pom]
+2025-08-26T03:57:51.4654117Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/mojang/realms/1.3.5/realms-1.3.5.jar]
+2025-08-26T03:57:51.4827013Z Download https://libraries.minecraft.net/com/mojang/realms/1.3.5/realms-1.3.5.pom
+2025-08-26T03:57:51.5757952Z Download https://maven.minecraftforge.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.pom
+2025-08-26T03:57:51.6282145Z Download https://maven.minecraftforge.net/org/apache/commons/commons-parent/33/commons-parent-33.pom
+2025-08-26T03:57:51.6647805Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/apache/13/apache-13.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache/apache/13/15aff1faaec4963617f07dbe8e603f0adabc3a12/apache-13.pom]
+2025-08-26T03:57:51.7659554Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.3.3/3131ca0098dff459777810577b58e18fae2ea439/httpclient-4.3.3.pom]
+2025-08-26T03:57:51.9189245Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/httpcomponents-client/4.3.3/httpcomponents-client-4.3.3.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcomponents-client/4.3.3/adda18bb154cf3add02034d918aa2d07b329512e/httpcomponents-client-4.3.3.pom]
+2025-08-26T03:57:52.0796123Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/project/7/project-7.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/project/7/c486760d8e0eafe8d4932450e386c2805364f782/project-7.pom]
+2025-08-26T03:57:52.1857705Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.pom, /home/runner/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.3/4aeb2c0ae4261632487bf8ea870bdb405696cee9/commons-logging-1.1.3.pom]
+2025-08-26T03:57:52.2637768Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/commons/commons-parent/28/commons-parent-28.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-parent/28/9ff25b2866ef063a8828ba67d1e35c78f73e830a/commons-parent-28.pom]
+2025-08-26T03:57:52.3529509Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.3.2/13ec787d4bace3aa44734f4196cb659041785339/httpcore-4.3.2.pom]
+2025-08-26T03:57:52.4367231Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/httpcomponents-core/4.3.2/httpcomponents-core-4.3.2.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcomponents-core/4.3.2/35bff8146ac0477f3d3e4d85ef93341e5d3ecdb1/httpcomponents-core-4.3.2.pom]
+2025-08-26T03:57:52.4855902Z Download https://maven.minecraftforge.net/java3d/vecmath/1.3.1/vecmath-1.3.1.pom
+2025-08-26T03:57:52.5215608Z Download https://maven.minecraftforge.net/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.pom
+2025-08-26T03:57:52.5988378Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.pom]
+2025-08-26T03:57:52.7481044Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar]
+2025-08-26T03:57:52.7711525Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.pom]
+2025-08-26T03:57:52.7985077Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar]
+2025-08-26T03:57:52.8199621Z Download https://libraries.minecraft.net/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.pom
+2025-08-26T03:57:52.9079776Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.pom]
+2025-08-26T03:57:52.9867457Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar]
+2025-08-26T03:57:53.0154905Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.pom]
+2025-08-26T03:57:53.0398210Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar]
+2025-08-26T03:57:53.0683196Z Download https://libraries.minecraft.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.pom
+2025-08-26T03:57:53.2738932Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/paulscode/codecwav/20101023/codecwav-20101023.pom]
+2025-08-26T03:57:53.4323967Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/paulscode/codecwav/20101023/codecwav-20101023.jar]
+2025-08-26T03:57:53.4634365Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/paulscode/codecwav/20101023/codecwav-20101023.pom]
+2025-08-26T03:57:53.4906187Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/paulscode/codecwav/20101023/codecwav-20101023.jar]
+2025-08-26T03:57:53.4995344Z Download https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.pom
+2025-08-26T03:57:53.6663796Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.pom]
+2025-08-26T03:57:53.7436497Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar]
+2025-08-26T03:57:53.7740551Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.pom]
+2025-08-26T03:57:53.8019112Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar]
+2025-08-26T03:57:53.8099117Z Download https://libraries.minecraft.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.pom
+2025-08-26T03:57:53.9738391Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.pom]
+2025-08-26T03:57:54.1779139Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar]
+2025-08-26T03:57:54.2069221Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.pom]
+2025-08-26T03:57:54.2303053Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar]
+2025-08-26T03:57:54.2364519Z Download https://libraries.minecraft.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.pom
+2025-08-26T03:57:54.3343844Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.pom]
+2025-08-26T03:57:54.4530483Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar]
+2025-08-26T03:57:54.4788177Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/paulscode/soundsystem/20120107/soundsystem-20120107.pom]
+2025-08-26T03:57:54.5065589Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar]
+2025-08-26T03:57:54.6720179Z Download https://libraries.minecraft.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.pom
+2025-08-26T03:57:54.8306684Z Download https://maven.minecraftforge.net/io/netty/netty-all/4.0.10.Final/netty-all-4.0.10.Final.pom
+2025-08-26T03:57:54.9049078Z Download https://maven.minecraftforge.net/io/netty/netty-parent/4.0.10.Final/netty-parent-4.0.10.Final.pom
+2025-08-26T03:57:54.9528813Z Download https://maven.minecraftforge.net/com/google/guava/guava/17.0/guava-17.0.pom
+2025-08-26T03:57:54.9529912Z Download https://maven.minecraftforge.net/com/google/guava/guava-parent/17.0/guava-parent-17.0.pom
+2025-08-26T03:57:55.0239774Z Download https://maven.minecraftforge.net/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.pom
+2025-08-26T03:57:55.0241350Z Download https://maven.minecraftforge.net/commons-io/commons-io/2.4/commons-io-2.4.pom
+2025-08-26T03:57:55.0980129Z Download https://maven.minecraftforge.net/org/apache/commons/commons-parent/25/commons-parent-25.pom
+2025-08-26T03:57:55.2196296Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/apache/9/apache-9.pom, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache/apache/9/de55d73a30c7521f3d55e8141d360ffbdfd88caa/apache-9.pom]
+2025-08-26T03:57:55.3000171Z Download https://maven.minecraftforge.net/commons-codec/commons-codec/1.9/commons-codec-1.9.pom
+2025-08-26T03:57:55.3602394Z Download https://maven.minecraftforge.net/org/apache/commons/commons-parent/32/commons-parent-32.pom
+2025-08-26T03:57:55.3627594Z Download https://maven.minecraftforge.net/net/java/jinput/jinput/2.0.5/jinput-2.0.5.pom
+2025-08-26T03:57:55.4367289Z Download https://maven.minecraftforge.net/net/java/jutils/jutils/1.0.0/jutils-1.0.0.pom
+2025-08-26T03:57:55.5537986Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom, /home/runner/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/6252c690921ee1dc719594a5d4da1829194f8b3/gson-2.2.4.pom]
+2025-08-26T03:57:55.6395339Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/com/mojang/authlib/1.5.16/authlib-1.5.16.pom]
+2025-08-26T03:57:55.8051921Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/com/mojang/authlib/1.5.16/authlib-1.5.16.jar]
+2025-08-26T03:57:55.8289933Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/com/mojang/authlib/1.5.16/authlib-1.5.16.pom]
+2025-08-26T03:57:55.8502456Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/com/mojang/authlib/1.5.16/authlib-1.5.16.jar]
+2025-08-26T03:57:55.8563169Z Download https://libraries.minecraft.net/com/mojang/authlib/1.5.16/authlib-1.5.16.pom
+2025-08-26T03:57:55.9478199Z Download https://maven.minecraftforge.net/org/apache/logging/log4j/log4j-api/2.0-beta9/log4j-api-2.0-beta9.pom
+2025-08-26T03:57:56.0011005Z Download https://maven.minecraftforge.net/org/apache/logging/log4j/log4j/2.0-beta9/log4j-2.0-beta9.pom
+2025-08-26T03:57:56.0015424Z Download https://maven.minecraftforge.net/org/apache/logging/log4j/log4j-core/2.0-beta9/log4j-core-2.0-beta9.pom
+2025-08-26T03:57:56.0402570Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl/2.9.1/lwjgl-2.9.1.pom
+2025-08-26T03:57:56.0762110Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl_util/2.9.1/lwjgl_util-2.9.1.pom
+2025-08-26T03:57:56.1518131Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/tv/twitch/twitch/5.16/twitch-5.16.pom]
+2025-08-26T03:57:56.2330588Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/tv/twitch/twitch/5.16/twitch-5.16.jar]
+2025-08-26T03:57:56.2576732Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/tv/twitch/twitch/5.16/twitch-5.16.pom]
+2025-08-26T03:57:56.2815326Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/tv/twitch/twitch/5.16/twitch-5.16.jar]
+2025-08-26T03:57:56.2882289Z Download https://libraries.minecraft.net/tv/twitch/twitch/5.16/twitch-5.16.pom
+2025-08-26T03:57:56.4267087Z Download https://maven.minecraftforge.net/org/scala-lang/scala-actors/2.11.0/scala-actors-2.11.0.pom
+2025-08-26T03:57:56.5027373Z Download https://maven.minecraftforge.net/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.pom
+2025-08-26T03:57:56.5028866Z Download https://maven.minecraftforge.net/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.pom
+2025-08-26T03:57:56.5927188Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16.pom]
+2025-08-26T03:57:56.7516721Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-32.jar]
+2025-08-26T03:57:56.7774011Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/tv/twitch/twitch-platform/5.16/twitch-platform-5.16.pom]
+2025-08-26T03:57:56.8025632Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-32.jar]
+2025-08-26T03:57:56.9403239Z Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16.pom
+2025-08-26T03:57:57.0230487Z Resource missing. [HTTP GET: https://maven.minecraftforge.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5.pom]
+2025-08-26T03:57:57.1656018Z Resource missing. [HTTP HEAD: https://maven.minecraftforge.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-natives-windows-32.jar]
+2025-08-26T03:57:57.1895277Z Resource missing. [HTTP GET: https://repo1.maven.org/maven2/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5.pom]
+2025-08-26T03:57:57.2142336Z Resource missing. [HTTP HEAD: https://repo1.maven.org/maven2/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-natives-windows-32.jar]
+2025-08-26T03:57:57.2211359Z Download https://libraries.minecraft.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5.pom
+2025-08-26T03:57:57.2837709Z Download https://libraries.minecraft.net/net/minecraft/launchwrapper/1.12/launchwrapper-1.12.jar
+2025-08-26T03:57:57.2842981Z Download https://maven.minecraftforge.net/com/google/code/findbugs/jsr305/1.3.9/jsr305-1.3.9.jar
+2025-08-26T03:57:57.3317332Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.jar, /home/runner/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-debug-all/5.0.3/f9e364ae2a66ce2a543012a4668856e84e5dab74/asm-debug-all-5.0.3.jar]
+2025-08-26T03:57:57.4178054Z Download https://maven.minecraftforge.net/com/typesafe/akka/akka-actor_2.11/2.3.3/akka-actor_2.11-2.3.3.jar
+2025-08-26T03:57:57.4190970Z Download https://maven.minecraftforge.net/com/typesafe/config/1.2.1/config-1.2.1.jar
+2025-08-26T03:57:57.4243859Z Download https://maven.minecraftforge.net/org/scala-lang/scala-actors-migration_2.11/1.1.0/scala-actors-migration_2.11-1.1.0.jar
+2025-08-26T03:57:57.6543269Z Download https://maven.minecraftforge.net/org/scala-lang/scala-compiler/2.11.1/scala-compiler-2.11.1.jar
+2025-08-26T03:57:57.7590408Z Download https://maven.minecraftforge.net/org/scala-lang/plugins/scala-continuations-library_2.11/1.0.2/scala-continuations-library_2.11-1.0.2.jar
+2025-08-26T03:57:57.7603285Z Download https://maven.minecraftforge.net/org/scala-lang/plugins/scala-continuations-plugin_2.11.1/1.0.2/scala-continuations-plugin_2.11.1-1.0.2.jar
+2025-08-26T03:57:57.8738933Z Download https://maven.minecraftforge.net/org/scala-lang/scala-library/2.11.1/scala-library-2.11.1.jar
+2025-08-26T03:57:57.8762663Z Download https://maven.minecraftforge.net/org/scala-lang/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar
+2025-08-26T03:57:57.9471034Z Download https://maven.minecraftforge.net/org/scala-lang/scala-reflect/2.11.1/scala-reflect-2.11.1.jar
+2025-08-26T03:57:57.9860208Z Download https://maven.minecraftforge.net/org/scala-lang/scala-swing_2.11/1.0.1/scala-swing_2.11-1.0.1.jar
+2025-08-26T03:57:58.0074751Z Download https://maven.minecraftforge.net/org/scala-lang/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar
+2025-08-26T03:57:58.0619917Z Download https://maven.minecraftforge.net/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.jar
+2025-08-26T03:57:58.0621663Z Download https://libraries.minecraft.net/lzma/lzma/0.0.1/lzma-0.0.1.jar
+2025-08-26T03:57:58.1046621Z Download https://libraries.minecraft.net/com/mojang/realms/1.3.5/realms-1.3.5.jar
+2025-08-26T03:57:58.3071602Z Download https://maven.minecraftforge.net/org/apache/commons/commons-compress/1.8.1/commons-compress-1.8.1.jar
+2025-08-26T03:57:58.4348082Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.3.3/18f4247ff4572a074444572cee34647c43e7c9c7/httpclient-4.3.3.jar]
+2025-08-26T03:57:58.5101550Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar, /home/runner/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.3/f6f66e966c70a83ffbdb6f17a0919eaf7c8aca7f/commons-logging-1.1.3.jar]
+2025-08-26T03:57:58.6573325Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar, /home/runner/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.3.2/31fbbff1ddbf98f3aa7377c94d33b0447c646b6e/httpcore-4.3.2.jar]
+2025-08-26T03:57:58.7135039Z Download https://maven.minecraftforge.net/java3d/vecmath/1.3.1/vecmath-1.3.1.jar
+2025-08-26T03:57:58.9479677Z Download https://maven.minecraftforge.net/net/sf/trove4j/trove4j/3.0.3/trove4j-3.0.3.jar
+2025-08-26T03:57:58.9807754Z Download https://libraries.minecraft.net/com/ibm/icu/icu4j-core-mojang/51.2/icu4j-core-mojang-51.2.jar
+2025-08-26T03:57:58.9811793Z Download https://libraries.minecraft.net/com/paulscode/codecjorbis/20101023/codecjorbis-20101023.jar
+2025-08-26T03:57:58.9857800Z Download https://libraries.minecraft.net/com/paulscode/codecwav/20101023/codecwav-20101023.jar
+2025-08-26T03:57:58.9910921Z Download https://libraries.minecraft.net/com/paulscode/libraryjavasound/20101123/libraryjavasound-20101123.jar
+2025-08-26T03:57:59.0390344Z Download https://libraries.minecraft.net/com/paulscode/librarylwjglopenal/20100824/librarylwjglopenal-20100824.jar
+2025-08-26T03:57:59.0393797Z Download https://libraries.minecraft.net/com/paulscode/soundsystem/20120107/soundsystem-20120107.jar
+2025-08-26T03:57:59.0874883Z Download https://maven.minecraftforge.net/io/netty/netty-all/4.0.10.Final/netty-all-4.0.10.Final.jar
+2025-08-26T03:57:59.2138087Z Download https://maven.minecraftforge.net/com/google/guava/guava/17.0/guava-17.0.jar
+2025-08-26T03:57:59.4472065Z Download https://maven.minecraftforge.net/org/apache/commons/commons-lang3/3.3.2/commons-lang3-3.3.2.jar
+2025-08-26T03:57:59.5839771Z Download https://maven.minecraftforge.net/commons-io/commons-io/2.4/commons-io-2.4.jar
+2025-08-26T03:57:59.8118121Z Download https://maven.minecraftforge.net/commons-codec/commons-codec/1.9/commons-codec-1.9.jar
+2025-08-26T03:57:59.9480619Z Download https://maven.minecraftforge.net/net/java/jinput/jinput/2.0.5/jinput-2.0.5.jar
+2025-08-26T03:58:00.0996886Z Download https://maven.minecraftforge.net/net/java/jutils/jutils/1.0.0/jutils-1.0.0.jar
+2025-08-26T03:58:00.2051908Z Found locally available resource with matching checksum: [https://maven.minecraftforge.net/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar, /home/runner/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.2.4/a60a5e993c98c864010053cb901b7eab25306568/gson-2.2.4.jar]
+2025-08-26T03:58:00.3597935Z Download https://libraries.minecraft.net/com/mojang/authlib/1.5.16/authlib-1.5.16.jar
+2025-08-26T03:58:00.4919395Z Download https://maven.minecraftforge.net/org/apache/logging/log4j/log4j-api/2.0-beta9/log4j-api-2.0-beta9.jar
+2025-08-26T03:58:00.6360045Z Download https://maven.minecraftforge.net/org/apache/logging/log4j/log4j-core/2.0-beta9/log4j-core-2.0-beta9.jar
+2025-08-26T03:58:00.6827074Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl/2.9.1/lwjgl-2.9.1.jar
+2025-08-26T03:58:00.6833915Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl_util/2.9.1/lwjgl_util-2.9.1.jar
+2025-08-26T03:58:00.6836663Z Download https://libraries.minecraft.net/tv/twitch/twitch/5.16/twitch-5.16.jar
+2025-08-26T03:58:00.8833932Z Download https://maven.minecraftforge.net/org/scala-lang/scala-actors/2.11.0/scala-actors-2.11.0.jar
+2025-08-26T03:58:00.9251703Z Download https://maven.minecraftforge.net/org/scala-lang/modules/scala-xml_2.11/1.0.2/scala-xml_2.11-1.0.2.jar
+2025-08-26T03:58:01.0953827Z Download https://maven.minecraftforge.net/org/scala-lang/modules/scala-parser-combinators_2.11/1.0.1/scala-parser-combinators_2.11-1.0.1.jar
+2025-08-26T03:58:01.0958643Z Download https://maven.minecraftforge.net/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-windows.jar
+2025-08-26T03:58:01.2437159Z Download https://maven.minecraftforge.net/net/java/jinput/jinput-platform/2.0.5/jinput-platform-2.0.5-natives-osx.jar
+2025-08-26T03:58:01.2931003Z Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-32.jar
+2025-08-26T03:58:01.3387965Z Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-windows-64.jar
+2025-08-26T03:58:01.3815037Z Download https://libraries.minecraft.net/tv/twitch/twitch-platform/5.16/twitch-platform-5.16-natives-osx.jar
+2025-08-26T03:58:01.9410497Z Download https://libraries.minecraft.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-natives-windows-32.jar
+2025-08-26T03:58:02.1579338Z Download https://libraries.minecraft.net/tv/twitch/twitch-external-platform/4.5/twitch-external-platform-4.5-natives-windows-64.jar
+2025-08-26T03:58:02.1682419Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1-natives-windows.jar
+2025-08-26T03:58:02.1922769Z Download https://maven.minecraftforge.net/org/lwjgl/lwjgl/lwjgl-platform/2.9.1/lwjgl-platform-2.9.1-natives-osx.jar
+2025-08-26T03:58:02.3089136Z [ant:javac] Compiling 6 source files to /home/runner/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/start
+2025-08-26T03:58:03.1112877Z [ant:javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+2025-08-26T03:58:03.8590823Z [ant:javac] 1 warning
+2025-08-26T03:58:03.8610445Z :makeStart (Thread[Daemon,5,main]) completed. Took 18.647 secs.
+2025-08-26T03:58:03.8612705Z :downloadMcpTools (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:03.8621749Z :downloadMcpTools
+2025-08-26T03:58:03.8622820Z Executing task ':downloadMcpTools' (up-to-date check took 0.0 secs) due to:
+2025-08-26T03:58:03.8624025Z   No history is available.
+2025-08-26T03:58:03.9550894Z Download and Extraction complete
+2025-08-26T03:58:03.9642899Z :downloadMcpTools (Thread[Daemon,5,main]) completed. Took 0.103 secs.
+2025-08-26T03:58:03.9644044Z :downloadClient (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:03.9684128Z :downloadClient
+2025-08-26T03:58:03.9685035Z Executing task ':downloadClient' (up-to-date check took 0.001 secs) due to:
+2025-08-26T03:58:03.9685610Z   No history is available.
+2025-08-26T03:58:03.9736112Z :downloadClient FAILED
+2025-08-26T03:58:03.9739382Z :downloadClient (Thread[Daemon,5,main]) completed. Took 0.009 secs.
+2025-08-26T03:58:03.9740081Z :downloadServer (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:03.9745567Z :downloadServer
+2025-08-26T03:58:03.9746879Z Executing task ':downloadServer' (up-to-date check took 0.001 secs) due to:
+2025-08-26T03:58:03.9747830Z   No history is available.
+2025-08-26T03:58:03.9755333Z :downloadServer FAILED
+2025-08-26T03:58:03.9762279Z :downloadServer (Thread[Daemon,5,main]) completed. Took 0.002 secs.
+2025-08-26T03:58:03.9840052Z 
+2025-08-26T03:58:03.9850109Z FAILURE: Build completed with 2 failures.
+2025-08-26T03:58:03.9850468Z 
+2025-08-26T03:58:03.9850629Z 1: Task failed with an exception.
+2025-08-26T03:58:03.9860459Z -----------
+2025-08-26T03:58:03.9872538Z * Where:
+2025-08-26T03:58:03.9873072Z Build file '/home/runner/work/Botania/Botania/build.gradle' line: 173
+2025-08-26T03:58:03.9873761Z 
+2025-08-26T03:58:03.9873899Z * What went wrong:
+2025-08-26T03:58:03.9874285Z Execution failed for task ':downloadClient'.
+2025-08-26T03:58:03.9896269Z > Client JAR not found after download attempt
+2025-08-26T03:58:03.9898060Z 
+2025-08-26T03:58:03.9899377Z * Try:
+2025-08-26T03:58:03.9901535Z Run with --stacktrace option to get the stack trace. Run with --debug option to get more log output.
+2025-08-26T03:58:03.9905106Z ==============================================================================
+2025-08-26T03:58:03.9907243Z 
+2025-08-26T03:58:03.9909240Z 2: Task failed with an exception.
+2025-08-26T03:58:03.9911429Z -----------
+2025-08-26T03:58:03.9914556Z * Where:
+2025-08-26T03:58:03.9916965Z Build file '/home/runner/work/Botania/Botania/build.gradle' line: 188
+2025-08-26T03:58:03.9923758Z 
+2025-08-26T03:58:03.9924987Z * What went wrong:
+2025-08-26T03:58:03.9926410Z Execution failed for task ':downloadServer'.
+2025-08-26T03:58:03.9928031Z > Server JAR not found after download attempt
+2025-08-26T03:58:03.9929455Z 
+2025-08-26T03:58:03.9929597Z * Try:
+2025-08-26T03:58:03.9930255Z Run with --stacktrace option to get the stack trace. Run with --debug option to get more log output.
+2025-08-26T03:58:03.9931030Z ==============================================================================
+2025-08-26T03:58:03.9944369Z 
+2025-08-26T03:58:03.9944649Z BUILD FAILED
+2025-08-26T03:58:03.9944859Z 
+2025-08-26T03:58:03.9944981Z Total time: 26.029 secs
+2025-08-26T03:58:03.9967602Z Stopped 0 compiler daemon(s).
+2025-08-26T03:58:04.4235601Z ##[error]Process completed with exit code 1.
+2025-08-26T03:58:04.4278451Z ##[group]Run ./gradlew build --info --continue
+2025-08-26T03:58:04.4278800Z [36;1m./gradlew build --info --continue[0m
+2025-08-26T03:58:04.4318677Z shell: /usr/bin/bash -e {0}
+2025-08-26T03:58:04.4318900Z env:
+2025-08-26T03:58:04.4319179Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:58:04.4319648Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:58:04.4319989Z ##[endgroup]
+2025-08-26T03:58:04.7776714Z To honour the JVM settings for this build a new JVM will be forked. Please consider using the daemon: http://gradle.org/docs/2.1/userguide/gradle_daemon.html.
+2025-08-26T03:58:04.7782170Z Starting Gradle daemon
+2025-08-26T03:58:04.7910277Z Starting daemon process: workingDir = /home/runner/.gradle/daemon/2.1, daemonArgs: [/usr/lib/jvm/temurin-8-jdk-amd64/bin/java, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant, -cp, /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar, org.gradle.launcher.daemon.bootstrap.GradleDaemon, 2.1, /home/runner/.gradle/daemon, 120000, 134ea4ad-0d53-49f9-b59f-267de8753ea4, -XX:MaxPermSize=512m, -XX:+HeapDumpOnOutOfMemoryError, -Xmx2048m, -Dfile.encoding=UTF-8, -Duser.country, -Duser.language=en, -Duser.variant]
+2025-08-26T03:58:04.8023536Z Starting process 'Gradle build daemon'. Working directory: /home/runner/.gradle/daemon/2.1 Command: /usr/lib/jvm/temurin-8-jdk-amd64/bin/java -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/lib/gradle-launcher-2.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 2.1 /home/runner/.gradle/daemon 120000 134ea4ad-0d53-49f9-b59f-267de8753ea4 -XX:MaxPermSize=512m -XX:+HeapDumpOnOutOfMemoryError -Xmx2048m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant
+2025-08-26T03:58:04.8446276Z Successfully started process 'Gradle build daemon'
+2025-08-26T03:58:05.2948651Z An attempt to start the daemon took 0.504 secs.
+2025-08-26T03:58:05.3234679Z Connected to the daemon. Dispatching BuildAndStop{id=48ca021c-1af1-4bd4-86b5-7e52a21707ee.1, currentDir=/home/runner/work/Botania/Botania} request.
+2025-08-26T03:58:05.3911404Z The client will now receive all logging from the daemon (pid: 2313). The daemon log file: /home/runner/.gradle/daemon/2.1/daemon-2313.out.log
+2025-08-26T03:58:05.4283295Z Closing daemon's stdin at end of input.
+2025-08-26T03:58:05.4289413Z The daemon will no longer process any standard input.
+2025-08-26T03:58:05.4298042Z Executing build with daemon context: DefaultDaemonContext[uid=134ea4ad-0d53-49f9-b59f-267de8753ea4,javaHome=/usr/lib/jvm/temurin-8-jdk-amd64,daemonRegistryDir=/home/runner/.gradle/daemon,pid=2313,idleTimeout=120000,daemonOpts=-XX:MaxPermSize=512m,-XX:+HeapDumpOnOutOfMemoryError,-Xmx2048m,-Dfile.encoding=UTF-8,-Duser.country,-Duser.language=en,-Duser.variant]
+2025-08-26T03:58:05.7110770Z Starting Build
+2025-08-26T03:58:05.9537904Z Settings evaluated using empty settings script.
+2025-08-26T03:58:06.0297843Z Projects loaded. Root project using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:58:06.0315911Z Included projects: [root project 'Botania']
+2025-08-26T03:58:06.1812108Z Evaluating root project 'Botania' using build file '/home/runner/work/Botania/Botania/build.gradle'.
+2025-08-26T03:58:07.5989630Z WARNING: You are using an unsupported version of ForgeGradle.
+2025-08-26T03:58:07.5991412Z Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+2025-08-26T03:58:07.5993137Z See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+2025-08-26T03:58:07.5994566Z #################################################
+2025-08-26T03:58:07.5995740Z          ForgeGradle 1.2.2-g2ea0336        
+2025-08-26T03:58:07.6010173Z   https://github.com/MinecraftForge/ForgeGradle  
+2025-08-26T03:58:07.6024643Z #################################################
+2025-08-26T03:58:07.6066345Z                Powered by MCP unknown               
+2025-08-26T03:58:07.6067194Z              http://modcoderpack.com             
+2025-08-26T03:58:07.6067911Z          by: Searge, ProfMobius, Fesh0r,         
+2025-08-26T03:58:07.6068563Z          R4wk, ZeuX, IngisKahn, bspkrs           
+2025-08-26T03:58:07.6069154Z #################################################
+2025-08-26T03:58:07.6763751Z All projects evaluated.
+2025-08-26T03:58:07.7305203Z Selected primary task 'build' from project :
+2025-08-26T03:58:07.7519601Z Tasks to be executed: [task ':downloadClient', task ':downloadServer', task ':getVersionJson', task ':extractUserDev', task ':mergeJars', task ':applyBinPatches', task ':downloadMcpTools', task ':extractMcpData', task ':genSrgs', task ':deobfBinJar', task ':compileApiJava', task ':processApiResources', task ':apiClasses', task ':sourceMainJava', task ':compileJava', task ':processResources', task ':classes', task ':jar', task ':compileTestJava', task ':processTestResources', task ':testClasses', task ':test', task ':reobf', task ':assemble', task ':check', task ':build']
+2025-08-26T03:58:07.7628177Z :downloadClient (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:07.7787702Z :downloadClient
+2025-08-26T03:58:07.7790277Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/fileHashes.bin
+2025-08-26T03:58:07.7796907Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/fileSnapshots.bin
+2025-08-26T03:58:07.7798132Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/taskArtifacts.bin
+2025-08-26T03:58:07.7799399Z Invalidating in-memory cache of /home/runner/work/Botania/Botania/.gradle/2.1/taskArtifacts/outputFileStates.bin
+2025-08-26T03:58:07.7900283Z Executing task ':downloadClient' (up-to-date check took 0.011 secs) due to:
+2025-08-26T03:58:07.7902846Z   No history is available.
+2025-08-26T03:58:07.8019495Z :downloadClient FAILED
+2025-08-26T03:58:07.8032472Z :downloadClient (Thread[Daemon,5,main]) completed. Took 0.041 secs.
+2025-08-26T03:58:07.8034971Z :downloadServer (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:07.8073160Z :downloadServer
+2025-08-26T03:58:07.8075167Z Executing task ':downloadServer' (up-to-date check took 0.001 secs) due to:
+2025-08-26T03:58:07.8075770Z   No history is available.
+2025-08-26T03:58:07.8092075Z :downloadServer FAILED
+2025-08-26T03:58:07.8093120Z :downloadServer (Thread[Daemon,5,main]) completed. Took 0.004 secs.
+2025-08-26T03:58:07.8094068Z :getVersionJson (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:07.8096214Z :getVersionJson
+2025-08-26T03:58:07.8121561Z Executing task ':getVersionJson' (up-to-date check took 0.001 secs) due to:
+2025-08-26T03:58:07.8122607Z   Task has not declared any outputs.
+2025-08-26T03:58:07.8701135Z http://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/1.7.10.json  404'ed!
+2025-08-26T03:58:07.8745194Z :getVersionJson (Thread[Daemon,5,main]) completed. Took 0.066 secs.
+2025-08-26T03:58:07.8746126Z :extractUserDev (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:07.9627997Z :extractUserDev
+2025-08-26T03:58:07.9633212Z Skipping task ':extractUserDev' as it is up-to-date (took 0.089 secs).
+2025-08-26T03:58:07.9635592Z :extractUserDev UP-TO-DATE
+2025-08-26T03:58:07.9704148Z :extractUserDev (Thread[Daemon,5,main]) completed. Took 0.093 secs.
+2025-08-26T03:58:07.9705148Z :downloadMcpTools (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:07.9788079Z :downloadMcpTools
+2025-08-26T03:58:07.9788910Z Skipping task ':downloadMcpTools' as task onlyIf is false.
+2025-08-26T03:58:07.9793816Z :downloadMcpTools SKIPPED
+2025-08-26T03:58:07.9838301Z :downloadMcpTools (Thread[Daemon,5,main]) completed. Took 0.015 secs.
+2025-08-26T03:58:07.9840006Z :extractMcpData (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:07.9846494Z :extractMcpData
+2025-08-26T03:58:07.9847152Z Skipping task ':extractMcpData' as it is up-to-date (took 0.002 secs).
+2025-08-26T03:58:07.9853980Z :extractMcpData UP-TO-DATE
+2025-08-26T03:58:07.9854529Z :extractMcpData (Thread[Daemon,5,main]) completed. Took 0.003 secs.
+2025-08-26T03:58:07.9855147Z :genSrgs (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:08.2034763Z :genSrgs
+2025-08-26T03:58:08.2035223Z Skipping task ':genSrgs' as task onlyIf is false.
+2025-08-26T03:58:08.2035730Z :genSrgs SKIPPED
+2025-08-26T03:58:08.2037286Z :genSrgs (Thread[Daemon,5,main]) completed. Took 0.219 secs.
+2025-08-26T03:58:08.2039926Z :processApiResources (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:08.2071431Z :processApiResources
+2025-08-26T03:58:08.2071962Z Skipping task ':processApiResources' as it has no source files.
+2025-08-26T03:58:08.2094808Z :processApiResources UP-TO-DATE
+2025-08-26T03:58:08.2095434Z :processApiResources (Thread[Daemon,5,main]) completed. Took 0.001 secs.
+2025-08-26T03:58:08.2096158Z :sourceMainJava (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:08.2155239Z :sourceMainJava
+2025-08-26T03:58:08.2155811Z Executing task ':sourceMainJava' (up-to-date check took 0.007 secs) due to:
+2025-08-26T03:58:08.2156436Z   No history is available.
+2025-08-26T03:58:08.2280816Z :sourceMainJava (Thread[Daemon,5,main]) completed. Took 0.02 secs.
+2025-08-26T03:58:08.2282157Z :processResources (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:08.2396641Z :processResources
+2025-08-26T03:58:08.2405227Z Executing task ':processResources' (up-to-date check took 0.008 secs) due to:
+2025-08-26T03:58:08.2407911Z   No history is available.
+2025-08-26T03:58:08.4886800Z :processResources (Thread[Daemon,5,main]) completed. Took 0.261 secs.
+2025-08-26T03:58:08.4890953Z :processTestResources (Thread[Daemon,5,main]) started.
+2025-08-26T03:58:08.4899507Z :processTestResources
+2025-08-26T03:58:08.4903945Z Skipping task ':processTestResources' as it has no source files.
+2025-08-26T03:58:08.4906166Z :processTestResources UP-TO-DATE
+2025-08-26T03:58:08.4908252Z :processTestResources (Thread[Daemon,5,main]) completed. Took 0.001 secs.
+2025-08-26T03:58:08.4969497Z 
+2025-08-26T03:58:08.4978353Z FAILURE: Build completed with 2 failures.
+2025-08-26T03:58:08.4987345Z 
+2025-08-26T03:58:08.5011032Z 1: Task failed with an exception.
+2025-08-26T03:58:08.5034070Z -----------
+2025-08-26T03:58:08.5034404Z * Where:
+2025-08-26T03:58:08.5035921Z Build file '/home/runner/work/Botania/Botania/build.gradle' line: 173
+2025-08-26T03:58:08.5036428Z 
+2025-08-26T03:58:08.5036567Z * What went wrong:
+2025-08-26T03:58:08.5036960Z Execution failed for task ':downloadClient'.
+2025-08-26T03:58:08.5037483Z > Client JAR not found after download attempt
+2025-08-26T03:58:08.5037900Z 
+2025-08-26T03:58:08.5038008Z * Try:
+2025-08-26T03:58:08.5038591Z Run with --stacktrace option to get the stack trace. Run with --debug option to get more log output.
+2025-08-26T03:58:08.5066342Z ==============================================================================
+2025-08-26T03:58:08.5113314Z 
+2025-08-26T03:58:08.5114322Z 2: Task failed with an exception.
+2025-08-26T03:58:08.5114617Z 
+2025-08-26T03:58:08.5114854Z -----------
+2025-08-26T03:58:08.5115257Z * Where:
+2025-08-26T03:58:08.5115801Z Build file '/home/runner/work/Botania/Botania/build.gradle' line: 188
+2025-08-26T03:58:08.5116335Z 
+2025-08-26T03:58:08.5116708Z * What went wrong:
+2025-08-26T03:58:08.5117171Z Execution failed for task ':downloadServer'.
+2025-08-26T03:58:08.5117633Z > Server JAR not found after download attempt
+2025-08-26T03:58:08.5118028Z 
+2025-08-26T03:58:08.5118376Z * Try:
+2025-08-26T03:58:08.5119321Z Run with --stacktrace option to get the stack trace. Run with --debug option to get more log output.
+2025-08-26T03:58:08.5120047Z ==============================================================================
+2025-08-26T03:58:08.5185570Z BUILD FAILED
+2025-08-26T03:58:08.5186830Z 
+2025-08-26T03:58:08.5187957Z Total time: 4.036 secs
+2025-08-26T03:58:08.5189799Z Stopped 0 compiler daemon(s).
+2025-08-26T03:58:08.9343989Z ##[error]Process completed with exit code 1.
+2025-08-26T03:58:08.9398843Z ##[group]Run actions/upload-artifact@v4
+2025-08-26T03:58:08.9399112Z with:
+2025-08-26T03:58:08.9399278Z   name: gogskybox-mod
+2025-08-26T03:58:08.9399569Z   path: build/libs/*.jar
+!build/libs/*-sources.jar
+!build/libs/*-dev.jar
+
+2025-08-26T03:58:08.9399915Z   retention-days: 30
+2025-08-26T03:58:08.9400102Z   if-no-files-found: warn
+2025-08-26T03:58:08.9400309Z   compression-level: 6
+2025-08-26T03:58:08.9400491Z   overwrite: false
+2025-08-26T03:58:08.9400678Z   include-hidden-files: false
+2025-08-26T03:58:08.9400877Z env:
+2025-08-26T03:58:08.9401140Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:58:08.9401565Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T03:58:08.9401890Z ##[endgroup]
+2025-08-26T03:58:09.1581796Z ##[warning]No files were found with the provided path: build/libs/*.jar
+!build/libs/*-sources.jar
+!build/libs/*-dev.jar. No artifacts will be uploaded.
+2025-08-26T03:58:09.1744340Z Post job cleanup.
+2025-08-26T03:58:09.3434013Z Post job cleanup.
+2025-08-26T03:58:09.4367767Z [command]/usr/bin/git version
+2025-08-26T03:58:09.4403608Z git version 2.51.0
+2025-08-26T03:58:09.4447115Z Temporarily overriding HOME='/home/runner/work/_temp/f34d74c5-1cad-4ecc-8c7d-4a848a6212f5' before making global git config changes
+2025-08-26T03:58:09.4448256Z Adding repository directory to the temporary git global config as a safe directory
+2025-08-26T03:58:09.4452473Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Botania/Botania
+2025-08-26T03:58:09.4487669Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-08-26T03:58:09.4519493Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-08-26T03:58:09.4747670Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-08-26T03:58:09.4769240Z http.https://github.com/.extraheader
+2025-08-26T03:58:09.4781213Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-08-26T03:58:09.4811162Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-08-26T03:58:09.5178838Z Cleaning up orphan processes
