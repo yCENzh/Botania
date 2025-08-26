@@ -2,9 +2,7 @@ name: Build Botania (Java 8)
 
 on:
   push:
-    branches: [ main, master, dev ]   # 需要触发构建的分支
-  pull_request:
-    branches: [ main, master ]
+    workflow_dispatch:
 
 jobs:
   build:
