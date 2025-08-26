@@ -1,5 +1,7 @@
 # GogSkybox - Garden of Glass Skybox Mod
 
+> 🔄 **构建状态**: 已修复校验和不匹配问题，正在等待GitHub Actions构建完成...
+
 一个为Minecraft 1.7.10版本制作的轻量级天空盒模组，从Botania模组中提取了水晶花园(Garden of Glass)的美丽天空效果。
 
 ## ✨ 功能特色
