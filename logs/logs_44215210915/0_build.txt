@@ -1,0 +1,263 @@
+﻿2025-08-26T12:39:14.0788475Z Current runner version: '2.328.0'
+2025-08-26T12:39:14.0813065Z ##[group]Runner Image Provisioner
+2025-08-26T12:39:14.0814018Z Hosted Compute Agent
+2025-08-26T12:39:14.0814547Z Version: 20250818.377
+2025-08-26T12:39:14.0815133Z Commit: 3c593e9f75fe0b87e893bca80d6e12ba089c61fc
+2025-08-26T12:39:14.0815873Z Build Date: 2025-08-18T14:52:18Z
+2025-08-26T12:39:14.0816472Z ##[endgroup]
+2025-08-26T12:39:14.0816991Z ##[group]Operating System
+2025-08-26T12:39:14.0817613Z Ubuntu
+2025-08-26T12:39:14.0818343Z 24.04.2
+2025-08-26T12:39:14.0818818Z LTS
+2025-08-26T12:39:14.0819353Z ##[endgroup]
+2025-08-26T12:39:14.0819820Z ##[group]Runner Image
+2025-08-26T12:39:14.0820403Z Image: ubuntu-24.04
+2025-08-26T12:39:14.0820917Z Version: 20250818.1.0
+2025-08-26T12:39:14.0821924Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250818.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-08-26T12:39:14.0823405Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250818.1
+2025-08-26T12:39:14.0824448Z ##[endgroup]
+2025-08-26T12:39:14.0826832Z ##[group]GITHUB_TOKEN Permissions
+2025-08-26T12:39:14.0829152Z Actions: write
+2025-08-26T12:39:14.0829683Z Attestations: write
+2025-08-26T12:39:14.0830296Z Checks: write
+2025-08-26T12:39:14.0830785Z Contents: write
+2025-08-26T12:39:14.0831318Z Deployments: write
+2025-08-26T12:39:14.0831767Z Discussions: write
+2025-08-26T12:39:14.0832353Z Issues: write
+2025-08-26T12:39:14.0832803Z Metadata: read
+2025-08-26T12:39:14.0833280Z Models: read
+2025-08-26T12:39:14.0833853Z Packages: write
+2025-08-26T12:39:14.0834386Z Pages: write
+2025-08-26T12:39:14.0834861Z PullRequests: write
+2025-08-26T12:39:14.0835442Z RepositoryProjects: write
+2025-08-26T12:39:14.0836006Z SecurityEvents: write
+2025-08-26T12:39:14.0836627Z Statuses: write
+2025-08-26T12:39:14.0837210Z ##[endgroup]
+2025-08-26T12:39:14.0839713Z Secret source: Actions
+2025-08-26T12:39:14.0840413Z Prepare workflow directory
+2025-08-26T12:39:14.1180042Z Prepare all required actions
+2025-08-26T12:39:14.1219224Z Getting action download info
+2025-08-26T12:39:14.4712933Z Download action repository 'actions/checkout@v4' (SHA:08eba0b27e820071cde6df949e0beb9ba4906955)
+2025-08-26T12:39:14.6698779Z Download action repository 'actions/setup-java@v4' (SHA:c5195efecf7bdfc987ee8bae7a71cb8b11521c00)
+2025-08-26T12:39:15.2808815Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2025-08-26T12:39:15.4822492Z Complete job name: build
+2025-08-26T12:39:15.5568584Z ##[group]Run actions/checkout@v4
+2025-08-26T12:39:15.5569583Z with:
+2025-08-26T12:39:15.5570023Z   repository: yCENzh/Botania
+2025-08-26T12:39:15.5570787Z   token: ***
+2025-08-26T12:39:15.5571203Z   ssh-strict: true
+2025-08-26T12:39:15.5571632Z   ssh-user: git
+2025-08-26T12:39:15.5572063Z   persist-credentials: true
+2025-08-26T12:39:15.5572545Z   clean: true
+2025-08-26T12:39:15.5572976Z   sparse-checkout-cone-mode: true
+2025-08-26T12:39:15.5573495Z   fetch-depth: 1
+2025-08-26T12:39:15.5573914Z   fetch-tags: false
+2025-08-26T12:39:15.5574379Z   show-progress: true
+2025-08-26T12:39:15.5574814Z   lfs: false
+2025-08-26T12:39:15.5575218Z   submodules: false
+2025-08-26T12:39:15.5575635Z   set-safe-directory: true
+2025-08-26T12:39:15.5576317Z ##[endgroup]
+2025-08-26T12:39:15.6732892Z Syncing repository: yCENzh/Botania
+2025-08-26T12:39:15.6734910Z ##[group]Getting Git version info
+2025-08-26T12:39:15.6735620Z Working directory is '/home/runner/work/Botania/Botania'
+2025-08-26T12:39:15.6736659Z [command]/usr/bin/git version
+2025-08-26T12:39:15.6799743Z git version 2.51.0
+2025-08-26T12:39:15.6828686Z ##[endgroup]
+2025-08-26T12:39:15.6844511Z Temporarily overriding HOME='/home/runner/work/_temp/78cd8be9-ee5e-4034-81b2-0c2b30e9385d' before making global git config changes
+2025-08-26T12:39:15.6845921Z Adding repository directory to the temporary git global config as a safe directory
+2025-08-26T12:39:15.6859202Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Botania/Botania
+2025-08-26T12:39:15.6898966Z Deleting the contents of '/home/runner/work/Botania/Botania'
+2025-08-26T12:39:15.6902992Z ##[group]Initializing the repository
+2025-08-26T12:39:15.6907092Z [command]/usr/bin/git init /home/runner/work/Botania/Botania
+2025-08-26T12:39:15.7009809Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-26T12:39:15.7011631Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-26T12:39:15.7013381Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-26T12:39:15.7014852Z hint:
+2025-08-26T12:39:15.7015782Z hint: 	git config --global init.defaultBranch <name>
+2025-08-26T12:39:15.7016520Z hint:
+2025-08-26T12:39:15.7017181Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-26T12:39:15.7018502Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-26T12:39:15.7019356Z hint:
+2025-08-26T12:39:15.7019827Z hint: 	git branch -m <name>
+2025-08-26T12:39:15.7020361Z hint:
+2025-08-26T12:39:15.7021455Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-08-26T12:39:15.7022809Z Initialized empty Git repository in /home/runner/work/Botania/Botania/.git/
+2025-08-26T12:39:15.7027523Z [command]/usr/bin/git remote add origin https://github.com/yCENzh/Botania
+2025-08-26T12:39:15.7067315Z ##[endgroup]
+2025-08-26T12:39:15.7068344Z ##[group]Disabling automatic garbage collection
+2025-08-26T12:39:15.7071820Z [command]/usr/bin/git config --local gc.auto 0
+2025-08-26T12:39:15.7101983Z ##[endgroup]
+2025-08-26T12:39:15.7102721Z ##[group]Setting up auth
+2025-08-26T12:39:15.7109197Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-08-26T12:39:15.7139785Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-08-26T12:39:15.7471911Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-08-26T12:39:15.7503705Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-08-26T12:39:15.7732871Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-08-26T12:39:15.7770809Z ##[endgroup]
+2025-08-26T12:39:15.7789575Z ##[group]Fetching the repository
+2025-08-26T12:39:15.7792115Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +f5904aeaeebf3187d2e4b6681a9a5fc671bde175:refs/remotes/origin/1.7.10-final
+2025-08-26T12:39:17.2252321Z From https://github.com/yCENzh/Botania
+2025-08-26T12:39:17.2256129Z  * [new ref]         f5904aeaeebf3187d2e4b6681a9a5fc671bde175 -> origin/1.7.10-final
+2025-08-26T12:39:17.2287409Z ##[endgroup]
+2025-08-26T12:39:17.2289430Z ##[group]Determining the checkout info
+2025-08-26T12:39:17.2291036Z ##[endgroup]
+2025-08-26T12:39:17.2294120Z [command]/usr/bin/git sparse-checkout disable
+2025-08-26T12:39:17.2335974Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-08-26T12:39:17.2366143Z ##[group]Checking out the ref
+2025-08-26T12:39:17.2369800Z [command]/usr/bin/git checkout --progress --force -B 1.7.10-final refs/remotes/origin/1.7.10-final
+2025-08-26T12:39:17.4340064Z Switched to a new branch '1.7.10-final'
+2025-08-26T12:39:17.4342066Z branch '1.7.10-final' set up to track 'origin/1.7.10-final'.
+2025-08-26T12:39:17.4358869Z ##[endgroup]
+2025-08-26T12:39:17.4399068Z [command]/usr/bin/git log -1 --format=%H
+2025-08-26T12:39:17.4424285Z f5904aeaeebf3187d2e4b6681a9a5fc671bde175
+2025-08-26T12:39:17.4781137Z ##[group]Run actions/setup-java@v4
+2025-08-26T12:39:17.4782274Z with:
+2025-08-26T12:39:17.4782995Z   java-version: 8
+2025-08-26T12:39:17.4783822Z   distribution: temurin
+2025-08-26T12:39:17.4784705Z   java-package: jdk
+2025-08-26T12:39:17.4785559Z   check-latest: false
+2025-08-26T12:39:17.4786610Z   server-id: github
+2025-08-26T12:39:17.4787468Z   server-username: GITHUB_ACTOR
+2025-08-26T12:39:17.4788720Z   server-password: GITHUB_TOKEN
+2025-08-26T12:39:17.4789770Z   overwrite-settings: true
+2025-08-26T12:39:17.4790724Z   job-status: success
+2025-08-26T12:39:17.4791867Z   token: ***
+2025-08-26T12:39:17.4792631Z ##[endgroup]
+2025-08-26T12:39:17.6979936Z ##[group]Installed distributions
+2025-08-26T12:39:17.7035707Z Resolved Java 8.0.462+8 from tool-cache
+2025-08-26T12:39:17.7036246Z Setting Java 8.0.462+8 as the default
+2025-08-26T12:39:17.7050176Z Creating toolchains.xml for JDK version 8 from temurin
+2025-08-26T12:39:17.7128469Z Writing to /home/runner/.m2/toolchains.xml
+2025-08-26T12:39:17.7128966Z 
+2025-08-26T12:39:17.7132961Z Java configuration:
+2025-08-26T12:39:17.7133957Z   Distribution: temurin
+2025-08-26T12:39:17.7135062Z   Version: 8.0.462+8
+2025-08-26T12:39:17.7141017Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T12:39:17.7141555Z 
+2025-08-26T12:39:17.7142060Z ##[endgroup]
+2025-08-26T12:39:17.7157851Z Creating settings.xml with server-id: github
+2025-08-26T12:39:17.7158255Z Writing to /home/runner/.m2/settings.xml
+2025-08-26T12:39:17.7266180Z ##[group]Run chmod +x ./gradlew
+2025-08-26T12:39:17.7266488Z [36;1mchmod +x ./gradlew[0m
+2025-08-26T12:39:17.7347310Z shell: /usr/bin/bash -e {0}
+2025-08-26T12:39:17.7347618Z env:
+2025-08-26T12:39:17.7348244Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T12:39:17.7348820Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T12:39:17.7349250Z ##[endgroup]
+2025-08-26T12:39:17.7498834Z ##[group]Run ./gradlew build --no-daemon
+2025-08-26T12:39:17.7499229Z [36;1m./gradlew build --no-daemon[0m
+2025-08-26T12:39:17.7549821Z shell: /usr/bin/bash -e {0}
+2025-08-26T12:39:17.7550107Z env:
+2025-08-26T12:39:17.7550432Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T12:39:17.7550998Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T12:39:17.7551423Z ##[endgroup]
+2025-08-26T12:39:20.8003730Z Downloading https://services.gradle.org/distributions/gradle-2.1-bin.zip
+2025-08-26T12:39:23.7264334Z .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2025-08-26T12:39:23.7269136Z Unzipping /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1-bin.zip to /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a
+2025-08-26T12:39:24.0105612Z Set executable permissions for: /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/bin/gradle
+2025-08-26T12:39:29.2628624Z Download http://files.minecraftforge.net/maven/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-20211118.175523-305.pom
+2025-08-26T12:39:29.9781257Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.pom
+2025-08-26T12:39:30.0067114Z Download https://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.pom
+2025-08-26T12:39:30.0312930Z Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2025-08-26T12:39:30.0775270Z Download https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.7.3/SpecialSource-1.7.3.pom
+2025-08-26T12:39:30.1027869Z Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2025-08-26T12:39:30.1352508Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.pom
+2025-08-26T12:39:30.1605343Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3.3/httpcomponents-client-4.3.3.pom
+2025-08-26T12:39:30.1866221Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/project/7/project-7.pom
+2025-08-26T12:39:30.2121547Z Download https://repo1.maven.org/maven2/org/apache/apache/13/apache-13.pom
+2025-08-26T12:39:30.2830256Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.pom
+2025-08-26T12:39:30.3209896Z Download https://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.pom
+2025-08-26T12:39:30.3417004Z Download https://repo1.maven.org/maven2/net/sf/trove4j/trove4j/2.1.0/trove4j-2.1.0.pom
+2025-08-26T12:39:30.3646209Z Download https://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.pom
+2025-08-26T12:39:30.3872457Z Download https://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom
+2025-08-26T12:39:30.4142473Z Download https://repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.pom
+2025-08-26T12:39:30.4343814Z Download https://repo1.maven.org/maven2/com/google/guava/guava-parent/18.0/guava-parent-18.0.pom
+2025-08-26T12:39:30.4644576Z Download https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.pom
+2025-08-26T12:39:30.4897995Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.pom
+2025-08-26T12:39:30.5098539Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-parent/5.0.3/asm-parent-5.0.3.pom
+2025-08-26T12:39:30.5300520Z Download https://repo1.maven.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+2025-08-26T12:39:31.4931476Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-20150605.000822-18.pom
+2025-08-26T12:39:31.5154254Z Download https://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.pom
+2025-08-26T12:39:31.5398606Z Download https://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.pom
+2025-08-26T12:39:31.5604674Z Download https://repo1.maven.org/maven2/com/cloudbees/cloudbees-oss-parent/1/cloudbees-oss-parent-1.pom
+2025-08-26T12:39:31.5874925Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.pom
+2025-08-26T12:39:31.6125108Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.pom
+2025-08-26T12:39:31.6322006Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.3.2/httpcomponents-core-4.3.2.pom
+2025-08-26T12:39:31.6674584Z Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.pom
+2025-08-26T12:39:31.6923810Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/28/commons-parent-28.pom
+2025-08-26T12:39:31.7395352Z Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.pom
+2025-08-26T12:39:31.7611734Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/22/commons-parent-22.pom
+2025-08-26T12:39:31.7830606Z Download https://repo1.maven.org/maven2/org/apache/apache/9/apache-9.pom
+2025-08-26T12:39:31.8182824Z Download https://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.pom
+2025-08-26T12:39:31.8409019Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.pom
+2025-08-26T12:39:31.8615226Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer-parent/1.12/localizer-parent-1.12.pom
+2025-08-26T12:39:31.8860510Z Download https://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.pom
+2025-08-26T12:39:31.9056865Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/7/commons-parent-7.pom
+2025-08-26T12:39:31.9266198Z Download https://repo1.maven.org/maven2/org/apache/apache/4/apache-4.pom
+2025-08-26T12:39:32.0419189Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.7/jopt-simple-4.7.pom
+2025-08-26T12:39:33.3516196Z Download http://files.minecraftforge.net/maven/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-20211118.175523-305.jar
+2025-08-26T12:39:34.1239210Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.jar
+2025-08-26T12:39:34.1494413Z Download https://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.jar
+2025-08-26T12:39:34.2063546Z Download https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.7.3/SpecialSource-1.7.3.jar
+2025-08-26T12:39:34.2565862Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar
+2025-08-26T12:39:34.2798393Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.jar
+2025-08-26T12:39:34.3016039Z Download https://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.jar
+2025-08-26T12:39:34.3365290Z Download https://repo1.maven.org/maven2/net/sf/trove4j/trove4j/2.1.0/trove4j-2.1.0.jar
+2025-08-26T12:39:34.3598683Z Download https://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.jar
+2025-08-26T12:39:34.3807228Z Download https://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+2025-08-26T12:39:34.4273336Z Download https://repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar
+2025-08-26T12:39:34.4583138Z Download https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar
+2025-08-26T12:39:34.4817095Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.jar
+2025-08-26T12:39:35.1271751Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-20150605.000822-18.jar
+2025-08-26T12:39:35.1470254Z Download https://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.jar
+2025-08-26T12:39:35.1680697Z Download https://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.jar
+2025-08-26T12:39:35.1891157Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar
+2025-08-26T12:39:35.2086955Z Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar
+2025-08-26T12:39:35.2287980Z Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+2025-08-26T12:39:35.2509889Z Download https://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.jar
+2025-08-26T12:39:35.2713328Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.jar
+2025-08-26T12:39:35.2901953Z Download https://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.jar
+2025-08-26T12:39:35.3114022Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.7/jopt-simple-4.7.jar
+2025-08-26T12:39:37.6146952Z The assetDir is deprecated!  I actually just did all this generalizing stuff just now.. Use runDir instead! runDir set to eclipse/assets/..
+2025-08-26T12:39:37.6148913Z The runDir should be the location where you want MC to be run, usually he parent of the asset dir
+2025-08-26T12:39:37.7247377Z WARNING: You are using an unsupported version of ForgeGradle.
+2025-08-26T12:39:37.7262352Z Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+2025-08-26T12:39:37.7263671Z See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+2025-08-26T12:39:37.7264523Z #################################################
+2025-08-26T12:39:37.7264989Z          ForgeGradle 1.2.2-g2ea0336        
+2025-08-26T12:39:37.7265496Z   https://github.com/MinecraftForge/ForgeGradle  
+2025-08-26T12:39:37.7265973Z #################################################
+2025-08-26T12:39:37.7266425Z                Powered by MCP unknown               
+2025-08-26T12:39:37.7266908Z              http://modcoderpack.com             
+2025-08-26T12:39:37.7267376Z          by: Searge, ProfMobius, Fesh0r,         
+2025-08-26T12:39:37.7268014Z          R4wk, ZeuX, IngisKahn, bspkrs           
+2025-08-26T12:39:37.7268436Z #################################################
+2025-08-26T12:39:37.9971390Z :downloadClient FAILED
+2025-08-26T12:39:38.0023982Z 
+2025-08-26T12:39:38.0024820Z FAILURE: Build failed with an exception.
+2025-08-26T12:39:38.0025256Z 
+2025-08-26T12:39:38.0026046Z * What went wrong:
+2025-08-26T12:39:38.0027545Z Execution failed for task ':downloadClient'.
+2025-08-26T12:39:38.0030065Z > java.io.FileNotFoundException: http://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/1.7.10.jar
+2025-08-26T12:39:38.0031227Z 
+2025-08-26T12:39:38.0033629Z * Try:
+2025-08-26T12:39:38.0035211Z Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+2025-08-26T12:39:38.0037306Z 
+2025-08-26T12:39:38.0037846Z BUILD FAILED
+2025-08-26T12:39:38.0038087Z 
+2025-08-26T12:39:38.0039084Z Total time: 18.537 secs
+2025-08-26T12:39:38.3417504Z ##[error]Process completed with exit code 1.
+2025-08-26T12:39:38.3520478Z Post job cleanup.
+2025-08-26T12:39:38.5342706Z Post job cleanup.
+2025-08-26T12:39:38.6373954Z [command]/usr/bin/git version
+2025-08-26T12:39:38.6416927Z git version 2.51.0
+2025-08-26T12:39:38.6465052Z Temporarily overriding HOME='/home/runner/work/_temp/0fb78e4b-808b-4165-b9f8-9871d9fa6143' before making global git config changes
+2025-08-26T12:39:38.6467409Z Adding repository directory to the temporary git global config as a safe directory
+2025-08-26T12:39:38.6471642Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Botania/Botania
+2025-08-26T12:39:38.6525272Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-08-26T12:39:38.6567402Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-08-26T12:39:38.6805305Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-08-26T12:39:38.6828589Z http.https://github.com/.extraheader
+2025-08-26T12:39:38.6841955Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-08-26T12:39:38.6872470Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-08-26T12:39:38.7211034Z Cleaning up orphan processes
