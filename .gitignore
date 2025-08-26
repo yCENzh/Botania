@@ -24,9 +24,6 @@ Thumbs.db
 /*.iws
 /*.iml
 
-## Private Stuffs
-/private.properties
-
 ## Jars
 *.jar
 !/gradle/wrapper/gradle-wrapper.jar
