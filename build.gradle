@@ -95,16 +95,24 @@ task fixMinecraftJars {
                 conn.setConnectTimeout(30000)
                 conn.setReadTimeout(90000)
                 
+                // 下载客户端JAR - 改为使用官方Minecraft JAR
+                println "Downloading official Minecraft 1.7.10 client JAR..."
+                def officialClientUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
+                def conn = new URL(officialClientUrl).openConnection()
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
+                conn.setConnectTimeout(30000)
+                conn.setReadTimeout(90000)
+                
                 clientJar.withOutputStream { out ->
                     conn.inputStream.withStream { input ->
                         out << input
                     }
                 }
-                println "Successfully downloaded minecraft-1.7.10.jar (${clientJar.length()} bytes)"
+                println "Successfully downloaded official client JAR (${clientJar.length()} bytes)"
                 
                 // 同时复制到Forge缓存目录
                 forgeClientJar.bytes = clientJar.bytes
-                println "Copied client JAR to Forge cache directory"
+                println "Copied official client JAR to Forge cache directory"
                 
             } catch (Exception e) {
                 println "Failed to download client jar: ${e.message}"
@@ -130,16 +138,24 @@ task fixMinecraftJars {
                 conn.setConnectTimeout(30000)
                 conn.setReadTimeout(90000)
                 
+                // 下载服务端JAR - 优先使用官方Minecraft JAR
+                println "Downloading official Minecraft 1.7.10 server JAR..."
+                def officialServerUrl = "https://launcher.mojang.com/v1/objects/952438ac4e01b4d115c5fc38f891710c4941df29/server.jar"
+                def conn = new URL(officialServerUrl).openConnection()
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
+                conn.setConnectTimeout(30000)
+                conn.setReadTimeout(90000)
+                
                 serverJar.withOutputStream { out ->
                     conn.inputStream.withStream { input ->
                         out << input
                     }
                 }
-                println "Successfully downloaded minecraft_server-1.7.10.jar (${serverJar.length()} bytes)"
+                println "Successfully downloaded official server JAR (${serverJar.length()} bytes)"
                 
                 // 同时复制到Forge缓存目录
                 forgeServerJar.bytes = serverJar.bytes
-                println "Copied server JAR to Forge cache directory"
+                println "Copied official server JAR to Forge cache directory"
                 
             } catch (Exception e) {
                 println "Failed to download server jar from primary URL: ${e.message}"
@@ -214,13 +230,16 @@ task forceCleanMergedJars {
     doLast {
         def forgeDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
         
-        // 删除所有可能导致问题的中间文件
+        // 删除所有可能导致问题的中间文件和JAR文件
         def filesToDelete = [
             "${forgeDir}/merged.jar",
             "${forgeDir}/deobfuscated.jar", 
             "${forgeDir}/minecraft-1.7.10-deobf.jar",
             "${forgeDir}/minecraft-1.7.10-srg.jar",
-            "${forgeDir}/temp"
+            "${forgeDir}/temp",
+            // 删除现有JAR文件，强制重新下载官方版本
+            "${forgeDir}/minecraft-1.7.10.jar",
+            "${forgeDir}/minecraft_server-1.7.10.jar"
         ]
         
         filesToDelete.each { filePath ->
@@ -236,28 +255,7 @@ task forceCleanMergedJars {
             }
         }
         
-        // 强制重新创建干净的服务端JAR，确保与客户端JAR完全一致
-        def clientJar = file("${forgeDir}/minecraft-1.7.10.jar")
-        def serverJar = file("${forgeDir}/minecraft_server-1.7.10.jar")
-        
-        if (clientJar.exists() && clientJar.length() > 1000000) {
-            println "Ensuring server JAR is identical to client JAR..."
-            serverJar.bytes = clientJar.bytes
-            println "Server and client JARs are now identical (${serverJar.length()} bytes)"
-            
-            // 验证文件校验和一致性
-            def clientHash = clientJar.bytes.encodeHex().toString()
-            def serverHash = serverJar.bytes.encodeHex().toString()
-            
-            if (clientHash == serverHash) {
-                println "✅ JAR checksums match: ${clientHash.substring(0, 16)}..."
-            } else {
-                println "⚠️ JAR checksums differ - forcing re-sync"
-                serverJar.bytes = clientJar.bytes
-            }
-        }
-        
-        println "Force clean completed - all intermediate files removed"
+        println "Force clean completed - all intermediate files and cached JARs removed"
     }
 }
 
