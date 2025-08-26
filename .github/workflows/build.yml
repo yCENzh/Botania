@@ -42,14 +42,6 @@ jobs:
         echo "=== Gradle files ==="
         ls -la *.gradle* || true
 
-    - name: Download MC Assets (Workaround)
-      run: ./gradlew downloadMcAssets --info
-      continue-on-error: true
-
-    - name: Fix Minecraft JAR Downloads
-      run: ./gradlew fixMinecraftJars --info
-      continue-on-error: true
-
     - name: Setup Forge Development Workspace
       run: ./gradlew setupDecompWorkspace --info --continue
       continue-on-error: true

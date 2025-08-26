@@ -26,6 +26,56 @@ minecraft {
     runDir = "eclipse"
 }
 
+// 修复Minecraft资源下载问题
+task downloadMinecraftJars {
+    doLast {
+        def mcCacheDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft")
+        def clientDir = file("${mcCacheDir}/minecraft/1.7.10")
+        def serverDir = file("${mcCacheDir}/minecraft_server/1.7.10")
+        
+        clientDir.mkdirs()
+        serverDir.mkdirs()
+        
+        def clientJar = file("${clientDir}/minecraft-1.7.10.jar")
+        def serverJar = file("${serverDir}/minecraft_server-1.7.10.jar")
+        
+        // 只在文件不存在时下载
+        if (!clientJar.exists() || clientJar.length() < 1000) {
+            try {
+                println "Downloading Minecraft 1.7.10 client..."
+                def clientUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
+                new URL(clientUrl).withInputStream { input ->
+                    clientJar.withOutputStream { output ->
+                        output << input
+                    }
+                }
+                println "Client downloaded: ${clientJar.length()} bytes"
+            } catch (Exception e) {
+                println "Client download failed: ${e.message}"
+            }
+        }
+        
+        if (!serverJar.exists() || serverJar.length() < 1000) {
+            try {
+                println "Downloading Minecraft 1.7.10 server..."
+                def serverUrl = "https://launcher.mojang.com/v1/objects/952438ac4e01b4d115c5fc38f891710c4941df29/server.jar"
+                new URL(serverUrl).withInputStream { input ->
+                    serverJar.withOutputStream { output ->
+                        output << input
+                    }
+                }
+                println "Server downloaded: ${serverJar.length()} bytes"
+            } catch (Exception e) {
+                println "Server download failed: ${e.message}"
+            }
+        }
+    }
+}
+
+// 确保在需要时执行下载
+downloadClient.dependsOn downloadMinecraftJars
+downloadServer.dependsOn downloadMinecraftJars
+
 // 简化的依赖配置
 repositories {
     mavenCentral()
