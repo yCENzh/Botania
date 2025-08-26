@@ -40,8 +40,8 @@ git push -u origin main
 
 ```bash
 # 创建标签
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.1
+git push origin v1.0.1
 ```
 
 这将触发发布工作流，自动创建GitHub Release并附加jar文件。

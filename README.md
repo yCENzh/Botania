@@ -97,6 +97,7 @@ src/
 
 ## 🙏 致谢
 
+- **作者**: yCENzh
 - 感谢 [Vazkii](https://github.com/Vazkii) 创作了美丽的原始天空盒设计
 - 原始代码来自 [Botania模组](https://github.com/Vazkii/Botania)
 - 所有纹理和视觉效果版权归原作者所有
