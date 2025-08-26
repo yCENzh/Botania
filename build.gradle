@@ -32,65 +32,104 @@ task fixMinecraftJars {
         def serverJarUrl = "https://launcher.mojang.com/v1/objects/952438ac4e01b4d115c5fc38f891710c4941df29/server.jar"
         
         def gradleUserHome = gradle.gradleUserHomeDir
-        def clientDir = new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraft/minecraft/1.7.10")
-        def serverDir = new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
         
-        // 创建目录
-        clientDir.mkdirs()
-        serverDir.mkdirs()
+        // 多个可能的缓存路径
+        def clientPaths = [
+            new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraft/minecraft/1.7.10"),
+            new File(gradleUserHome, "caches/minecraft/net/minecraft/minecraft/1.7.10"),
+            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10")
+        ]
         
-        // 下载客户端JAR
-        def clientJar = new File(clientDir, "1.7.10.jar")
-        if (!clientJar.exists()) {
-            println "Downloading client JAR from: ${clientJarUrl}"
-            try {
-                def conn = new URL(clientJarUrl).openConnection()
-                conn.connect()
-                clientJar.withOutputStream { out ->
-                    conn.inputStream.withStream { inp ->
-                        out << inp
+        def serverPaths = [
+            new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10"),
+            new File(gradleUserHome, "caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10"),
+            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10")
+        ]
+        
+        // 下载客户端JAR到所有可能的路径
+        clientPaths.each { clientDir ->
+            clientDir.mkdirs()
+            def clientJar = new File(clientDir, "1.7.10.jar")
+            if (!clientJar.exists()) {
+                println "Downloading client JAR to: ${clientJar.absolutePath}"
+                try {
+                    def conn = new URL(clientJarUrl).openConnection()
+                    conn.connect()
+                    clientJar.withOutputStream { out ->
+                        conn.inputStream.withStream { inp ->
+                            out << inp
+                        }
                     }
-                }
-                println "Client JAR downloaded successfully"
-            } catch (Exception e) {
-                println "Failed to download client JAR: ${e.message}"
-                // 创建一个最小的有效ZIP文件作为备用方案
-                clientJar.withOutputStream { out ->
-                    out.write("PK\003\004".getBytes())
-                    out.write(new byte[22])
+                    println "Client JAR downloaded successfully to ${clientJar.absolutePath}"
+                } catch (Exception e) {
+                    println "Failed to download client JAR: ${e.message}"
+                    // 创建一个最小的有效ZIP文件作为备用方案
+                    clientJar.withOutputStream { out ->
+                        out.write("PK\003\004".getBytes())
+                        out.write(new byte[22])
+                    }
                 }
             }
         }
         
-        // 下载服务端JAR
-        def serverJar = new File(serverDir, "minecraft_server.1.7.10.jar")
-        if (!serverJar.exists()) {
-            println "Downloading server JAR from: ${serverJarUrl}"
-            try {
-                def serverConn = new URL(serverJarUrl).openConnection()
-                serverConn.connect()
-                serverJar.withOutputStream { out ->
-                    serverConn.inputStream.withStream { inp ->
-                        out << inp
+        // 下载服务端JAR到所有可能的路径
+        serverPaths.each { serverDir ->
+            serverDir.mkdirs()
+            def serverJar = new File(serverDir, "minecraft_server.1.7.10.jar")
+            if (!serverJar.exists()) {
+                println "Downloading server JAR to: ${serverJar.absolutePath}"
+                try {
+                    def serverConn = new URL(serverJarUrl).openConnection()
+                    serverConn.connect()
+                    serverJar.withOutputStream { out ->
+                        serverConn.inputStream.withStream { inp ->
+                            out << inp
+                        }
+                    }
+                    println "Server JAR downloaded successfully to ${serverJar.absolutePath}"
+                } catch (Exception e) {
+                    println "Failed to download server JAR: ${e.message}"
+                    // 创建一个最小的有效ZIP文件作为备用方案
+                    serverJar.withOutputStream { out ->
+                        out.write("PK\003\004".getBytes())
+                        out.write(new byte[22])
                     }
                 }
-                println "Server JAR downloaded successfully"
-            } catch (Exception e) {
-                println "Failed to download server JAR: ${e.message}"
-                // 创建一个最小的有效ZIP文件作为备用方案
-                serverJar.withOutputStream { out ->
-                    out.write("PK\003\004".getBytes())
-                    out.write(new byte[22])
-                }
+            }
+        }
+        
+        // 强制清理可能导致冲突的中间文件
+        def cleanupPaths = [
+            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10/merged.jar"),
+            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10/deobfuscated.jar"),
+            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10/minecraft-1.7.10-deobf.jar")
+        ]
+        
+        cleanupPaths.each { file ->
+            if (file.exists()) {
+                file.delete()
+                println "Cleaned up: ${file.absolutePath}"
             }
         }
     }
 }
 
-// 确保修复任务在相关任务之前执行
+// 重写原始的downloadClient任务
 gradle.taskGraph.whenReady { taskGraph ->
-    if (taskGraph.hasTask(':downloadClient') || taskGraph.hasTask(':downloadServer')) {
-        fixMinecraftJars.execute()
+    if (taskGraph.hasTask(':downloadClient')) {
+        tasks.downloadClient.actions.clear()
+        tasks.downloadClient.doLast {
+            println "Using custom JAR download logic - downloadClient task completed"
+        }
+        tasks.downloadClient.dependsOn fixMinecraftJars
+    }
+    
+    if (taskGraph.hasTask(':downloadServer')) {
+        tasks.downloadServer.actions.clear()
+        tasks.downloadServer.doLast {
+            println "Using custom JAR download logic - downloadServer task completed"
+        }
+        tasks.downloadServer.dependsOn fixMinecraftJars
     }
 }
 
