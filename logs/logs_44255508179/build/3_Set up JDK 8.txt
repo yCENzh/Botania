@@ -1,0 +1,27 @@
+﻿2025-08-26T23:05:02.7031187Z ##[group]Run actions/setup-java@v4
+2025-08-26T23:05:02.7032275Z with:
+2025-08-26T23:05:02.7033015Z   java-version: 8
+2025-08-26T23:05:02.7033835Z   distribution: temurin
+2025-08-26T23:05:02.7034690Z   java-package: jdk
+2025-08-26T23:05:02.7035508Z   check-latest: false
+2025-08-26T23:05:02.7036565Z   server-id: github
+2025-08-26T23:05:02.7037413Z   server-username: GITHUB_ACTOR
+2025-08-26T23:05:02.7038387Z   server-password: GITHUB_TOKEN
+2025-08-26T23:05:02.7039360Z   overwrite-settings: true
+2025-08-26T23:05:02.7040255Z   job-status: success
+2025-08-26T23:05:02.7041493Z   token: ***
+2025-08-26T23:05:02.7042235Z ##[endgroup]
+2025-08-26T23:05:02.9097274Z ##[group]Installed distributions
+2025-08-26T23:05:02.9353116Z Resolved Java 8.0.462+8 from tool-cache
+2025-08-26T23:05:02.9354834Z Setting Java 8.0.462+8 as the default
+2025-08-26T23:05:02.9367747Z Creating toolchains.xml for JDK version 8 from temurin
+2025-08-26T23:05:02.9445750Z Writing to /home/runner/.m2/toolchains.xml
+2025-08-26T23:05:02.9446743Z 
+2025-08-26T23:05:02.9447260Z Java configuration:
+2025-08-26T23:05:02.9448395Z   Distribution: temurin
+2025-08-26T23:05:02.9449484Z   Version: 8.0.462+8
+2025-08-26T23:05:02.9451287Z   Path: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T23:05:02.9452221Z 
+2025-08-26T23:05:02.9453086Z ##[endgroup]
+2025-08-26T23:05:02.9558856Z Creating settings.xml with server-id: github
+2025-08-26T23:05:02.9560046Z Writing to /home/runner/.m2/settings.xml

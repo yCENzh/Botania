@@ -1,0 +1,103 @@
+﻿2025-08-26T23:05:02.9888237Z ##[group]Run ./gradlew build --no-daemon
+2025-08-26T23:05:02.9889272Z [36;1m./gradlew build --no-daemon[0m
+2025-08-26T23:05:02.9932100Z shell: /usr/bin/bash -e {0}
+2025-08-26T23:05:02.9932908Z env:
+2025-08-26T23:05:02.9933875Z   JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T23:05:02.9935369Z   JAVA_HOME_8_X64: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/8.0.462-8/x64
+2025-08-26T23:05:02.9936557Z ##[endgroup]
+2025-08-26T23:05:05.3348480Z Downloading https://services.gradle.org/distributions/gradle-2.1-bin.zip
+2025-08-26T23:05:08.1817594Z .............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
+2025-08-26T23:05:08.1823008Z Unzipping /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1-bin.zip to /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a
+2025-08-26T23:05:08.4536148Z Set executable permissions for: /home/runner/.gradle/wrapper/dists/gradle-2.1-bin/2pk0g2l49n2sbne636fhtlet6a/gradle-2.1/bin/gradle
+2025-08-26T23:05:12.7167219Z Download http://files.minecraftforge.net/maven/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-20211118.175523-305.pom
+2025-08-26T23:05:13.1672949Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.pom
+2025-08-26T23:05:13.1973319Z Download https://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.pom
+2025-08-26T23:05:13.2218839Z Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/7/oss-parent-7.pom
+2025-08-26T23:05:13.2677524Z Download https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.7.3/SpecialSource-1.7.3.pom
+2025-08-26T23:05:13.2923832Z Download https://repo1.maven.org/maven2/org/sonatype/oss/oss-parent/9/oss-parent-9.pom
+2025-08-26T23:05:13.3266567Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.pom
+2025-08-26T23:05:13.3518284Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-client/4.3.3/httpcomponents-client-4.3.3.pom
+2025-08-26T23:05:13.3774775Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/project/7/project-7.pom
+2025-08-26T23:05:13.4002362Z Download https://repo1.maven.org/maven2/org/apache/apache/13/apache-13.pom
+2025-08-26T23:05:13.4699859Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.pom
+2025-08-26T23:05:13.5051927Z Download https://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.pom
+2025-08-26T23:05:13.5314252Z Download https://repo1.maven.org/maven2/net/sf/trove4j/trove4j/2.1.0/trove4j-2.1.0.pom
+2025-08-26T23:05:13.5534178Z Download https://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.pom
+2025-08-26T23:05:13.5756036Z Download https://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.pom
+2025-08-26T23:05:13.6030484Z Download https://repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.pom
+2025-08-26T23:05:13.6238408Z Download https://repo1.maven.org/maven2/com/google/guava/guava-parent/18.0/guava-parent-18.0.pom
+2025-08-26T23:05:13.6547546Z Download https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.pom
+2025-08-26T23:05:13.6787630Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.pom
+2025-08-26T23:05:13.6974113Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-parent/5.0.3/asm-parent-5.0.3.pom
+2025-08-26T23:05:13.7168493Z Download https://repo1.maven.org/maven2/org/ow2/ow2/1.3/ow2-1.3.pom
+2025-08-26T23:05:14.2935526Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-20150605.000822-18.pom
+2025-08-26T23:05:14.3179616Z Download https://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.pom
+2025-08-26T23:05:14.3444897Z Download https://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.pom
+2025-08-26T23:05:14.3654210Z Download https://repo1.maven.org/maven2/com/cloudbees/cloudbees-oss-parent/1/cloudbees-oss-parent-1.pom
+2025-08-26T23:05:14.3932837Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.5/jopt-simple-4.5.pom
+2025-08-26T23:05:14.4290255Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.pom
+2025-08-26T23:05:14.4489966Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcomponents-core/4.3.2/httpcomponents-core-4.3.2.pom
+2025-08-26T23:05:14.4864409Z Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.pom
+2025-08-26T23:05:14.5106946Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/28/commons-parent-28.pom
+2025-08-26T23:05:14.5568726Z Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.pom
+2025-08-26T23:05:14.5791575Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/22/commons-parent-22.pom
+2025-08-26T23:05:14.6012271Z Download https://repo1.maven.org/maven2/org/apache/apache/9/apache-9.pom
+2025-08-26T23:05:14.6354802Z Download https://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.pom
+2025-08-26T23:05:14.6601289Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.pom
+2025-08-26T23:05:14.6824168Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer-parent/1.12/localizer-parent-1.12.pom
+2025-08-26T23:05:14.7068771Z Download https://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.pom
+2025-08-26T23:05:14.7263367Z Download https://repo1.maven.org/maven2/org/apache/commons/commons-parent/7/commons-parent-7.pom
+2025-08-26T23:05:14.7460979Z Download https://repo1.maven.org/maven2/org/apache/apache/4/apache-4.pom
+2025-08-26T23:05:14.8808639Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.7/jopt-simple-4.7.pom
+2025-08-26T23:05:15.6198628Z Download http://files.minecraftforge.net/maven/net/minecraftforge/gradle/ForgeGradle/1.2-SNAPSHOT/ForgeGradle-1.2-20211118.175523-305.jar
+2025-08-26T23:05:15.9314222Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/RetroGuard/3.6.6/RetroGuard-3.6.6.jar
+2025-08-26T23:05:15.9558262Z Download https://repo1.maven.org/maven2/com/github/jponge/lzma-java/1.3/lzma-java-1.3.jar
+2025-08-26T23:05:15.9812440Z Download https://repo1.maven.org/maven2/net/md-5/SpecialSource/1.7.3/SpecialSource-1.7.3.jar
+2025-08-26T23:05:16.0290501Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpclient/4.3.3/httpclient-4.3.3.jar
+2025-08-26T23:05:16.0510965Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpmime/4.3.3/httpmime-4.3.3.jar
+2025-08-26T23:05:16.0797422Z Download https://repo1.maven.org/maven2/com/github/abrarsyed/jastyle/jAstyle/1.2/jAstyle-1.2.jar
+2025-08-26T23:05:16.1380272Z Download https://repo1.maven.org/maven2/net/sf/trove4j/trove4j/2.1.0/trove4j-2.1.0.jar
+2025-08-26T23:05:16.1609041Z Download https://repo1.maven.org/maven2/com/nothome/javaxdelta/2.0.1/javaxdelta-2.0.1.jar
+2025-08-26T23:05:16.1808779Z Download https://repo1.maven.org/maven2/com/google/code/gson/gson/2.2.4/gson-2.2.4.jar
+2025-08-26T23:05:16.2229406Z Download https://repo1.maven.org/maven2/com/google/guava/guava/18.0/guava-18.0.jar
+2025-08-26T23:05:16.2509682Z Download https://repo1.maven.org/maven2/net/sf/opencsv/opencsv/2.3/opencsv-2.3.jar
+2025-08-26T23:05:16.2753479Z Download https://repo1.maven.org/maven2/org/ow2/asm/asm-debug-all/5.0.3/asm-debug-all-5.0.3.jar
+2025-08-26T23:05:16.6375736Z Download http://files.minecraftforge.net/maven/de/oceanlabs/mcp/mcinjector/3.2-SNAPSHOT/mcinjector-3.2-20150605.000822-18.jar
+2025-08-26T23:05:16.6564672Z Download https://repo1.maven.org/maven2/com/github/tony19/named-regexp/0.2.3/named-regexp-0.2.3.jar
+2025-08-26T23:05:16.6762489Z Download https://repo1.maven.org/maven2/com/cloudbees/diff4j/1.1/diff4j-1.1.jar
+2025-08-26T23:05:16.7072607Z Download https://repo1.maven.org/maven2/org/apache/httpcomponents/httpcore/4.3.2/httpcore-4.3.2.jar
+2025-08-26T23:05:16.7261362Z Download https://repo1.maven.org/maven2/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar
+2025-08-26T23:05:16.7477335Z Download https://repo1.maven.org/maven2/commons-codec/commons-codec/1.6/commons-codec-1.6.jar
+2025-08-26T23:05:16.7702645Z Download https://repo1.maven.org/maven2/trove/trove/1.0.2/trove-1.0.2.jar
+2025-08-26T23:05:16.7914382Z Download https://repo1.maven.org/maven2/org/jvnet/localizer/localizer/1.12/localizer-1.12.jar
+2025-08-26T23:05:16.8099943Z Download https://repo1.maven.org/maven2/commons-io/commons-io/1.4/commons-io-1.4.jar
+2025-08-26T23:05:16.8311756Z Download https://repo1.maven.org/maven2/net/sf/jopt-simple/jopt-simple/4.7/jopt-simple-4.7.jar
+2025-08-26T23:05:18.5202539Z The assetDir is deprecated!  I actually just did all this generalizing stuff just now.. Use runDir instead! runDir set to eclipse/assets/..
+2025-08-26T23:05:18.5205049Z The runDir should be the location where you want MC to be run, usually he parent of the asset dir
+2025-08-26T23:05:18.6225730Z WARNING: You are using an unsupported version of ForgeGradle.
+2025-08-26T23:05:18.6226917Z Please consider upgrading to ForgeGradle 4 and helping in the efforts to get old versions working on the modern toolchain.
+2025-08-26T23:05:18.6228192Z See https://gist.github.com/TheCurle/fe7ad3ede188cbdd15c235cc75d52d4a for more info on contributing.
+2025-08-26T23:05:18.6229053Z #################################################
+2025-08-26T23:05:18.6229567Z          ForgeGradle 1.2.2-g2ea0336        
+2025-08-26T23:05:18.6230102Z   https://github.com/MinecraftForge/ForgeGradle  
+2025-08-26T23:05:18.6230605Z #################################################
+2025-08-26T23:05:18.6248434Z                Powered by MCP unknown               
+2025-08-26T23:05:18.6251018Z              http://modcoderpack.com             
+2025-08-26T23:05:18.6251611Z          by: Searge, ProfMobius, Fesh0r,         
+2025-08-26T23:05:18.6252114Z          R4wk, ZeuX, IngisKahn, bspkrs           
+2025-08-26T23:05:18.6252562Z #################################################
+2025-08-26T23:05:18.8754274Z :downloadClient FAILED
+2025-08-26T23:05:18.8804907Z 
+2025-08-26T23:05:18.8805623Z FAILURE: Build failed with an exception.
+2025-08-26T23:05:18.8810461Z 
+2025-08-26T23:05:18.8811061Z BUILD FAILED
+2025-08-26T23:05:18.8811413Z 
+2025-08-26T23:05:18.8811654Z * What went wrong:
+2025-08-26T23:05:18.8812122Z Execution failed for task ':downloadClient'.
+2025-08-26T23:05:18.8813065Z > java.io.FileNotFoundException: http://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/1.7.10.jar
+2025-08-26T23:05:18.8815093Z 
+2025-08-26T23:05:18.8815616Z Total time: 14.431 secs
+2025-08-26T23:05:18.8821133Z 
+2025-08-26T23:05:18.8821391Z * Try:
+2025-08-26T23:05:18.8823352Z Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output.
+2025-08-26T23:05:19.2173508Z ##[error]Process completed with exit code 1.

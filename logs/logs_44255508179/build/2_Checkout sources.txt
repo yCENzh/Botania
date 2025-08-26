@@ -1,0 +1,69 @@
+﻿2025-08-26T23:05:01.0209134Z ##[group]Run actions/checkout@v4
+2025-08-26T23:05:01.0210154Z with:
+2025-08-26T23:05:01.0210816Z   repository: yCENzh/Botania
+2025-08-26T23:05:01.0211701Z   token: ***
+2025-08-26T23:05:01.0212185Z   ssh-strict: true
+2025-08-26T23:05:01.0212694Z   ssh-user: git
+2025-08-26T23:05:01.0213231Z   persist-credentials: true
+2025-08-26T23:05:01.0213857Z   clean: true
+2025-08-26T23:05:01.0214390Z   sparse-checkout-cone-mode: true
+2025-08-26T23:05:01.0215084Z   fetch-depth: 1
+2025-08-26T23:05:01.0215585Z   fetch-tags: false
+2025-08-26T23:05:01.0216154Z   show-progress: true
+2025-08-26T23:05:01.0216686Z   lfs: false
+2025-08-26T23:05:01.0217160Z   submodules: false
+2025-08-26T23:05:01.0217697Z   set-safe-directory: true
+2025-08-26T23:05:01.0218534Z ##[endgroup]
+2025-08-26T23:05:01.1279644Z Syncing repository: yCENzh/Botania
+2025-08-26T23:05:01.1282135Z ##[group]Getting Git version info
+2025-08-26T23:05:01.1283194Z Working directory is '/home/runner/work/Botania/Botania'
+2025-08-26T23:05:01.1284599Z [command]/usr/bin/git version
+2025-08-26T23:05:01.1401495Z git version 2.51.0
+2025-08-26T23:05:01.1427447Z ##[endgroup]
+2025-08-26T23:05:01.1441821Z Temporarily overriding HOME='/home/runner/work/_temp/4e8f18f0-8632-4397-a596-1d0a194a7c5a' before making global git config changes
+2025-08-26T23:05:01.1444250Z Adding repository directory to the temporary git global config as a safe directory
+2025-08-26T23:05:01.1454394Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Botania/Botania
+2025-08-26T23:05:01.1489124Z Deleting the contents of '/home/runner/work/Botania/Botania'
+2025-08-26T23:05:01.1492720Z ##[group]Initializing the repository
+2025-08-26T23:05:01.1496765Z [command]/usr/bin/git init /home/runner/work/Botania/Botania
+2025-08-26T23:05:01.1693947Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-08-26T23:05:01.1695683Z hint: is subject to change. To configure the initial branch name to use in all
+2025-08-26T23:05:01.1697157Z hint: of your new repositories, which will suppress this warning, call:
+2025-08-26T23:05:01.1698236Z hint:
+2025-08-26T23:05:01.1698867Z hint: 	git config --global init.defaultBranch <name>
+2025-08-26T23:05:01.1699736Z hint:
+2025-08-26T23:05:01.1700520Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-08-26T23:05:01.1702305Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-08-26T23:05:01.1703423Z hint:
+2025-08-26T23:05:01.1703894Z hint: 	git branch -m <name>
+2025-08-26T23:05:01.1704816Z hint:
+2025-08-26T23:05:01.1705980Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-08-26T23:05:01.1707616Z Initialized empty Git repository in /home/runner/work/Botania/Botania/.git/
+2025-08-26T23:05:01.1716255Z [command]/usr/bin/git remote add origin https://github.com/yCENzh/Botania
+2025-08-26T23:05:01.1754369Z ##[endgroup]
+2025-08-26T23:05:01.1755396Z ##[group]Disabling automatic garbage collection
+2025-08-26T23:05:01.1758156Z [command]/usr/bin/git config --local gc.auto 0
+2025-08-26T23:05:01.1785160Z ##[endgroup]
+2025-08-26T23:05:01.1786096Z ##[group]Setting up auth
+2025-08-26T23:05:01.1792345Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-08-26T23:05:01.1821497Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-08-26T23:05:01.2236701Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-08-26T23:05:01.2265767Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-08-26T23:05:01.2484060Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-08-26T23:05:01.2517277Z ##[endgroup]
+2025-08-26T23:05:01.2518232Z ##[group]Fetching the repository
+2025-08-26T23:05:01.2535792Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9061123163cf29439a3afadd7377a0a01d266d64:refs/remotes/origin/1.7.10-final
+2025-08-26T23:05:02.4565074Z From https://github.com/yCENzh/Botania
+2025-08-26T23:05:02.4568242Z  * [new ref]         9061123163cf29439a3afadd7377a0a01d266d64 -> origin/1.7.10-final
+2025-08-26T23:05:02.4600979Z ##[endgroup]
+2025-08-26T23:05:02.4602883Z ##[group]Determining the checkout info
+2025-08-26T23:05:02.4605130Z ##[endgroup]
+2025-08-26T23:05:02.4608668Z [command]/usr/bin/git sparse-checkout disable
+2025-08-26T23:05:02.4652924Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-08-26T23:05:02.4681156Z ##[group]Checking out the ref
+2025-08-26T23:05:02.4684777Z [command]/usr/bin/git checkout --progress --force -B 1.7.10-final refs/remotes/origin/1.7.10-final
+2025-08-26T23:05:02.6629311Z Switched to a new branch '1.7.10-final'
+2025-08-26T23:05:02.6631710Z branch '1.7.10-final' set up to track 'origin/1.7.10-final'.
+2025-08-26T23:05:02.6648321Z ##[endgroup]
+2025-08-26T23:05:02.6686059Z [command]/usr/bin/git log -1 --format=%H
+2025-08-26T23:05:02.6708533Z 9061123163cf29439a3afadd7377a0a01d266d64
