@@ -60,7 +60,7 @@ cd <project-directory>
 4. 构建模组jar文件
 5. 上传构建产物
 
-构建完成后，您可以在Actions页面下载构建好的jar文件。
+构建完成后，您可以在Actions页面下载构建好的jar文件
 
 ## 📋 项目结构
 
