@@ -63,7 +63,7 @@ public final class ConfigHandler {
 	public static boolean useShiftForQuickLookup = false;
 	public static boolean enableArmorModels = true;
 	public static boolean enableFancySkybox = true;
-	public static boolean enableFancySkyboxInNormalWorlds = false;
+	public static boolean enableFancySkyboxInNormalWorlds = true;
 	
 	public static int manaBarHeight = 29;
 	public static int flightBarHeight = 49;
