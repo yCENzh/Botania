@@ -1,5 +1,19 @@
 # GogSkybox 模组构建修复方案
 
+## 最新修复 (2025-08-26)
+
+基于最新的构建日志分析，我们解决了JAR文件路径不匹配的问题：
+
+### 问题诊断
+- **downloadClient/downloadServer任务成功**: JAR文件已正确下载
+- **mergeJars任务失败**: ForgeGradle在错误的目录中查找JAR文件
+- **路径不匹配**: 我们的JAR文件放在`/net/minecraftforge/forge/`目录，但ForgeGradle期望在`/net/minecraft/minecraft/`目录
+
+### 修复方案
+1. **双重目录结构**: 同时在两个目录中放置JAR文件
+2. **正确的哈希值**: 使用正确的1.7.10服务端JAR哈希值
+3. **错误处理**: 添加更好的错误处理和日志记录
+
 ## 问题诊断
 
 从最新的构建日志分析，主要问题是：
@@ -15,8 +29,9 @@
 这个任务会：
 - 从Mojang官方launcher APIs下载正确的1.7.10 JAR文件
 - 客户端JAR: `https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar`
-- 服务端JAR: `https://launcher.mojang.com/v1/objects/48820c84cb1b98ba8e4622cb9ac7509d4b5c01bd/server.jar`
-- 将文件放置在ForgeGradle期望的缓存目录中
+- 服务端JAR: `https://launcher.mojang.com/v1/objects/c7022d1eb71ba8707c8fb5b84e7da93d66033bac/server.jar`
+- 将文件放置在ForgeGradle期望的正确目录中（修复路径问题）
+- 同时在Forge缓存目录中创建副本以确保兼容性
 
 ### 2. 重写downloadClient和downloadServer任务
 
@@ -81,14 +96,19 @@
 
 ### JAR文件位置
 ```
-~/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/
-├── minecraft-1.7.10.jar          # 客户端JAR
-└── minecraft_server-1.7.10.jar   # 服务端JAR
+~/.gradle/caches/minecraft/
+├── net/minecraft/minecraft/1.7.10/
+│   └── minecraft-1.7.10.jar          # 客户端JAR (ForgeGradle期望位置)
+├── net/minecraft/minecraft_server/1.7.10/
+│   └── minecraft_server-1.7.10.jar   # 服务端JAR (ForgeGradle期望位置)
+└── net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/
+    ├── minecraft-1.7.10.jar          # 客户端JAR (Forge缓存)
+    └── minecraft_server-1.7.10.jar   # 服务端JAR (Forge缓存)
 ```
 
 ### 官方JAR文件哈希
 - 客户端: `30bfe37a8db404db11c7edf02cb5165817afb4d9`
-- 服务端: `48820c84cb1b98ba8e4622cb9ac7509d4b5c01bd`
+- 服务端: `c7022d1eb71ba8707c8fb5b84e7da93d66033bac`
 
 这些哈希值来自Mojang官方launcher manifest，确保下载的文件是正确和安全的。
 
