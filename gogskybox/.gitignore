@@ -1,0 +1,42 @@
+# Gradle files
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# IDEA/Eclipse
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+bin/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Minecraft development
+run/
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Archives
+*.zip
+*.tar.gz
+*.rar
+
+# Local configuration files
+gradle-local.properties

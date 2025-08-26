@@ -99,5 +99,52 @@ gogskybox/
 - 日月渲染
 - 虚空衰减效果
 
+## GitHub Actions 自动构建
+
+### 构建配置
+项目已配置GitHub Actions自动构建，包含两个工作流：
+
+1. **主构建流程** (`.github/workflows/build.yml`)
+   - 在推送到主分支时自动触发
+   - 支持Pull Request构建
+   - 支持Release自动发布
+
+2. **备用构建流程** (`.github/workflows/build-fallback.yml`)
+   - 手动触发构建
+   - 包含重试机制处理网络问题
+   - 适用于网络不稳定的环境
+
+### 构建特性
+- ✅ JDK 8环境配置
+- ✅ Gradle缓存优化
+- ✅ 自动依赖下载
+- ✅ 构建产物上传
+- ✅ Release自动发布
+- ✅ 网络超时优化
+- ✅ 重试机制
+
+### 使用方法
+1. **自动构建**: 推送代码到仓库即可自动触发构建
+2. **手动构建**: 在Actions页面手动运行"Build GogSkybox (Fallback)"工作流
+3. **发布版本**: 创建Release时会自动附加构建的JAR文件
+
+### 构建产物
+- 主JAR文件: `gogskybox-1.0.1.jar`
+- 源码JAR: `gogskybox-1.0.1-sources.jar`
+- 文档JAR: `gogskybox-1.0.1-javadoc.jar`
+
+### 故障排除
+如果构建失败，请检查：
+1. 网络连接是否正常
+2. 是否有语法错误
+3. 依赖是否正确配置
+4. 可以尝试使用备用构建流程
+
+### 本地构建验证
+在推送前可以本地验证：
+```bash
+./gradlew build --stacktrace
+```
+
 ## 总结
 GogSkybox模组已经成功创建完成，所有核心功能都已实现。唯一的阻碍是网络连接问题导致无法测试运行。模组代码完整且无编译错误，在网络条件允许的情况下应该可以正常工作。

@@ -175,3 +175,30 @@ tasks.processIdeaSettings.configure {
 fun isNewBuildScriptVersionAvailable(): Boolean {
   return false
 }
+
+// GitHub Actions 构建优化配置
+tasks.withType<JavaCompile> {
+  options.encoding = "UTF-8"
+  options.compilerArgs.add("-Xlint:deprecation")
+}
+
+// 确保构建产物的文件名格式正确
+tasks.jar {
+  archiveBaseName.set("gogskybox")
+  archiveVersion.set(project.version.toString())
+  archiveClassifier.set("")
+}
+
+// 源码JAR配置
+tasks.named<Jar>("sourcesJar") {
+  archiveBaseName.set("gogskybox")
+  archiveVersion.set(project.version.toString())
+  archiveClassifier.set("sources")
+}
+
+// Javadoc JAR配置
+tasks.named<Jar>("javadocJar") {
+  archiveBaseName.set("gogskybox")
+  archiveVersion.set(project.version.toString())
+  archiveClassifier.set("javadoc")
+}
