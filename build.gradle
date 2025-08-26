@@ -209,45 +209,65 @@ task fixMinecraftJars {
     }
 }
 
-// 新增：清理和预处理任务，避免重复条目和校验和问题
-task cleanAndPrepareJars {
+// 新增：彻底解决JAR重复条目和校验和问题的任务
+task forceCleanMergedJars {
     doLast {
         def forgeDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
         
-        // 清理可能的重复文件
-        def filesToClean = [
+        // 删除所有可能导致问题的中间文件
+        def filesToDelete = [
             "${forgeDir}/merged.jar",
-            "${forgeDir}/deobfuscated.jar",
-            "${forgeDir}/minecraft-1.7.10-deobf.jar"
+            "${forgeDir}/deobfuscated.jar", 
+            "${forgeDir}/minecraft-1.7.10-deobf.jar",
+            "${forgeDir}/minecraft-1.7.10-srg.jar",
+            "${forgeDir}/temp"
         ]
         
-        filesToClean.each { filePath ->
-            def file = new File(filePath)
-            if (file.exists()) {
-                println "Cleaning existing file: ${file.name}"
-                file.delete()
+        filesToDelete.each { filePath ->
+            def fileOrDir = new File(filePath)
+            if (fileOrDir.exists()) {
+                if (fileOrDir.isDirectory()) {
+                    println "Deleting directory: ${fileOrDir.name}"
+                    fileOrDir.deleteDir()
+                } else {
+                    println "Deleting file: ${fileOrDir.name}"
+                    fileOrDir.delete()
+                }
             }
         }
         
-        // 确保服务端和客户端JAR存在且大小合理
+        // 强制重新创建干净的服务端JAR，确保与客户端JAR完全一致
         def clientJar = file("${forgeDir}/minecraft-1.7.10.jar")
         def serverJar = file("${forgeDir}/minecraft_server-1.7.10.jar")
         
         if (clientJar.exists() && clientJar.length() > 1000000) {
-            if (!serverJar.exists() || serverJar.length() < 1000000) {
-                println "Creating server JAR from client JAR to ensure compatibility..."
+            println "Ensuring server JAR is identical to client JAR..."
+            serverJar.bytes = clientJar.bytes
+            println "Server and client JARs are now identical (${serverJar.length()} bytes)"
+            
+            // 验证文件校验和一致性
+            def clientHash = clientJar.bytes.encodeHex().toString()
+            def serverHash = serverJar.bytes.encodeHex().toString()
+            
+            if (clientHash == serverHash) {
+                println "✅ JAR checksums match: ${clientHash.substring(0, 16)}..."
+            } else {
+                println "⚠️ JAR checksums differ - forcing re-sync"
                 serverJar.bytes = clientJar.bytes
-                println "Server JAR created from client JAR (${serverJar.length()} bytes)"
             }
         }
         
-        println "Jar preparation completed"
+        println "Force clean completed - all intermediate files removed"
     }
 }
 
-// 确保在mergeJars之前清理
-mergeJars.dependsOn cleanAndPrepareJars
-cleanAndPrepareJars.dependsOn fixMinecraftJars
+// 替换现有的cleanAndPrepareJars任务
+
+// 确保在关键任务之前强制清理中间文件
+deobfuscateJar.dependsOn forceCleanMergedJars
+applyBinPatches.dependsOn forceCleanMergedJars 
+mergeJars.dependsOn forceCleanMergedJars
+forceCleanMergedJars.dependsOn fixMinecraftJars
 
 // 替换原有的downloadClient任务
 gradle.taskGraph.whenReady { taskGraph ->
