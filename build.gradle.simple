@@ -1,0 +1,77 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
+        }
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+    }
+    dependencies {
+        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+    }
+}
+
+apply plugin: 'forge'
+
+version = "1.0.1"
+group = "gogsky"
+archivesBaseName = "gogskybox"
+
+minecraft {
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "eclipse"
+}
+
+// 简化的依赖配置
+repositories {
+    mavenCentral()
+    maven {
+        name = "MinecraftForge"
+        url = "https://maven.minecraftforge.net/"
+    }
+}
+
+dependencies {
+    // 基本依赖已在ForgeGradle中包含
+}
+
+// 核心资源处理
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+// 基本的JAR配置
+jar {
+    manifest {
+        attributes 'FMLCorePlugin': 'gogsky.core.GogSkybox'
+        attributes 'FMLCorePluginContainsFMLMod': 'true'
+    }
+}
+
+// GitHub Actions构建任务
+task buildForGithub {
+    dependsOn 'build'
+    doLast {
+        println "Build completed for GitHub Actions"
+        def jarFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+        if (jarFile.exists()) {
+            println "Success: JAR file created at ${jarFile.absolutePath} (${jarFile.length()} bytes)"
+        } else {
+            println "Warning: JAR file not found at expected location"
+        }
+    }
+}
