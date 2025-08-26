@@ -46,11 +46,24 @@ jobs:
       run: ./gradlew downloadMcAssets --info
       continue-on-error: true
 
+    - name: Fix Minecraft JAR Download
+      run: ./gradlew fixMinecraftJar --info
+      continue-on-error: true
+
     - name: Setup Forge Development Workspace
-      run: ./gradlew setupDecompWorkspace --info --stacktrace
+      run: ./gradlew setupDecompWorkspace --info --stacktrace --continue
+      continue-on-error: true
+      
+    - name: Alternative Build (if setup fails)
+      if: failure()
+      run: |
+        echo "setupDecompWorkspace failed, trying alternative approach..."
+        ./gradlew clean --info
+        ./gradlew build --info --continue
+      continue-on-error: true
       
     - name: Build with Gradle
-      run: ./gradlew build --info
+      run: ./gradlew build --info --continue
     
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
