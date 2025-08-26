@@ -98,7 +98,8 @@ task fixMinecraftJars {
                 // 下载客户端JAR - 改为使用官方Minecraft JAR
                 println "Downloading official Minecraft 1.7.10 client JAR..."
                 def officialClientUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
-                def conn = new URL(officialClientUrl).openConnection()
+                // 使用同一个conn变量，更新URL
+                conn = new URL(officialClientUrl).openConnection()
                 conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
                 conn.setConnectTimeout(30000)
                 conn.setReadTimeout(90000)
@@ -132,22 +133,16 @@ task fixMinecraftJars {
         if (!serverJar.exists()) {
             try {
                 println "Downloading Minecraft 1.7.10 server from Mojang..."
-                def serverUrl = "https://launcher.mojang.com/v1/objects/c7022d1eb71ba8707c8fb5b84e7da93d66033bac/server.jar"
-                def conn = new URL(serverUrl).openConnection()
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                conn.setConnectTimeout(30000)
-                conn.setReadTimeout(90000)
-                
                 // 下载服务端JAR - 优先使用官方Minecraft JAR
                 println "Downloading official Minecraft 1.7.10 server JAR..."
                 def officialServerUrl = "https://launcher.mojang.com/v1/objects/952438ac4e01b4d115c5fc38f891710c4941df29/server.jar"
-                def conn = new URL(officialServerUrl).openConnection()
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                conn.setConnectTimeout(30000)
-                conn.setReadTimeout(90000)
+                def serverConn = new URL(officialServerUrl).openConnection()
+                serverConn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
+                serverConn.setConnectTimeout(30000)
+                serverConn.setReadTimeout(90000)
                 
                 serverJar.withOutputStream { out ->
-                    conn.inputStream.withStream { input ->
+                    serverConn.inputStream.withStream { input ->
                         out << input
                     }
                 }
