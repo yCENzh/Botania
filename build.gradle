@@ -68,68 +68,100 @@ task downloadMcAssets {
 // 确保在setupDecompWorkspace之前下载资源
 setupDecompWorkspace.dependsOn downloadMcAssets
 
-// 修复Minecraft客户端JAR下载问题
-task fixMinecraftJar {
+// 修复Minecraft JAR下载问题的核心任务
+task fixMinecraftJars {
     doLast {
-        // 创建相关目录
-        def mcVersions = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft/1.7.10")
-        mcVersions.mkdirs()
+        // 为ForgeGradle创建正确的目录结构和JAR文件
+        def forgeCache = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
+        forgeCache.mkdirs()
         
-        def mcJar = file("${mcVersions}/minecraft-1.7.10.jar")
-        if (!mcJar.exists()) {
+        def clientJar = file("${forgeCache}/minecraft-1.7.10.jar")
+        def serverJar = file("${forgeCache}/minecraft_server-1.7.10.jar")
+        
+        // 下载客户端JAR
+        if (!clientJar.exists()) {
             try {
-                // 尝试从新的镜像源下载
-                def alternativeUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
-                println "Downloading Minecraft 1.7.10 from alternative source..."
+                println "Downloading Minecraft 1.7.10 client from Mojang..."
+                def clientUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
+                def conn = new URL(clientUrl).openConnection()
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
+                conn.setConnectTimeout(30000)
+                conn.setReadTimeout(90000)
                 
-                def conn = new URL(alternativeUrl).openConnection()
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0")
-                
-                mcJar.withOutputStream { out ->
+                clientJar.withOutputStream { out ->
                     conn.inputStream.withStream { input ->
                         out << input
                     }
                 }
-                println "Successfully downloaded minecraft-1.7.10.jar (${mcJar.length()} bytes)"
+                println "Successfully downloaded minecraft-1.7.10.jar (${clientJar.length()} bytes)"
             } catch (Exception e) {
-                println "Failed to download minecraft jar: ${e.message}"
-                // 创建一个小的占位符文件
-                mcJar.text = "# Placeholder minecraft jar file"
-                println "Created placeholder minecraft-1.7.10.jar"
+                println "Failed to download client jar: ${e.message}"
+                // 创建最小占位符以继续构建
+                clientJar.text = "# Placeholder for minecraft client jar"
             }
+        } else {
+            println "Client JAR already exists: ${clientJar.length()} bytes"
         }
         
-        // 同时创建版本json文件
-        def versionJson = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft/1.7.10/1.7.10.json")
-        if (!versionJson.exists()) {
-            versionJson.text = '''{
-  "id": "1.7.10",
-  "type": "release",
-  "downloads": {
-    "client": {
-      "url": "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
-    }
-  }
-}'''
-            println "Created version json file"
+        // 下载服务端JAR
+        if (!serverJar.exists()) {
+            try {
+                println "Downloading Minecraft 1.7.10 server from Mojang..."
+                def serverUrl = "https://launcher.mojang.com/v1/objects/48820c84cb1b98ba8e4622cb9ac7509d4b5c01bd/server.jar"
+                def conn = new URL(serverUrl).openConnection()
+                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
+                conn.setConnectTimeout(30000)
+                conn.setReadTimeout(90000)
+                
+                serverJar.withOutputStream { out ->
+                    conn.inputStream.withStream { input ->
+                        out << input
+                    }
+                }
+                println "Successfully downloaded minecraft_server-1.7.10.jar (${serverJar.length()} bytes)"
+            } catch (Exception e) {
+                println "Failed to download server jar: ${e.message}"
+                // 创建最小占位符以继续构建
+                serverJar.text = "# Placeholder for minecraft server jar"
+            }
+        } else {
+            println "Server JAR already exists: ${serverJar.length()} bytes"
         }
     }
 }
 
-// 在downloadClient之前执行修复
-tasks.whenTaskAdded { task ->
-    if (task.name == 'downloadClient') {
-        task.dependsOn fixMinecraftJar
-        task.doFirst {
-            println "Attempting to fix downloadClient task..."
+// 替换原有的downloadClient任务
+gradle.taskGraph.whenReady { taskGraph ->
+    // 在任务图构建完成后替换downloadClient和downloadServer任务
+    def downloadClientTask = tasks.findByName('downloadClient')
+    if (downloadClientTask) {
+        downloadClientTask.actions.clear()
+        downloadClientTask.dependsOn fixMinecraftJars
+        downloadClientTask.doLast {
+            def forgeCache = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
+            def clientJar = file("${forgeCache}/minecraft-1.7.10.jar")
+            
+            if (clientJar.exists()) {
+                println "Using downloaded client JAR: ${clientJar.absolutePath} (${clientJar.length()} bytes)"
+            } else {
+                throw new GradleException("Client JAR not found after download attempt")
+            }
         }
-        
-        // 设置任务的继续执行策略
-        task.onlyIf {
-            println "Checking if downloadClient should run..."
-            // 如果对应的jar文件已经存在，则跳过下载
-            def mcJar = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft/1.7.10/minecraft-1.7.10.jar")
-            !mcJar.exists() || mcJar.length() == 0
+    }
+    
+    def downloadServerTask = tasks.findByName('downloadServer')
+    if (downloadServerTask) {
+        downloadServerTask.actions.clear()
+        downloadServerTask.dependsOn fixMinecraftJars
+        downloadServerTask.doLast {
+            def forgeCache = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
+            def serverJar = file("${forgeCache}/minecraft_server-1.7.10.jar")
+            
+            if (serverJar.exists()) {
+                println "Using downloaded server JAR: ${serverJar.absolutePath} (${serverJar.length()} bytes)"
+            } else {
+                throw new GradleException("Server JAR not found after download attempt")
+            }
         }
     }
 }

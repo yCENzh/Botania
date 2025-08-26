@@ -46,30 +46,46 @@ jobs:
       run: ./gradlew downloadMcAssets --info
       continue-on-error: true
 
-    - name: Fix Minecraft JAR Download
-      run: ./gradlew fixMinecraftJar --info
+    - name: Fix Minecraft JAR Downloads
+      run: ./gradlew fixMinecraftJars --info
       continue-on-error: true
 
     - name: Setup Forge Development Workspace
-      run: ./gradlew setupDecompWorkspace --info --stacktrace --continue
+      run: ./gradlew setupDecompWorkspace --info --continue
       continue-on-error: true
-      
-    - name: Alternative Build (if setup fails)
-      if: failure()
-      run: |
-        echo "setupDecompWorkspace failed, trying alternative approach..."
-        ./gradlew clean --info
-        ./gradlew build --info --continue
-      continue-on-error: true
-      
-    - name: Build with Gradle
+
+    - name: Build Mod
       run: ./gradlew build --info --continue
-    
+      
+    - name: Debug - Check build results
+      run: |
+        echo "=== Build artifacts ==="
+        find . -name "*.jar" -type f
+        echo "=== Build directory ==="
+        ls -la build/libs/ || echo "No build/libs directory found"
+        
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: GogSkybox-${{ github.run_number }}
-        path: build/libs/*.jar
+        name: gogskybox-mod
+        path: |
+          build/libs/*.jar
+          !build/libs/*-sources.jar
+          !build/libs/*-dev.jar
+        retention-days: 30
+        
+    - name: Final status
+      run: |
+        echo "Build process completed"
+        if [ -f build/libs/GogSkybox-1.0.1.jar ]; then
+          echo "✅ Main JAR file created successfully"
+          ls -la build/libs/GogSkybox-1.0.1.jar
+        else
+          echo "❌ Main JAR file not found"
+          echo "Available files:"
+          find build -name "*.jar" 2>/dev/null || echo "No JAR files found"
+        fi
         
     - name: Create Release (on tag)
       if: startsWith(github.ref, 'refs/tags/')
