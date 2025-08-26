@@ -1,0 +1,16 @@
+[
+{
+  "modid": "gogskybox",
+  "name": "GogSkybox",
+  "description": "A mod that adds the beautiful Garden of Glass skybox from Botania as a standalone feature. Enjoy the crystal garden sky without needing skyblock mode!",
+  "version": "${modVersion}",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["yCENzh"],
+  "credits": "Based on Vazkii's Botania mod",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
