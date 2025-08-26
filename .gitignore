@@ -1,37 +1,38 @@
-# Gradle
-.gradle/
-build/
-gradle-app.setting
-
-# IDE
-.idea/
-*.iml
-*.iws
-*.ipr
-.project
-.classpath
-.settings/
+.gradle
+.settings
 bin/
-
-# Eclipse
-.metadata
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-
-# Minecraft Development Kit
-eclipse/
+/.idea/
+/.vscode/
+/plugin/gradle
+/run/
+/plugin/run/
+/testmod/run/
+/testdepmod/run/
 run/
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-logs/
-*.log
-
-# Botania original source (keep our reference)
-# botania/
+build/
+/eclipse/
+.classpath
+.project
+/bin/
+/config/
+/crash-reports/
+/logs/
+options.txt
+/saves/
+usernamecache.json
+banned-ips.json
+banned-players.json
+eula.txt
+ops.json
+server.properties
+servers.dat
+usercache.json
+whitelist.json
+/out/
+*.iml
+*.ipr
+*.iws
+src/main/resources/mixins.*.json
+*.bat
+*.DS_Store
+!gradlew.bat
