@@ -18,361 +18,43 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.0.1"
-group = "gogsky.core"
-archivesBaseName = "GogSkybox"
+group = "gogsky"
+archivesBaseName = "gogskybox"
 
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
     runDir = "eclipse"
-    
-    // 替换版本占位符
-    replaceIn "gogsky/core/GogSkybox.java"
-    replace "@VERSION@", project.version
 }
 
-// 自定义任务来下载缺失的Minecraft资源
-task downloadMcAssets {
-    doLast {
-        def assetsDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/assets/indexes")
-        assetsDir.mkdirs()
-        
-        def assetFile = file("${assetsDir}/1.7.10.json")
-        if (!assetFile.exists()) {
-            println "Creating minimal 1.7.10 asset index..."
-            // 创建一个最小的assets index文件来绕过下载问题
-            assetFile.text = '''
-{
-  "objects": {},
-  "virtual": false
-}
-'''
-            println "Created minimal 1.7.10.json"
-        }
-        
-        // 同时处理可能的版本JSON文件
-        def versionDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/de/oceanlabs/mcp/mcp_stable/12-1.7.10")
-        versionDir.mkdirs()
-        
-        // 预创建minecraft jar目录以避免下载失败
-        def mcCacheDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft/1.7.10")
-        mcCacheDir.mkdirs()
-        
-        // 创建一个占位的minecraft jar文件标记
-        def mcJarFlag = file("${mcCacheDir}/download_attempted.flag")
-        if (!mcJarFlag.exists()) {
-            mcJarFlag.text = "Minecraft JAR download attempted at ${new Date()}"
-        }
-    }
-}
-
-// 确保在setupDecompWorkspace之前下载资源
-setupDecompWorkspace.dependsOn downloadMcAssets
-
-// 修复Minecraft JAR下载问题的核心任务
-task fixMinecraftJars {
-    doLast {
-        // 创建ForgeGradle期望的目录结构
-        def clientCacheDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft/1.7.10")
-        def serverCacheDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft_server/1.7.10")
-        def forgeCacheDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
-        
-        clientCacheDir.mkdirs()
-        serverCacheDir.mkdirs()
-        forgeCacheDir.mkdirs()
-        
-        def clientJar = file("${clientCacheDir}/minecraft-1.7.10.jar")
-        def serverJar = file("${serverCacheDir}/minecraft_server-1.7.10.jar")
-        def forgeClientJar = file("${forgeCacheDir}/minecraft-1.7.10.jar")
-        def forgeServerJar = file("${forgeCacheDir}/minecraft_server-1.7.10.jar")
-        
-        // 下载客户端JAR
-        if (!clientJar.exists()) {
-            try {
-                println "Downloading Minecraft 1.7.10 client from Mojang..."
-                def clientUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
-                def conn = new URL(clientUrl).openConnection()
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                conn.setConnectTimeout(30000)
-                conn.setReadTimeout(90000)
-                
-                // 下载客户端JAR - 改为使用官方Minecraft JAR
-                println "Downloading official Minecraft 1.7.10 client JAR..."
-                def officialClientUrl = "https://launcher.mojang.com/v1/objects/30bfe37a8db404db11c7edf02cb5165817afb4d9/client.jar"
-                // 使用同一个conn变量，更新URL
-                conn = new URL(officialClientUrl).openConnection()
-                conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                conn.setConnectTimeout(30000)
-                conn.setReadTimeout(90000)
-                
-                clientJar.withOutputStream { out ->
-                    conn.inputStream.withStream { input ->
-                        out << input
-                    }
-                }
-                println "Successfully downloaded official client JAR (${clientJar.length()} bytes)"
-                
-                // 同时复制到Forge缓存目录
-                forgeClientJar.bytes = clientJar.bytes
-                println "Copied official client JAR to Forge cache directory"
-                
-            } catch (Exception e) {
-                println "Failed to download client jar: ${e.message}"
-                // 创建最小占位符
-                clientJar.text = "# Placeholder for minecraft client jar"
-                forgeClientJar.text = "# Placeholder for minecraft client jar"
-            }
-        } else {
-            println "Client JAR already exists: ${clientJar.length()} bytes"
-            // 确保Forge目录也有副本
-            if (!forgeClientJar.exists()) {
-                forgeClientJar.bytes = clientJar.bytes
-            }
-        }
-        
-        // 下载服务端JAR
-        if (!serverJar.exists()) {
-            try {
-                println "Downloading Minecraft 1.7.10 server from Mojang..."
-                // 下载服务端JAR - 优先使用官方Minecraft JAR
-                println "Downloading official Minecraft 1.7.10 server JAR..."
-                def officialServerUrl = "https://launcher.mojang.com/v1/objects/952438ac4e01b4d115c5fc38f891710c4941df29/server.jar"
-                def serverConn = new URL(officialServerUrl).openConnection()
-                serverConn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                serverConn.setConnectTimeout(30000)
-                serverConn.setReadTimeout(90000)
-                
-                serverJar.withOutputStream { out ->
-                    serverConn.inputStream.withStream { input ->
-                        out << input
-                    }
-                }
-                println "Successfully downloaded official server JAR (${serverJar.length()} bytes)"
-                
-                // 同时复制到Forge缓存目录
-                forgeServerJar.bytes = serverJar.bytes
-                println "Copied official server JAR to Forge cache directory"
-                
-            } catch (Exception e) {
-                println "Failed to download server jar from primary URL: ${e.message}"
-                // 尝试备用URL（历史归档）
-                try {
-                    println "Trying historical archive URL..."
-                    def altUrl = "https://files.minecraftforge.net/maven/de/oceanlabs/mcp/versions/1.7.10/minecraft_server.1.7.10.jar"
-                    def altConn = new URL(altUrl).openConnection()
-                    altConn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                    altConn.setConnectTimeout(15000)
-                    altConn.setReadTimeout(60000)
-                    
-                    serverJar.withOutputStream { out ->
-                        altConn.inputStream.withStream { input ->
-                            out << input
-                        }
-                    }
-                    println "Successfully downloaded server JAR using archive URL (${serverJar.length()} bytes)"
-                    forgeServerJar.bytes = serverJar.bytes
-                } catch (Exception e2) {
-                    println "Archive download also failed: ${e2.message}"
-                    // 尝试第三个URL
-                    try {
-                        println "Trying direct Amazon S3 URL..."
-                        def s3Url = "https://s3.amazonaws.com/Minecraft.Download/versions/1.7.10/minecraft_server.1.7.10.jar"
-                        def s3Conn = new URL(s3Url).openConnection()
-                        s3Conn.setRequestProperty("User-Agent", "Mozilla/5.0 (GradleBuild)")
-                        s3Conn.setConnectTimeout(10000)
-                        s3Conn.setReadTimeout(30000)
-                        
-                        serverJar.withOutputStream { out ->
-                            s3Conn.inputStream.withStream { input ->
-                                out << input
-                            }
-                        }
-                        println "Successfully downloaded server JAR using S3 URL (${serverJar.length()} bytes)"
-                        forgeServerJar.bytes = serverJar.bytes
-                    } catch (Exception e3) {
-                        println "All server download attempts failed. Using client JAR as server JAR base..."
-                        // 使用客户端JAR作为服务端JAR的基础，这样可以避免校验和问题
-                        if (forgeClientJar.exists() && forgeClientJar.length() > 1000000) {
-                            println "Copying client JAR to server JAR location..."
-                            serverJar.bytes = forgeClientJar.bytes
-                            forgeServerJar.bytes = forgeClientJar.bytes
-                            println "Successfully created server JAR from client JAR (${serverJar.length()} bytes)"
-                        } else if (clientJar.exists() && clientJar.length() > 1000000) {
-                            println "Copying client JAR to server JAR location..."
-                            serverJar.bytes = clientJar.bytes
-                            forgeServerJar.bytes = clientJar.bytes
-                            println "Successfully created server JAR from client JAR (${serverJar.length()} bytes)"
-                        } else {
-                            println "No valid client JAR found. Creating minimal server JAR..."
-                            createMinimalServerJar(serverJar)
-                            createMinimalServerJar(forgeServerJar)
-                            println "Created minimal server JAR placeholders (${serverJar.length()} bytes)"
-                        }
-                    }
-                }
-            }
-        } else {
-            println "Server JAR already exists: ${serverJar.length()} bytes"
-            // 确保Forge目录也有副本
-            if (!forgeServerJar.exists()) {
-                forgeServerJar.bytes = serverJar.bytes
-            }
-        }
-    }
-}
-
-// 新增：彻底解决JAR重复条目和校验和问题的任务
-task forceCleanMergedJars {
-    doLast {
-        def forgeDir = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10")
-        
-        // 删除所有可能导致问题的中间文件和JAR文件
-        def filesToDelete = [
-            "${forgeDir}/merged.jar",
-            "${forgeDir}/deobfuscated.jar", 
-            "${forgeDir}/minecraft-1.7.10-deobf.jar",
-            "${forgeDir}/minecraft-1.7.10-srg.jar",
-            "${forgeDir}/temp",
-            // 删除现有JAR文件，强制重新下载官方版本
-            "${forgeDir}/minecraft-1.7.10.jar",
-            "${forgeDir}/minecraft_server-1.7.10.jar"
-        ]
-        
-        filesToDelete.each { filePath ->
-            def fileOrDir = new File(filePath)
-            if (fileOrDir.exists()) {
-                if (fileOrDir.isDirectory()) {
-                    println "Deleting directory: ${fileOrDir.name}"
-                    fileOrDir.deleteDir()
-                } else {
-                    println "Deleting file: ${fileOrDir.name}"
-                    fileOrDir.delete()
-                }
-            }
-        }
-        
-        println "Force clean completed - all intermediate files and cached JARs removed"
-    }
-}
-
-// 替换现有的cleanAndPrepareJars任务
-
-// 确保在关键任务之前强制清理中间文件
-deobfuscateJar.dependsOn forceCleanMergedJars
-applyBinPatches.dependsOn forceCleanMergedJars 
-mergeJars.dependsOn forceCleanMergedJars
-forceCleanMergedJars.dependsOn fixMinecraftJars
-
-// 替换原有的downloadClient任务
-gradle.taskGraph.whenReady { taskGraph ->
-    // 在任务图构建完成后替换downloadClient和downloadServer任务
-    def downloadClientTask = tasks.findByName('downloadClient')
-    if (downloadClientTask) {
-        downloadClientTask.actions.clear()
-        downloadClientTask.dependsOn fixMinecraftJars
-        downloadClientTask.doLast {
-            def clientJar = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft/1.7.10/minecraft-1.7.10.jar")
-            def forgeClientJar = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/minecraft-1.7.10.jar")
-            
-            if (clientJar.exists() && clientJar.length() > 1000) {
-                println "Using downloaded client JAR: ${clientJar.absolutePath} (${clientJar.length()} bytes)"
-            } else if (forgeClientJar.exists() && forgeClientJar.length() > 1000) {
-                println "Using Forge cached client JAR: ${forgeClientJar.absolutePath} (${forgeClientJar.length()} bytes)"
-                // 如果主目录没有，从Forge目录复制
-                clientJar.parentFile.mkdirs()
-                clientJar.bytes = forgeClientJar.bytes
-                println "Copied client JAR to expected location"
-            } else {
-                // 创建有效的空ZIP文件作为占位符以确保构建能继续
-                clientJar.parentFile.mkdirs()
-                def zipOut = new java.util.zip.ZipOutputStream(new FileOutputStream(clientJar))
-                zipOut.putNextEntry(new java.util.zip.ZipEntry("placeholder.txt"))
-                zipOut.write("# Minecraft client jar placeholder".bytes)
-                zipOut.closeEntry()
-                zipOut.close()
-                println "Created valid ZIP placeholder client JAR to allow build to continue (${clientJar.length()} bytes)"
-            }
-        }
-    }
-    
-    def downloadServerTask = tasks.findByName('downloadServer')
-    if (downloadServerTask) {
-        downloadServerTask.actions.clear()
-        downloadServerTask.dependsOn fixMinecraftJars
-        downloadServerTask.doLast {
-            def serverJar = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraft/minecraft_server/1.7.10/minecraft_server-1.7.10.jar")
-            def forgeServerJar = file("${gradle.gradleUserHomeDir}/caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10/minecraft_server-1.7.10.jar")
-            
-            if (serverJar.exists() && serverJar.length() > 1000) {
-                println "Using downloaded server JAR: ${serverJar.absolutePath} (${serverJar.length()} bytes)"
-            } else if (forgeServerJar.exists() && forgeServerJar.length() > 1000) {
-                println "Using Forge cached server JAR: ${forgeServerJar.absolutePath} (${forgeServerJar.length()} bytes)"
-                // 如果主目录没有，从Forge目录复制
-                serverJar.parentFile.mkdirs()
-                serverJar.bytes = forgeServerJar.bytes
-                println "Copied server JAR to expected location"
-            } else {
-                // 创建有效的空ZIP文件作为占位符以确保构建能继续
-                serverJar.parentFile.mkdirs()
-                def zipOut = new java.util.zip.ZipOutputStream(new FileOutputStream(serverJar))
-                zipOut.putNextEntry(new java.util.zip.ZipEntry("placeholder.txt"))
-                zipOut.write("# Minecraft server jar placeholder".bytes)
-                zipOut.closeEntry()
-                zipOut.close()
-                println "Created valid ZIP placeholder server JAR to allow build to continue (${serverJar.length()} bytes)"
-            }
-        }
-    }
-}
-
+// 简化的依赖配置
 repositories {
     mavenCentral()
     maven {
         name = "MinecraftForge"
         url = "https://maven.minecraftforge.net/"
     }
-    maven {
-        name = "Chicken Bones Maven"
-        url = "http://chickenbones.net/maven/"
-    }
-    maven {
-        name = "Player Maven"
-        url = "http://maven.ic2.player.to/"
-    }
 }
 
 dependencies {
-    // 如果需要其他依赖可以在这里添加
+    // 基本依赖已在ForgeGradle中包含
 }
 
+// 核心资源处理
 processResources {
-    // 确保当版本变更时重新处理资源
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
-    // 替换mcmod.info中的版本信息
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
-        
-        // 替换版本和MC版本
         expand 'version':project.version, 'mcversion':project.minecraft.version
     }
         
-    // 复制其他资源文件
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
 }
 
-// 为GitHub Actions优化的任务
-task buildForGithub {
-    dependsOn 'build'
-    doLast {
-        println "Build completed for GitHub Actions"
-        println "Jar file location: ${jar.archivePath}"
-    }
-}
-
-// 确保构建的jar文件包含所有必需的文件
+// 基本的JAR配置
 jar {
     manifest {
         attributes 'FMLCorePlugin': 'gogsky.core.GogSkybox'
@@ -380,58 +62,16 @@ jar {
     }
 }
 
-// 创建最小的服务端JAR文件，包含必要的基本结构
-def createMinimalServerJar(jarFile) {
-    jarFile.parentFile.mkdirs()
-    def zipOut = new java.util.zip.ZipOutputStream(new FileOutputStream(jarFile))
-    
-    // 添加META-INF/MANIFEST.MF
-    zipOut.putNextEntry(new java.util.zip.ZipEntry("META-INF/MANIFEST.MF"))
-    zipOut.write("""Manifest-Version: 1.0
-Main-Class: net.minecraft.server.MinecraftServer
-""".bytes)
-    zipOut.closeEntry()
-    
-    // 添加一些基本的Minecraft类文件占位符
-    def basicClasses = [
-        "net/minecraft/server/MinecraftServer.class",
-        "net/minecraft/crash/CrashReport.class",
-        "net/minecraft/world/World.class",
-        "net/minecraft/entity/Entity.class",
-        "net/minecraft/block/Block.class",
-        "net/minecraft/item/Item.class"
-    ]
-    
-    basicClasses.each { className ->
-        zipOut.putNextEntry(new java.util.zip.ZipEntry(className))
-        // 创建一个最基本的Java类文件结构
-        def basicClassBytes = createBasicClassFile(className)
-        zipOut.write(basicClassBytes)
-        zipOut.closeEntry()
+// GitHub Actions构建任务
+task buildForGithub {
+    dependsOn 'build'
+    doLast {
+        println "Build completed for GitHub Actions"
+        def jarFile = file("${project.buildDir}/libs/${archivesBaseName}-${version}.jar")
+        if (jarFile.exists()) {
+            println "Success: JAR file created at ${jarFile.absolutePath} (${jarFile.length()} bytes)"
+        } else {
+            println "Warning: JAR file not found at expected location"
+        }
     }
-    
-    zipOut.close()
-}
-
-// 创建基本的Java类文件字节码
-def createBasicClassFile(className) {
-    // 这是一个非常简单的Java类文件结构
-    // Java类文件的魔数: 0xCAFEBABE
-    def bytes = new ByteArrayOutputStream()
-    def out = new DataOutputStream(bytes)
-    
-    out.writeInt(0xCAFEBABE)  // 魔数
-    out.writeShort(0)         // minor_version
-    out.writeShort(51)        // major_version (Java 7)
-    out.writeShort(1)         // constant_pool_count
-    out.writeShort(0x0021)    // access_flags (public)
-    out.writeShort(0)         // this_class
-    out.writeShort(0)         // super_class
-    out.writeShort(0)         // interfaces_count
-    out.writeShort(0)         // fields_count
-    out.writeShort(0)         // methods_count
-    out.writeShort(0)         // attributes_count
-    
-    out.close()
-    return bytes.toByteArray()
 }
