@@ -33,27 +33,26 @@ task fixMinecraftJars {
         
         def gradleUserHome = gradle.gradleUserHomeDir
         
-        // 多个可能的缓存路径
+        // ForgeGradle期望的特定路径
         def clientPaths = [
-            new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraft/minecraft/1.7.10"),
-            new File(gradleUserHome, "caches/minecraft/net/minecraft/minecraft/1.7.10"),
-            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10")
+            [dir: new File(gradleUserHome, "caches/minecraft/net/minecraft/minecraft/1.7.10"), name: "minecraft-1.7.10.jar"],
+            [dir: new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraft/minecraft/1.7.10"), name: "1.7.10.jar"]
         ]
         
         def serverPaths = [
-            new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10"),
-            new File(gradleUserHome, "caches/minecraft/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10"),
-            new File(gradleUserHome, "caches/minecraft/de/oceanlabs/mcp/mcp_snapshot/20140228-1.7.10/1.7.10")
+            [dir: new File(gradleUserHome, "caches/minecraft/net/minecraft/minecraft_server/1.7.10"), name: "minecraft_server-1.7.10.jar"],
+            [dir: new File(gradleUserHome, "caches/modules-2/files-2.1/net/minecraftforge/forge/1.7.10-10.13.4.1614-1.7.10"), name: "minecraft_server.1.7.10.jar"]
         ]
         
         // 下载客户端JAR到所有可能的路径
-        clientPaths.each { clientDir ->
-            clientDir.mkdirs()
-            def clientJar = new File(clientDir, "1.7.10.jar")
+        clientPaths.each { pathInfo ->
+            pathInfo.dir.mkdirs()
+            def clientJar = new File(pathInfo.dir, pathInfo.name)
             if (!clientJar.exists()) {
                 println "Downloading client JAR to: ${clientJar.absolutePath}"
                 try {
                     def conn = new URL(clientJarUrl).openConnection()
+                    conn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Gradle)")
                     conn.connect()
                     clientJar.withOutputStream { out ->
                         conn.inputStream.withStream { inp ->
@@ -73,13 +72,14 @@ task fixMinecraftJars {
         }
         
         // 下载服务端JAR到所有可能的路径
-        serverPaths.each { serverDir ->
-            serverDir.mkdirs()
-            def serverJar = new File(serverDir, "minecraft_server.1.7.10.jar")
+        serverPaths.each { pathInfo ->
+            pathInfo.dir.mkdirs()
+            def serverJar = new File(pathInfo.dir, pathInfo.name)
             if (!serverJar.exists()) {
                 println "Downloading server JAR to: ${serverJar.absolutePath}"
                 try {
                     def serverConn = new URL(serverJarUrl).openConnection()
+                    serverConn.setRequestProperty("User-Agent", "Mozilla/5.0 (compatible; Gradle)")
                     serverConn.connect()
                     serverJar.withOutputStream { out ->
                         serverConn.inputStream.withStream { inp ->
