@@ -1,0 +1,16 @@
+[
+{
+  "modid": "gogskybox",
+  "name": "Garden of Glass Skybox",
+  "description": "Adds the beautiful Garden of Glass skybox from Botania to any world. Features colorful planets, dynamic rays, and stunning rainbow effects in the sky.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Based on Vazkii's Botania"],
+  "credits": "Original skybox design by Vazkii from the Botania mod",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
