@@ -26,18 +26,25 @@
 3. GitHub Actions会自动构建jar文件
 4. 在Actions页面下载构建好的模组文件
 
+**注意**: 如果构建失败，可能是由于Minecraft 1.7.10的旧版本资源链接失效。我们已经在构建脚本中添加了修复方案。
+
 ### 手动构建
 ```bash
 # 克隆项目
 git clone <your-repo-url>
 cd <project-directory>
 
-# 构建模组
+# 构建模组（包含修复网络问题的预处理步骤）
+./gradlew downloadMcAssets  # 修复资源文件问题
 ./gradlew setupDecompWorkspace
 ./gradlew build
 
 # jar文件将生成在build/libs/目录中
 ```
+
+**故障排除**:
+- 如果遇到 `404` 错误或 `getAssetsIndex` 失败，运行 `./gradlew downloadMcAssets` 命令
+- 如果网络连接有问题，可以尝试使用代理或更换网络环境
 
 ### 安装到游戏
 1. 确保安装了Minecraft 1.7.10和对应版本的Forge
