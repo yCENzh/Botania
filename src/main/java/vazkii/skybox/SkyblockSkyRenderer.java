@@ -325,5 +325,6 @@ extends IRenderHandler {
         GL11.glCallList(starGLCallList);
         GL11.glPopMatrix();
         GL11.glPopMatrix();
+    }
 }
 
