@@ -49,7 +49,7 @@ extends IRenderHandler {
             return;
         }
         GL11.glDisable(GL11.GL_TEXTURE_2D);
-        Vec3 vec3 = world.getSkyColor(mc.getRenderViewEntity(), partialTicks);
+        Vec3 vec3 = world.getSkyColor(mc.thePlayer, partialTicks);
         float f = (float)vec3.xCoord;
         float f1 = (float)vec3.yCoord;
         float f2 = (float)vec3.zCoord;
@@ -62,7 +62,6 @@ extends IRenderHandler {
         f2 = Math.max(0.0f, f2 - insideVoid);
         GL11.glColor3f(f, f1, f2);
         Tessellator tessellator = Tessellator.instance;
-        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GL11.glDepthMask(false);
         GL11.glEnable(GL11.GL_FOG);
         GL11.glColor3f(f, f1, f2);
@@ -83,17 +82,15 @@ extends IRenderHandler {
             float f6 = afloat[0];
             float f7 = afloat[1];
             float f8 = afloat[2];
-            worldrenderer.startDrawing(6);
-            worldrenderer.addVertex(0.0, 100.0, 0.0);
-            worldrenderer.setColorRGBA_F(f6, f7, f8, afloat[3] * (1.0f - insideVoid));
-            worldrenderer.finishDrawing();
+            tessellator.startDrawing(6);
+            tessellator.addVertex(0.0, 100.0, 0.0);
+            tessellator.setColorRGBA_F(f6, f7, f8, afloat[3] * (1.0f - insideVoid));
             for (int l = 0; l <= 16; ++l) {
                 float f21 = (float)l * ((float)Math.PI * 2) / 16.0f;
                 float f12 = MathHelper.sin(f21);
                 float f13 = MathHelper.cos(f21);
-                worldrenderer.addVertex((double)(f12 * 120.0f), (double)(f13 * 120.0f), (double)(-f13 * 40.0f * afloat[3]));
-                worldrenderer.setColorRGBA_F(afloat[0], afloat[1], afloat[2], 0.0f);
-                worldrenderer.finishDrawing();
+                tessellator.addVertex((double)(f12 * 120.0f), (double)(f13 * 120.0f), (double)(-f13 * 40.0f * afloat[3]));
+                tessellator.setColorRGBA_F(afloat[0], afloat[1], afloat[2], 0.0f);
             }
             tessellator.draw();
             GL11.glPopMatrix();
@@ -118,11 +115,11 @@ extends IRenderHandler {
         GL11.glRotatef(90.0f, 0.5f, 0.5f, 0.0f);
         block14: for (int p = 0; p < planetTextures.length; ++p) {
             mc.getTextureManager().bindTexture(planetTextures[p]);
-            worldrenderer.startDrawing(7);
-            worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
-            worldrenderer.addVertexWithUV((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
-            worldrenderer.addVertexWithUV((double)f17, 100.0, (double)f17, 1.0, 1.0);
-            worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
+            tessellator.startDrawing(7);
+            tessellator.addVertexWithUV((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
+            tessellator.addVertexWithUV((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
+            tessellator.addVertexWithUV((double)f17, 100.0, (double)f17, 1.0, 1.0);
+            tessellator.addVertexWithUV((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
             tessellator.draw();
             switch (p) {
                 case 0: {
@@ -172,7 +169,7 @@ extends IRenderHandler {
         block15: for (int p = 0; p < 3; ++p) {
             float baseAngle = rotSpeed * rotSpeedMod * ((float)ModEventHandler.ticksInGame + ModEventHandler.partialTicks);
             GL11.glRotatef(((float)ModEventHandler.ticksInGame + ModEventHandler.partialTicks) * 0.25f * rotSpeed * rotSpeedMod, 0.0f, 1.0f, 0.0f);
-            worldrenderer.startDrawing(7);
+            tessellator.startDrawing(7);
             for (int i2 = 0; i2 < angles; ++i2) {
                 int j = i2;
                 if (i2 % 2 == 0) {
@@ -184,12 +181,12 @@ extends IRenderHandler {
                 double yo = Math.sin(fuzzPer * (double)j) * 1.0;
                 float ut = ang * uPer;
                 if (i2 % 2 == 0) {
-                    worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
-                    worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
+                    tessellator.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+                    tessellator.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
                     continue;
                 }
-                worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
-                worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+                tessellator.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
+                tessellator.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
             }
             tessellator.draw();
             switch (p) {
@@ -226,7 +223,7 @@ extends IRenderHandler {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, effCelAng1 * (1.0f - insideVoid));
         GL11.glRotatef(angle1, 0.0f, 1.0f, 0.0f);
         GL11.glRotatef(angle2, 0.0f, 0.0f, 1.0f);
-        worldrenderer.startDrawing(7);
+        tessellator.startDrawing(7);
         for (i = 0; i < angles; ++i) {
             int j = i;
             if (i % 2 == 0) {
@@ -238,12 +235,12 @@ extends IRenderHandler {
             double yo = 0.0;
             float ut = ang * uPer;
             if (i % 2 == 0) {
-                worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
-                worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
+                tessellator.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+                tessellator.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
                 continue;
             }
-            worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
-            worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+            tessellator.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
+            tessellator.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
         }
         tessellator.draw();
         GL11.glPopMatrix();
@@ -252,11 +249,11 @@ extends IRenderHandler {
         GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0f, 1.0f, 0.0f, 0.0f);
         f17 = 60.0f;
         mc.getTextureManager().bindTexture(SUN_TEXTURES);
-        worldrenderer.startDrawing(7);
-        worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
-        worldrenderer.addVertexWithUV((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
-        worldrenderer.addVertexWithUV((double)f17, 100.0, (double)f17, 1.0, 1.0);
-        worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
+        tessellator.startDrawing(7);
+        tessellator.addVertexWithUV((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
+        tessellator.addVertexWithUV((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
+        tessellator.addVertexWithUV((double)f17, 100.0, (double)f17, 1.0, 1.0);
+        tessellator.addVertexWithUV((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
         tessellator.draw();
         f17 = 60.0f;
         mc.getTextureManager().bindTexture(MOON_PHASES_TEXTURES);
@@ -267,11 +264,11 @@ extends IRenderHandler {
         float f23 = (float)(i1 + 0) / 2.0f;
         float f24 = (float)(k + 1) / 4.0f;
         float f14 = (float)(i1 + 1) / 2.0f;
-        worldrenderer.startDrawing(7);
-        worldrenderer.addVertexWithUV((double)(-f17), -100.0, (double)f17, (double)f24, (double)f14);
-        worldrenderer.addVertexWithUV((double)f17, -100.0, (double)f17, (double)f22, (double)f14);
-        worldrenderer.addVertexWithUV((double)f17, -100.0, (double)(-f17), (double)f22, (double)f23);
-        worldrenderer.addVertexWithUV((double)(-f17), -100.0, (double)(-f17), (double)f24, (double)f23);
+        tessellator.startDrawing(7);
+        tessellator.addVertexWithUV((double)(-f17), -100.0, (double)f17, (double)f24, (double)f14);
+        tessellator.addVertexWithUV((double)f17, -100.0, (double)f17, (double)f22, (double)f14);
+        tessellator.addVertexWithUV((double)f17, -100.0, (double)(-f17), (double)f22, (double)f23);
+        tessellator.addVertexWithUV((double)(-f17), -100.0, (double)(-f17), (double)f24, (double)f23);
         tessellator.draw();
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         this.renderStars(mc, f16 *= Math.max(0.1f, effCelAng * 2.0f), partialTicks);
