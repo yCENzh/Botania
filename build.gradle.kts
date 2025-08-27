@@ -11,8 +11,8 @@ plugins {
 }
 
 // Project properties
-group = "rfg.examplemod"
-version = "1.0.0"
+group = "vazkii.skybox"
+version = "1.1-3"
 
 // Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
@@ -49,7 +49,7 @@ minecraft {
   groupsToExcludeFromAutoReobfMapping.addAll("com.diffplug", "com.diffplug.durian", "net.industrial-craft")
 }
 
-// Generates a class named rfg.examplemod.Tags with the mod version in it, you can find it at
+// Generates a class named vazkii.skybox.Tags with the mod version in it, you can find it at
 tasks.injectTags.configure {
   outputClassName.set("${project.group}.Tags")
 }

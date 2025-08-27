@@ -1,17 +1,17 @@
 /*
- * Decompiled with CFR 0.152.
+ * Converted to 1.7.10 compatibility
  * 
  * Could not load the following classes:
  *  net.minecraftforge.common.MinecraftForge
- *  net.minecraftforge.fml.common.Mod
- *  net.minecraftforge.fml.common.Mod$EventHandler
- *  net.minecraftforge.fml.common.event.FMLInitializationEvent
+ *  cpw.mods.fml.common.Mod
+ *  cpw.mods.fml.common.Mod$EventHandler
+ *  cpw.mods.fml.common.event.FMLInitializationEvent
  */
 package vazkii.skybox;
 
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 import vazkii.skybox.ModEventHandler;
 
 @Mod(modid="gogskybox", name="Garden of Glass Skybox", version="1.1-3", dependencies="", clientSideOnly=true, acceptedMinecraftVersions="[1.7.10]")
