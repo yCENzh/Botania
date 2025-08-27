@@ -43,26 +43,26 @@ extends IRenderHandler {
         float celAng;
         int glSkyList;
         try {
-            glSkyList = ModMethodHandles.glSkyList_getter.invokeExact(mc.field_71438_f);
+            glSkyList = (Integer)ModMethodHandles.glSkyList_getter.invokeExact(mc.renderGlobal);
         }
         catch (Throwable t) {
             return;
         }
         GL11.glDisable(GL11.GL_TEXTURE_2D);
-        Vec3 vec3 = world.func_72833_a(mc.func_175606_aa(), partialTicks);
-        float f = (float)vec3.field_72450_a;
-        float f1 = (float)vec3.field_72448_b;
-        float f2 = (float)vec3.field_72449_c;
+        Vec3 vec3 = world.getSkyColor(mc.getRenderViewEntity(), partialTicks);
+        float f = (float)vec3.xCoord;
+        float f1 = (float)vec3.yCoord;
+        float f2 = (float)vec3.zCoord;
         float insideVoid = 0.0f;
-        if (mc.field_71439_g.field_70163_u <= -2.0) {
-            insideVoid = (float)Math.min(1.0, -(mc.field_71439_g.field_70163_u + 2.0) / 30.0);
+        if (mc.thePlayer.posY <= -2.0) {
+            insideVoid = (float)Math.min(1.0, -(mc.thePlayer.posY + 2.0) / 30.0);
         }
         f = Math.max(0.0f, f - insideVoid);
         f1 = Math.max(0.0f, f1 - insideVoid);
         f2 = Math.max(0.0f, f2 - insideVoid);
         GL11.glColor3f(f, f1, f2);
-        Tessellator tessellator = Tessellator.field_78398_a;
-        WorldRenderer worldrenderer = tessellator.func_178180_c();
+        Tessellator tessellator = Tessellator.instance;
+        WorldRenderer worldrenderer = tessellator.getWorldRenderer();
         GL11.glDepthMask(false);
         GL11.glEnable(GL11.GL_FOG);
         GL11.glColor3f(f, f1, f2);
@@ -70,60 +70,60 @@ extends IRenderHandler {
         GL11.glDisable(GL11.GL_FOG);
         GL11.glDisable(GL11.GL_ALPHA_TEST);
         GL11.glEnable(GL11.GL_BLEND);
-        OpenGlHelper.func_148821_a(770, 771, 1, 0);
-        RenderHelper.func_74518_a();
-        float[] afloat = world.field_73011_w.func_76560_a(world.func_72826_c(partialTicks), partialTicks);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        RenderHelper.disableStandardItemLighting();
+        float[] afloat = world.provider.calcSunriseSunsetColors(world.getCelestialAngle(partialTicks), partialTicks);
         if (afloat != null) {
             GL11.glDisable(GL11.GL_TEXTURE_2D);
             GL11.glShadeModel(GL11.GL_SMOOTH);
             GL11.glPushMatrix();
             GL11.glRotatef(90.0f, 1.0f, 0.0f, 0.0f);
-            GL11.glRotatef(MathHelper.func_76126_a(world.func_72929_e(partialTicks)) < 0.0f ? 180.0f : 0.0f, 0.0f, 0.0f, 1.0f);
+            GL11.glRotatef(MathHelper.cos(world.getCelestialAngleRadians(partialTicks)) < 0.0f ? 180.0f : 0.0f, 0.0f, 0.0f, 1.0f);
             GL11.glRotatef(90.0f, 0.0f, 0.0f, 1.0f);
             float f6 = afloat[0];
             float f7 = afloat[1];
             float f8 = afloat[2];
-            worldrenderer.func_178382_a(6);
-            worldrenderer.func_178974_a(0.0, 100.0, 0.0);
-            worldrenderer.func_178982_a(f6, f7, f8, afloat[3] * (1.0f - insideVoid));
-            worldrenderer.func_178977_d();
+            worldrenderer.startDrawing(6);
+            worldrenderer.addVertex(0.0, 100.0, 0.0);
+            worldrenderer.setColorRGBA_F(f6, f7, f8, afloat[3] * (1.0f - insideVoid));
+            worldrenderer.finishDrawing();
             for (int l = 0; l <= 16; ++l) {
                 float f21 = (float)l * ((float)Math.PI * 2) / 16.0f;
-                float f12 = MathHelper.func_76126_a(f21);
-                float f13 = MathHelper.func_76134_b(f21);
-                worldrenderer.func_178974_a((double)(f12 * 120.0f), (double)(f13 * 120.0f), (double)(-f13 * 40.0f * afloat[3]));
-                worldrenderer.func_178982_a(afloat[0], afloat[1], afloat[2], 0.0f);
-                worldrenderer.func_178977_d();
+                float f12 = MathHelper.sin(f21);
+                float f13 = MathHelper.cos(f21);
+                worldrenderer.addVertex((double)(f12 * 120.0f), (double)(f13 * 120.0f), (double)(-f13 * 40.0f * afloat[3]));
+                worldrenderer.setColorRGBA_F(afloat[0], afloat[1], afloat[2], 0.0f);
+                worldrenderer.finishDrawing();
             }
-            tessellator.func_78381_a();
+            tessellator.draw();
             GL11.glPopMatrix();
             GL11.glShadeModel(GL11.GL_FLAT);
         }
         GL11.glEnable(GL11.GL_TEXTURE_2D);
-        OpenGlHelper.func_148821_a(770, 1, 1, 0);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
         GL11.glPushMatrix();
-        float f16 = 1.0f - world.func_72867_j(partialTicks);
+        float f16 = 1.0f - world.getRainStrength(partialTicks);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, f16);
         GL11.glRotatef(-90.0f, 0.0f, 1.0f, 0.0f);
-        float effCelAng = celAng = world.func_72826_c(partialTicks);
+        float effCelAng = celAng = world.getCelestialAngle(partialTicks);
         if ((double)celAng > 0.5) {
             effCelAng = 0.5f - (celAng - 0.5f);
         }
         float f17 = 20.0f;
         float lowA = Math.max(0.0f, effCelAng - 0.3f) * f16;
         float a = Math.max(0.1f, lowA);
-        OpenGlHelper.func_148821_a(770, 771, 1, 0);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
         GL11.glPushMatrix();
         GL11.glColor4f(1.0f, 1.0f, 1.0f, a * 4.0f * (1.0f - insideVoid));
         GL11.glRotatef(90.0f, 0.5f, 0.5f, 0.0f);
         block14: for (int p = 0; p < planetTextures.length; ++p) {
-            mc.field_71446_o.func_110577_a(planetTextures[p]);
-            worldrenderer.func_178382_a(7);
-            worldrenderer.func_178374_a((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
-            worldrenderer.func_178374_a((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
-            worldrenderer.func_178374_a((double)f17, 100.0, (double)f17, 1.0, 1.0);
-            worldrenderer.func_178374_a((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
-            tessellator.func_78381_a();
+            mc.getTextureManager().bindTexture(planetTextures[p]);
+            worldrenderer.startDrawing(7);
+            worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
+            worldrenderer.addVertexWithUV((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
+            worldrenderer.addVertexWithUV((double)f17, 100.0, (double)f17, 1.0, 1.0);
+            worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
+            tessellator.draw();
             switch (p) {
                 case 0: {
                     GL11.glRotatef(70.0f, 1.0f, 0.0f, 0.0f);
@@ -153,11 +153,11 @@ extends IRenderHandler {
         }
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         GL11.glPopMatrix();
-        mc.field_71446_o.func_110577_a(textureSkybox);
+        mc.getTextureManager().bindTexture(textureSkybox);
         f17 = 20.0f;
         a = lowA;
         GL11.glPushMatrix();
-        OpenGlHelper.func_148821_a(770, 1, 1, 0);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
         GL11.glTranslatef(0.0f, -1.0f, 0.0f);
         GL11.glRotatef(220.0f, 1.0f, 0.0f, 0.0f);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, a);
@@ -172,7 +172,7 @@ extends IRenderHandler {
         block15: for (int p = 0; p < 3; ++p) {
             float baseAngle = rotSpeed * rotSpeedMod * ((float)ModEventHandler.ticksInGame + ModEventHandler.partialTicks);
             GL11.glRotatef(((float)ModEventHandler.ticksInGame + ModEventHandler.partialTicks) * 0.25f * rotSpeed * rotSpeedMod, 0.0f, 1.0f, 0.0f);
-            worldrenderer.func_178382_a(7);
+            worldrenderer.startDrawing(7);
             for (int i2 = 0; i2 < angles; ++i2) {
                 int j = i2;
                 if (i2 % 2 == 0) {
@@ -184,14 +184,14 @@ extends IRenderHandler {
                 double yo = Math.sin(fuzzPer * (double)j) * 1.0;
                 float ut = ang * uPer;
                 if (i2 % 2 == 0) {
-                    worldrenderer.func_178374_a(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
-                    worldrenderer.func_178374_a(xp, yo + (double)y0, zp, (double)ut, 0.0);
+                    worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+                    worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
                     continue;
                 }
-                worldrenderer.func_178374_a(xp, yo + (double)y0, zp, (double)ut, 0.0);
-                worldrenderer.func_178374_a(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+                worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
+                worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
             }
-            tessellator.func_78381_a();
+            tessellator.draw();
             switch (p) {
                 case 0: {
                     GL11.glRotatef(20.0f, 1.0f, 0.0f, 0.0f);
@@ -210,15 +210,15 @@ extends IRenderHandler {
         }
         GL11.glPopMatrix();
         GL11.glPushMatrix();
-        OpenGlHelper.func_148821_a(770, 771, 1, 0);
-        mc.field_71446_o.func_110577_a(textureRainbow);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
+        mc.getTextureManager().bindTexture(textureRainbow);
         f17 = 10.0f;
         float effCelAng1 = celAng;
         if (effCelAng1 > 0.25f) {
             effCelAng1 = 1.0f - effCelAng1;
         }
         effCelAng1 = 0.25f - Math.min(0.25f, effCelAng1);
-        long time = world.func_72820_D() + 1000L;
+        long time = world.getTotalWorldTime() + 1000L;
         int day = (int)(time / 24000L);
         Random rand = new Random(day * 255);
         float angle1 = rand.nextFloat() * 360.0f;
@@ -226,7 +226,7 @@ extends IRenderHandler {
         GL11.glColor4f(1.0f, 1.0f, 1.0f, effCelAng1 * (1.0f - insideVoid));
         GL11.glRotatef(angle1, 0.0f, 1.0f, 0.0f);
         GL11.glRotatef(angle2, 0.0f, 0.0f, 1.0f);
-        worldrenderer.func_178382_a(7);
+        worldrenderer.startDrawing(7);
         for (i = 0; i < angles; ++i) {
             int j = i;
             if (i % 2 == 0) {
@@ -238,41 +238,41 @@ extends IRenderHandler {
             double yo = 0.0;
             float ut = ang * uPer;
             if (i % 2 == 0) {
-                worldrenderer.func_178374_a(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
-                worldrenderer.func_178374_a(xp, yo + (double)y0, zp, (double)ut, 0.0);
+                worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+                worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
                 continue;
             }
-            worldrenderer.func_178374_a(xp, yo + (double)y0, zp, (double)ut, 0.0);
-            worldrenderer.func_178374_a(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
+            worldrenderer.addVertexWithUV(xp, yo + (double)y0, zp, (double)ut, 0.0);
+            worldrenderer.addVertexWithUV(xp, yo + (double)y0 + (double)y, zp, (double)ut, 1.0);
         }
-        tessellator.func_78381_a();
+        tessellator.draw();
         GL11.glPopMatrix();
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f - insideVoid);
-        OpenGlHelper.func_148821_a(770, 1, 1, 0);
-        GL11.glRotatef(world.func_72826_c(partialTicks) * 360.0f, 1.0f, 0.0f, 0.0f);
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE);
+        GL11.glRotatef(world.getCelestialAngle(partialTicks) * 360.0f, 1.0f, 0.0f, 0.0f);
         f17 = 60.0f;
-        mc.field_71446_o.func_110577_a(SUN_TEXTURES);
-        worldrenderer.func_178382_a(7);
-        worldrenderer.func_178374_a((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
-        worldrenderer.func_178374_a((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
-        worldrenderer.func_178374_a((double)f17, 100.0, (double)f17, 1.0, 1.0);
-        worldrenderer.func_178374_a((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
-        tessellator.func_78381_a();
+        mc.getTextureManager().bindTexture(SUN_TEXTURES);
+        worldrenderer.startDrawing(7);
+        worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)(-f17), 0.0, 0.0);
+        worldrenderer.addVertexWithUV((double)f17, 100.0, (double)(-f17), 1.0, 0.0);
+        worldrenderer.addVertexWithUV((double)f17, 100.0, (double)f17, 1.0, 1.0);
+        worldrenderer.addVertexWithUV((double)(-f17), 100.0, (double)f17, 0.0, 1.0);
+        tessellator.draw();
         f17 = 60.0f;
-        mc.field_71446_o.func_110577_a(MOON_PHASES_TEXTURES);
-        i = world.func_72853_d();
+        mc.getTextureManager().bindTexture(MOON_PHASES_TEXTURES);
+        i = world.getMoonPhase();
         int k = i % 4;
         int i1 = i / 4 % 2;
         float f22 = (float)(k + 0) / 4.0f;
         float f23 = (float)(i1 + 0) / 2.0f;
         float f24 = (float)(k + 1) / 4.0f;
         float f14 = (float)(i1 + 1) / 2.0f;
-        worldrenderer.func_178382_a(7);
-        worldrenderer.func_178374_a((double)(-f17), -100.0, (double)f17, (double)f24, (double)f14);
-        worldrenderer.func_178374_a((double)f17, -100.0, (double)f17, (double)f22, (double)f14);
-        worldrenderer.func_178374_a((double)f17, -100.0, (double)(-f17), (double)f22, (double)f23);
-        worldrenderer.func_178374_a((double)(-f17), -100.0, (double)(-f17), (double)f24, (double)f23);
-        tessellator.func_78381_a();
+        worldrenderer.startDrawing(7);
+        worldrenderer.addVertexWithUV((double)(-f17), -100.0, (double)f17, (double)f24, (double)f14);
+        worldrenderer.addVertexWithUV((double)f17, -100.0, (double)f17, (double)f22, (double)f14);
+        worldrenderer.addVertexWithUV((double)f17, -100.0, (double)(-f17), (double)f22, (double)f23);
+        worldrenderer.addVertexWithUV((double)(-f17), -100.0, (double)(-f17), (double)f24, (double)f23);
+        tessellator.draw();
         GL11.glDisable(GL11.GL_TEXTURE_2D);
         this.renderStars(mc, f16 *= Math.max(0.1f, effCelAng * 2.0f), partialTicks);
         GL11.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
@@ -287,7 +287,7 @@ extends IRenderHandler {
     private void renderStars(Minecraft mc, float alpha, float partialTicks) {
         int starGLCallList;
         try {
-            starGLCallList = ModMethodHandles.starGLCallList_getter.invokeExact(mc.field_71438_f);
+            starGLCallList = (Integer)ModMethodHandles.starGLCallList_getter.invokeExact(mc.renderGlobal);
         }
         catch (Throwable t) {
             return;

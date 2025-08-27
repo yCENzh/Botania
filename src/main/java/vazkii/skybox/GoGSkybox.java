@@ -14,7 +14,7 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import vazkii.skybox.ModEventHandler;
 
-@Mod(modid="gogskybox", name="Garden of Glass Skybox", version="1.1-3", dependencies="", clientSideOnly=true, acceptedMinecraftVersions="[1.7.10]")
+@Mod(modid="gogskybox", name="Garden of Glass Skybox", version="1.1-3", dependencies="", acceptedMinecraftVersions="[1.7.10]")
 public class GoGSkybox {
     public static final String MOD_ID = "gogskybox";
     public static final String MOD_NAME = "Garden of Glass Skybox";

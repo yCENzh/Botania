@@ -11,7 +11,7 @@ import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.reflect.Field;
 import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
+import cpw.mods.fml.relauncher.ReflectionHelper;
 
 public final class ModMethodHandles {
     public static MethodHandle starGLCallList_getter;

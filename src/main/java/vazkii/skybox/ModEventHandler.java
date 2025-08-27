@@ -45,9 +45,9 @@ public class ModEventHandler {
     @SubscribeEvent
     public static void clientTickEnd(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
-            Minecraft mc = Minecraft.func_71410_x();
-            GuiScreen gui = mc.field_71462_r;
-            if (gui == null || !gui.func_73868_f()) {
+            Minecraft mc = Minecraft.getMinecraft();
+            GuiScreen gui = mc.currentScreen;
+            if (gui == null || !gui.doesGuiPauseGame()) {
                 ++ticksInGame;
                 partialTicks = 0.0f;
             }
@@ -57,9 +57,9 @@ public class ModEventHandler {
 
     @SubscribeEvent
     public static void onRender(RenderWorldLastEvent event) {
-        WorldClient world = Minecraft.func_71410_x().field_71441_e;
-        if (world.field_73011_w.field_76574_g == 0 && !(world.field_73011_w.getSkyRenderer() instanceof SkyblockSkyRenderer)) {
-            world.field_73011_w.setSkyRenderer((IRenderHandler)new SkyblockSkyRenderer());
+        WorldClient world = Minecraft.getMinecraft().theWorld;
+        if (world.provider.dimensionId == 0 && !(world.provider.getSkyRenderer() instanceof SkyblockSkyRenderer)) {
+            world.provider.setSkyRenderer((IRenderHandler)new SkyblockSkyRenderer());
         }
     }
 }
